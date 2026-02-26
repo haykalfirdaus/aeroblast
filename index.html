@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status - NamaServermu</title>
+    <style>
+        body { background: #1a1a1a; color: white; font-family: sans-serif; text-align: center; padding: 50px; }
+        .card { background: #2a2a2a; padding: 20px; border-radius: 15px; display: inline-block; min-width: 300px; border-bottom: 5px solid #ffbb00; }
+        img { width: 100px; height: 100px; margin-bottom: 10px; }
+        .online { color: #55ff55; font-weight: bold; }
+        .offline { color: #ff5555; font-weight: bold; }
+        .info { margin-top: 10px; font-size: 0.9em; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://api.mcstatus.io/v2/icon/IP_SERVERMU" alt="Logo">
+        
+        <h2>SERVER NAME</h2>
+        <p id="status">Sabar, lagi ngecek...</p>
+        
+        <div class="info">
+            IP: <b>play.servermu.com</b><br>
+            Versi: <span id="version">-</span><br>
+            Players: <span id="players">0/0</span>
+        </div>
+    </div>
+
+    <script>
+        // Ganti IP_SERVERMU dengan IP asli servermu (misal: play.hypixel.net)
+        const ip = "IP_SERVERMU"; 
+
+        fetch(`https://api.mcsrvstat.us/2/${ip}`)
+            .then(res => res.json())
+            .then(data => {
+                const status = document.getElementById('status');
+                if(data.online) {
+                    status.innerHTML = '<span class="online">● ONLINE</span>';
+                    document.getElementById('players').innerText = `${data.players.online}/${data.players.max}`;
+                    document.getElementById('version').innerText = data.version;
+                } else {
+                    status.innerHTML = '<span class="offline">○ OFFLINE</span>';
+                }
+            });
+    </script>
+</body>
+</html>
