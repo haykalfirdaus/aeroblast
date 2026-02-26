@@ -3,100 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroBlast | Minecraft Server</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>AeroBlast | Minecraft Survival Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Dasar & Background */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
             background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
             background-size: cover;
-            color: #e0f2fe; font-family: 'Roboto', sans-serif; 
-            display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 80px 20px 40px;
+            color: #e0f2fe; 
+            font-family: 'Roboto', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 100px 20px 40px;
         }
 
-        /* Overlay Gelap biar teks kebaca */
         body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 24, 0.7); z-index: 0;
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 11, 24, 0.75);
+            z-index: -1;
         }
 
         /* Navbar */
         .navbar {
-            position: fixed; top: 0; width: 100%; background: #0f172a;
-            padding: 15px 25px; display: flex; justify-content: center; 
-            border-bottom: 3px solid #38bdf8; z-index: 1000;
+            position: fixed; top: 0; width: 100%; 
+            background: rgba(15, 23, 42, 0.95);
+            padding: 15px 25px; display: flex; 
+            justify-content: space-between; align-items: center;
+            border-bottom: 3px solid #38bdf8; z-index: 1000; 
+            backdrop-filter: blur(10px);
         }
-        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.5em; text-shadow: 0 0 10px #38bdf8; }
-
-        /* Container Utama */
-        .container { width: 100%; max-width: 500px; z-index: 1; position: relative; }
+        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; }
+        .menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; }
         
+        .nav-links {
+            position: absolute; top: 60px; right: 20px; background: #0f172a;
+            border: 2px solid #38bdf8; border-radius: 10px; display: none;
+            flex-direction: column; width: 180px; overflow: hidden;
+        }
+        .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; border-bottom: 1px solid rgba(56, 189, 248, 0.1); }
+        .nav-links a:hover { background: #38bdf8; color: #050b18; }
+
+        .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
+        
+        /* Card Styling */
+        section { margin-bottom: 50px; scroll-margin-top: 100px; position: relative; }
         .card { 
-            background: rgba(15, 23, 42, 0.9); padding: 25px; border-radius: 20px; 
-            text-align: center; border: 2px solid #38bdf8; margin-top: 20px;
+            background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
+            text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
+            backdrop-filter: blur(5px);
         }
+        .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        .logo { width: 80px; height: 80px; border-radius: 12px; margin-bottom: 15px; border: 2px solid #38bdf8; }
-
-        /* IP Box */
+        /* Status & Logo */
+        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
+        .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;}
+        
         .info-item { 
-            background: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 10px;
-            margin: 10px 0; border: 1px solid #38bdf8; cursor: pointer;
-            display: flex; justify-content: space-between; transition: 0.3s;
+            display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
+            cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.3s;
+            border: 1px solid rgba(56, 189, 248, 0.1); background: rgba(15, 23, 42, 0.5);
+            position: relative; z-index: 10;
         }
-        .info-item:hover { transform: scale(1.03); background: rgba(56, 189, 248, 0.2); }
+        .info-item:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: scale(1.02); }
+        .check-icon { display: none; color: #4ade80; font-weight: bold; }
+        
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .stat-bar { 
+            background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; 
+            border: 1px solid rgba(56, 189, 248, 0.3); transition: 0.3s;
+        }
+        .stat-bar b { display: block; color: #38bdf8; font-size: 0.75em; text-transform: uppercase; margin-bottom: 4px; }
 
-        /* Tombol */
+        /* Features */
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .feature-item {
+            background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em;
+            transition: 0.3s; text-align: center;
+        }
+        .feature-item:hover { background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; }
+
+        /* --- BUTTONS DENGAN HOVER FIXED --- */
         .btn {
             display: block; width: 100%; color: white; text-decoration: none; 
-            padding: 15px; border-radius: 10px; font-weight: 700; 
-            margin-top: 10px; text-align: center; border: none; cursor: pointer; transition: 0.3s;
+            padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; 
+            margin-top: 15px; text-align: center; border: none; cursor: pointer; 
+            transition: all 0.3s ease;
         }
-        .btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
-        
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
         .discord-btn { background: #5865f2; }
         .wa-btn { background: #25d366; }
         .rank-btn { background: #eab308; color: #000; }
+        .buy-now-btn { background: #25d366; color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; display: block; margin-top: 15px; }
 
-        marquee { background: rgba(56, 189, 248, 0.1); padding: 5px; border-radius: 5px; margin: 10px 0; display: block; }
+        /* Modal */
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            align-items: center; justify-content: center; backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: #0f172a; border: 3px solid #eab308; border-radius: 20px;
+            width: 90%; max-width: 450px; padding: 25px; text-align: center;
+            max-height: 85vh; overflow-y: auto;
+        }
+        .rank-option {
+            background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px;
+            margin: 10px 0; display: flex; justify-content: space-between;
+            cursor: pointer; border: 1px solid rgba(234, 179, 8, 0.2);
+            transition: 0.2s;
+        }
+        .rank-option:hover {
+            background: rgba(234, 179, 8, 0.15);
+            border-color: #eab308;
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-logo">AEROBLAST</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#status" onclick="toggleMenu()">Status</a>
+            <a href="#features" onclick="toggleMenu()">Features</a>
+            <a href="#community" onclick="toggleMenu()">Community</a>
+            <a href="#rank" onclick="toggleMenu()">Rank</a>
+        </div>
     </nav>
 
     <div class="container">
-        <div class="card">
-            <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
-            <h2>SERVER STATUS</h2>
-            
-            <marquee direction="left">ayo buruan join ke server aeroblast, nikmati serunya kebersamaan.</marquee>
-            
-            <div class="info-item" onclick="copyText('aeroblast.my.id')">
-                <span>IP: aeroblast.my.id</span>
-                <span id="copy-msg">Salin</span>
-            </div>
+        <section id="status">
+            <div class="card">
+                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
+                <h2 style="margin-bottom: 15px;">SERVER STATUS</h2>
+                
+                <div class="info-box">
+                    <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
+                        <span>IP: aeroblast.my.id</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                    <div class="info-item" onclick="copyText('25235', this)">
+                        <span>Port: 25235</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                </div>
 
-            <a href="https://discord.gg/g9YWxgYvj" class="btn discord-btn">JOIN DISCORD</a>
-            <a href="https://chat.whatsapp.com/F1d5WMvuuiiGGhpPZdAI36" class="btn wa-btn">JOIN WHATSAPP</a>
-            <button class="btn rank-btn">👑 BELI RANK PREMIUM</button>
+                <div class="stat-grid">
+                    <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
+                    <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
+                    <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
+                    <div class="stat-bar"><b>Ping</b><p id="s-ping">Online</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h3 class="section-title">Server Features</h3>
+            <div class="card">
+                <div class="feature-grid">
+                    <div class="feature-item">🛒 Shop & Auction</div>
+                    <div class="feature-item">👾 Smart Spawner</div>
+                    <div class="feature-item">💼 Jobs System</div>
+                    <div class="feature-item">📜 Epic Quests</div>
+                    <div class="feature-item">🛡️ Claim Land</div>
+                    <div class="feature-item">🎁 Free Rank</div>
+                    <div class="feature-item">🧹 Clear Lag</div>
+                    <div class="feature-item">⛏️ Mining Simulator</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community">
+            <h3 class="section-title">Community</h3>
+            <div class="card">
+                <a href="https://discord.gg/g9YWxgYvj" target="_blank" class="btn discord-btn">JOIN DISCORD</a>
+                <a href="https://chat.whatsapp.com/F1d5WMvuuiiGGhpPZdAI36" target="_blank" class="btn wa-btn">JOIN GRUP WHATSAPP</a>
+            </div>
+        </section>
+
+        <section id="rank">
+            <h3 class="section-title">Support Server</h3>
+            <div class="card">
+                <button class="btn rank-btn" onclick="openModal()">👑 BELI RANK PREMIUM</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="rankModal" class="modal">
+        <div class="modal-content">
+            <div id="rankList">
+                <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
+                <div class="rank-option" onclick="showDetail('aviator')"><span>✨ AVIATOR</span><b>Rp 15k</b></div>
+                <div class="rank-option" onclick="showDetail('exostic')"><span>🔥 EXOSTIC</span><b>Rp 30k</b></div>
+                <div class="rank-option" onclick="showDetail('force')"><span>💎 FORCE</span><b>Rp 50k</b></div>
+                <div class="rank-option" onclick="showDetail('xerelion')"><span>🛡️ XERELION</span><b>Rp 75k</b></div>
+                <div class="rank-option" onclick="showDetail('galatics')"><span>👑 GALATICS</span><b>Rp 100k</b></div>
+                <button class="btn" style="background:#444; margin-top:10px;" onclick="closeModal()">TUTUP</button>
+            </div>
+            
+            <div id="rankDetail" style="display:none; text-align: left;">
+                <span onclick="backToList()" style="cursor:pointer; color:#eab308; font-weight:bold;">← Kembali</span>
+                <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
+                <div id="detailFeatures" style="margin: 15px 0; font-size: 0.85em; color: #cbd5e1; line-height: 1.6;"></div>
+                <a href="#" id="waLink" target="_blank" class="buy-now-btn">BELI VIA WHATSAPP</a>
+            </div>
         </div>
     </div>
 
     <script>
-        function copyText(ip) {
-            navigator.clipboard.writeText(ip);
-            document.getElementById('copy-msg').innerText = 'Tersalin!';
-            setTimeout(() => {
-                document.getElementById('copy-msg').innerText = 'Salin';
-            }, 2000);
-        }
-    </script>
+        const rankData = {
+            aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "Aviator kits"] },
+            exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "/feed", "/repair", "EXOSTIC kits"] },
+            force: { title: "FORCE", price: "Rp 50.000", features: ["Home limit 20", "/fly", "/heal", "FORCE kits"] },
+            xerelion: { title: "XERELION", price: "Rp 75.000", features: ["Home limit 50", "/fly", "/nick", "XERELION kits"] },
+            galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home unlimited", "/godmode", "/fly", "GALATICS kits"] }
+        };
 
+        function toggleMenu() {
+            const menu = document.getElementById('navLinks');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+        function openModal() { document.getElementById('rankModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('rankModal').style.display = 'none'; backToList(); }
+
+        function showDetail(id) {
+            const rank = rankData[id];
+            document.getElementById('rankList').style.display = 'none';
+            document.getElementById('rankDetail').style.display = 'block';
+            document.getElementById('detailTitle').innerText = rank.title + " - " + rank.price;
+            let html = '';
+            rank.features.forEach(f => html += `<div style="border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0;">▸ ${f}</div>`);
+            document.getElementById('detailFeatures').innerHTML = html;
+            document.getElementById('waLink').href = `https://wa.me/628123731343?text=Halo%20Admin,%20mau%20beli%20rank%20*${rank.title}*`;
+        }
+
+        function backToList() { document.getElementById('rankList').style.display = 'block'; document.getElementById('rankDetail').style.display = 'none'; }
+        
+        function copyText(val, element) {
+            const tempInput = document.createElement("input");
+            tempInput.value = val;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const check = element.querySelector('.check-icon');
+            const originalSpan = element.querySelector('span');
+            originalSpan.style.opacity = "0";
+            check.style.display = 'inline-block';
+            setTimeout(() => { 
+                check.style.display = 'none'; 
+                originalSpan.style.opacity = "1";
+            }, 1500);
+        }
+
+        fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('s-status').innerText = data.online ? 'ONLINE' : 'OFFLINE';
+                document.getElementById('s-status').style.color = data.online ? '#4ade80' : '#f87171';
+                document.getElementById('s-players').innerText = data.online ? `${data.players.online}/${data.players.max}` : '-/-';
+                document.getElementById('s-version').innerText = data.online ? (data.version || '1.20+') : '-';
+            });
+    </script>
 </body>
 </html>
