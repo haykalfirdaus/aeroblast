@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroBlast Network | Status</title>
-    
+    <title>AeroBlast | Minecraft Survival Server</title>
     <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { 
             background: #050b18; 
             color: #e0f2fe; 
@@ -18,97 +15,107 @@
             min-height: 100vh; 
             background-image: radial-gradient(circle, #0a1931 0%, #050b18 100%);
         }
-
         .status-card { 
             background: rgba(15, 23, 42, 0.9); 
-            padding: 40px; 
-            border-radius: 20px; 
-            text-align: center; 
-            width: 90%;
-            max-width: 400px; 
+            padding: 40px; border-radius: 20px; text-align: center; 
+            width: 90%; max-width: 400px; 
             border: 2px solid #38bdf8; 
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
             backdrop-filter: blur(10px);
         }
-
         .logo { 
-            width: 120px; 
-            height: 120px; 
-            border-radius: 50%; 
-            margin-bottom: 20px; 
-            border: 4px solid #38bdf8;
+            width: 120px; height: 120px; border-radius: 20px; 
+            margin-bottom: 20px; border: 3px solid #38bdf8;
             box-shadow: 0 0 15px #38bdf8;
-            object-fit: cover;
         }
-
-        h2 { 
-            font-size: 1.5em; 
-            letter-spacing: 2px; 
-            margin-bottom: 10px;
-            color: #fff;
-            text-shadow: 0 0 10px #38bdf8;
-        }
-
-        #status { 
-            font-size: 1em; 
-            margin-bottom: 25px; 
-            display: block;
-        }
-
+        h2 { font-size: 1.5em; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px #38bdf8; }
+        #status { font-size: 1em; margin-bottom: 25px; display: block; }
         .online { color: #4ade80; text-shadow: 0 0 5px #4ade80; }
         .offline { color: #f87171; text-shadow: 0 0 5px #f87171; }
-
+        
         .info-box { 
-            background: rgba(0, 0, 0, 0.3); 
-            padding: 15px; 
-            border-radius: 12px; 
-            text-align: left;
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; 
+            text-align: left; border: 1px solid rgba(56, 189, 248, 0.1);
+            margin-bottom: 20px;
         }
-
         .info-item { 
-            display: flex; 
-            justify-content: space-between; 
-            margin: 8px 0;
-            font-size: 0.8em;
+            display: flex; justify-content: space-between; 
+            margin: 8px 0; font-size: 0.8em; 
+            cursor: pointer; padding: 5px; border-radius: 5px;
+            transition: 0.2s;
         }
-
+        .info-item:hover { background: rgba(56, 189, 248, 0.1); }
         .label { color: #7dd3fc; }
         .value { color: #fff; }
 
+        /* Tombol Discord */
+        .discord-btn {
+            display: block; width: 100%; background: #5865f2;
+            color: white; text-decoration: none; padding: 12px;
+            border-radius: 10px; font-size: 0.8em; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .discord-btn:hover {
+            background: #4752c4; transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+        }
+
+        .copy-toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: #38bdf8; color: #fff; padding: 10px 20px;
+            border-radius: 10px; font-size: 0.7em; display: none;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+            z-index: 99;
+        }
+        
         .footer { margin-top: 25px; font-size: 0.6em; color: #475569; }
     </style>
 </head>
 <body>
-
     <div class="status-card">
-        <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo" alt="AeroBlast Logo">
-        
+        <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
         <h2>AEROBLAST</h2>
         <span id="status">Mengecek...</span>
         
         <div class="info-box">
-            <div class="info-item">
+            <div class="info-item" onclick="copyText('aeroblast.my.id')">
                 <span class="label">IP:</span>
-                <span class="value">aeroblast.my.id</span>
+                <span class="value">aeroblast.my.id 📋</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" onclick="copyText('25235')">
+                <span class="label">Port Bedrock:</span>
+                <span class="value">25235 📋</span>
+            </div>
+            <div class="info-item" style="cursor: default;">
                 <span class="label">Versi:</span>
                 <span class="value" id="version">-</span>
             </div>
-            <div class="info-item">
+            <div class="info-item" style="cursor: default;">
                 <span class="label">Players:</span>
                 <span class="value" id="players">0/0</span>
             </div>
         </div>
 
+        <a href="https://discord.gg/g9YWxgYvj" target="_blank" class="discord-btn">JOIN DISCORD</a>
+
         <p class="footer">2026 &copy; AeroBlast Network</p>
     </div>
+
+    <div id="toast" class="copy-toast">Tersalin!</div>
 
     <script>
         const ip = "aeroblast.my.id"; 
 
-        function updateStatus() {
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                setTimeout(() => { toast.style.display = 'none'; }, 2000);
+            });
+        }
+
+        function update() {
             fetch(`https://api.mcsrvstat.us/2/${ip}`)
                 .then(res => res.json())
                 .then(data => {
@@ -122,10 +129,8 @@
                     }
                 });
         }
-
-        updateStatus();
-        // Auto refresh tiap 30 detik biar akurat
-        setInterval(updateStatus, 30000);
+        update();
+        setInterval(update, 30000);
     </script>
 </body>
 </html>
