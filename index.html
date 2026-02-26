@@ -8,127 +8,83 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
-        :root {
-            --primary-cyan: #38bdf8;
-            --bg-dark: #050b18;
-            --card-bg: rgba(15, 23, 42, 0.95);
-            --text-light: #e0f2fe;
-        }
-
         body { 
-            background: var(--bg-dark); 
-            color: var(--text-light); 
+            /* Background baru sesuai request */
+            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0f2fe; 
             font-family: 'Roboto', sans-serif; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             min-height: 100vh; 
-            /* Added padding-top to account for the fixed banner */
-            padding: 120px 20px 40px;
-            background-image: radial-gradient(circle, #0a1931 0%, #050b18 100%);
+            padding: 100px 20px 40px;
         }
 
-        /* Fixed Banner/Navbar with background image */
-        .navbar {
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            /* Set the provided image as background */
-            background-image: url('https://media.discordapp.net/attachments/1459108024151969913/1476575497583464499/AOI_d_9jNwWBgDZ4SQLFGBRIKNwReA5-ZrqmT_N3oU7NnszyroTOaGr_mu1j3TB1TYRT3gsELdcuPV9VITJSadVtu6bP0xSN7s5wzfMj1UjWhkJurV5obSiPgZaGVexAZuUWgM_zqfIDtThtixRd61QqsnrGQ8R6MrWolkgmpHQ05UuA_OEsrAs1024-rj.png?ex=69a19f98&is=69a04e18&hm=749270c7d1851f225a7e3b3871ccc6c588b5d5aa85d50003ecbee991605f7031&=&format=webp&quality=lossless&width=822&height=459');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 15px 25px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            z-index: 1000; 
-            /* Initial border is transparent */
-            border-bottom: 3px solid transparent;
-            /* Smooth transition for border and box-shadow */
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-            height: 80px; /* Fixed height for banner */
-        }
-        
-        /* Overlay to make text readable against banner image */
-        .navbar::before {
-            content: '';
-            position: absolute;
+        /* Overlay gelap agar teks tetap terbaca jelas */
+        body::before {
+            content: "";
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(5, 11, 24, 0.7); /* Dark overlay */
+            background: rgba(5, 11, 24, 0.6);
             z-index: -1;
-            /* Inherit transition from navbar to match border change */
-            transition: background-color 0.3s ease;
         }
 
-        /* Dynamic state added via JavaScript when scrolled */
-        .navbar.scrolled {
-            border-bottom-color: var(--primary-cyan);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        /* Navbar Sederhana & Berfungsi */
+        .navbar {
+            position: fixed; top: 0; width: 100%; 
+            background: rgba(15, 23, 42, 0.9);
+            padding: 15px 25px; display: flex; 
+            justify-content: space-between; align-items: center;
+            border-bottom: 3px solid #38bdf8; z-index: 1000; 
+            backdrop-filter: blur(10px);
         }
-        
-        /* Darken overlay on scroll for better contrast */
-        .navbar.scrolled::before {
-            background-color: rgba(5, 11, 24, 0.9);
-        }
-
-        .nav-logo { font-weight: 700; color: var(--primary-cyan); font-size: 1.5em; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
-        .menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; position: relative; z-index: 1001;}
+        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; }
+        .menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; }
         
         .nav-links {
-            position: absolute; top: 80px; right: 20px; 
-            background: #0f172a;
-            border: 2px solid var(--primary-cyan); border-radius: 10px; 
-            display: none;
+            position: absolute; top: 60px; right: 20px; background: #0f172a;
+            border: 2px solid #38bdf8; border-radius: 10px; display: none;
             flex-direction: column; width: 180px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; border-bottom: 1px solid rgba(56, 189, 248, 0.1); }
-        .nav-links a:hover { background: var(--primary-cyan); color: #050b18; }
+        .nav-links a:hover { background: #38bdf8; color: #050b18; }
 
-        .container { width: 100%; max-width: 500px; }
+        .container { width: 100%; max-width: 500px; z-index: 1; }
         
         /* Card Styles */
         .status-card, .content-section { 
-            background: var(--card-bg); padding: 30px; border-radius: 20px; 
-            text-align: center; border: 4px solid var(--primary-cyan); 
+            background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
+            text-align: center; border: 4px solid #38bdf8; 
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); margin-bottom: 35px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
 
-        .logo { width: 110px; height: 110px; border-radius: 15px; margin-bottom: 15px; border: 3px solid var(--primary-cyan); box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
-        h2 { font-size: 1.8em; font-weight: 700; color: #fff; text-shadow: 0 0 10px var(--primary-cyan); margin-bottom: 5px; }
+        .logo { width: 110px; height: 110px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
+        h2 { font-size: 1.8em; font-weight: 700; color: #fff; text-shadow: 0 0 10px #38bdf8; margin-bottom: 5px; }
         #status { font-size: 1em; font-weight: 500; margin-bottom: 20px; display: block; }
 
-        .info-box { background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 12px; text-align: left; border: 1px solid rgba(56, 189, 248, 0.1); }
+        .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; text-align: left; }
         .info-item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.95em; cursor: pointer; padding: 8px; border-radius: 8px; transition: 0.2s; }
-        .info-item:hover { background: rgba(56, 189, 248, 0.1); }
-        .info-item span:first-child { color: var(--primary-cyan); font-weight: 500; }
+        .info-item:hover { background: rgba(56, 189, 248, 0.2); }
 
-        .section-title { font-size: 1.1em; font-weight: 700; color: var(--primary-cyan); margin-bottom: 20px; text-align: left; border-left: 5px solid var(--primary-cyan); padding-left: 12px; text-transform: uppercase; letter-spacing: 1px;}
+        .section-title { font-size: 1.1em; font-weight: 700; color: #38bdf8; margin-bottom: 20px; text-align: left; border-left: 5px solid #38bdf8; padding-left: 12px; text-transform: uppercase; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .grid-item { 
             background: rgba(15, 23, 42, 0.7); padding: 14px; border-radius: 12px; 
             font-size: 0.85em; border: 1px solid rgba(56, 189, 248, 0.2);
             display: flex; align-items: center; gap: 10px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-        .grid-item:hover { transform: translateY(-3px); border-color: var(--primary-cyan); }
 
-        /* Buttons */
         .discord-btn, .rank-btn {
             display: block; width: 100%; color: white; text-decoration: none; 
             padding: 15px; border-radius: 12px; font-size: 1em; font-weight: 700; 
             margin-top: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s;
-            text-transform: uppercase; letter-spacing: 1px;
         }
-        .discord-btn { background: #5865f2; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3); }
-        .discord-btn:hover { background: #4752c4; transform: translateY(-2px); }
-        
-        .rank-btn { background: #eab308; color: #000; box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3); }
-        .rank-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px #eab308; }
+        .discord-btn { background: #5865f2; }
+        .rank-btn { background: #eab308; color: #000; }
 
-        /* Modal / Pop-up Rank */
+        /* Modal Rank */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.9);
@@ -138,50 +94,26 @@
             background: #0f172a; border: 4px solid #eab308; border-radius: 25px;
             width: 90%; max-width: 450px; padding: 30px; text-align: center; position: relative;
             max-height: 85vh; overflow-y: auto;
-            box-shadow: 0 0 50px rgba(234, 179, 8, 0.3);
         }
-        .close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 28px; cursor: pointer; transition: color 0.2s; }
-        .close-btn:hover { color: #eab308; }
-
-        /* Detail Rank View */
-        .rank-list { display: block; }
-        .rank-detail { display: none; text-align: left; }
-        
+        .close-btn { position: absolute; top: 15px; right: 20px; color: #fff; font-size: 28px; cursor: pointer; }
         .rank-option {
             background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;
             margin: 12px 0; display: flex; justify-content: space-between;
-            cursor: pointer; color: white; border: 1px solid rgba(234, 179, 8, 0.2); transition: 0.2s;
+            cursor: pointer; color: white; border: 1px solid rgba(234, 179, 8, 0.2);
         }
-        .rank-option:hover { background: rgba(234, 179, 8, 0.1); border-color: #eab308; transform: translateX(5px); }
-        .rank-option b { color: #eab308; }
-
-        .feature-list { margin: 20px 0; font-size: 0.85em; line-height: 1.6; color: #cbd5e1; }
-        .feature-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; display: flex; align-items: center; gap: 8px; }
-        .feature-item:last-child { border-bottom: none; }
-        
-        .buy-now-btn {
-            display: block; width: 100%; background: #25d366; color: white; 
-            text-decoration: none; padding: 15px; border-radius: 12px; 
-            font-weight: 700; text-align: center; margin-top: 15px;
-            text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
-        }
-        .buy-now-btn:hover { background: #1ebd59; transform: translateY(-2px); }
-
-        .back-btn { color: #eab308; cursor: pointer; font-size: 0.9em; margin-bottom: 15px; display: inline-block; font-weight: bold; transition: color 0.2s; }
-        .back-btn:hover { color: #fff; }
+        .rank-detail { display: none; text-align: left; }
+        .feature-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; font-size: 0.85em; }
+        .buy-now-btn { display: block; width: 100%; background: #25d366; color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; text-align: center; margin-top: 15px; }
 
         .copy-toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--primary-cyan); color: #050b18; padding: 12px 30px; border-radius: 50px; 
-            display: none; z-index: 3000; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            background: #38bdf8; color: #fff; padding: 10px 25px; border-radius: 50px; display: none; z-index: 3000;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar" id="mainNavbar">
+    <nav class="navbar">
         <div class="nav-logo">AEROBLAST</div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
@@ -193,13 +125,13 @@
 
     <div class="container" id="home">
         <div class="status-card">
-            <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo" alt="AeroBlast Logo">
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
             <h2>AEROBLAST</h2>
             <div id="status">Mengecek...</div>
             
             <div class="info-box">
-                <div class="info-item" onclick="copyText('aeroblast.my.id')"><span>IP Address</span><span>aeroblast.my.id 📋</span></div>
-                <div class="info-item" onclick="copyText('25235')"><span>Port Bedrock</span><span>25235 📋</span></div>
+                <div class="info-item" onclick="copyText('aeroblast.my.id')"><span>IP: aeroblast.my.id 📋</span></div>
+                <div class="info-item" onclick="copyText('25235')"><span>Port: 25235 📋</span></div>
             </div>
 
             <button class="rank-btn" onclick="openModal()">👑 BELI RANK PREMIUM</button>
@@ -222,8 +154,7 @@
     <div id="rankModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            
-            <div id="rankList" class="rank-list">
+            <div id="rankList">
                 <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
                 <div class="rank-option" onclick="showDetail('aviator')"><span>✨ AVIATOR</span><b>Rp 15k</b></div>
                 <div class="rank-option" onclick="showDetail('exostic')"><span>🔥 EXOSTIC</span><b>Rp 30k</b></div>
@@ -231,70 +162,43 @@
                 <div class="rank-option" onclick="showDetail('xerelion')"><span>🛡️ XERELION</span><b>Rp 75k</b></div>
                 <div class="rank-option" onclick="showDetail('galatics')"><span>👑 GALATICS</span><b>Rp 100k</b></div>
             </div>
-
             <div id="rankDetail" class="rank-detail">
-                <span class="back-btn" onclick="backToList()">← Kembali ke Daftar</span>
-                <h3 id="detailTitle" style="color: #eab308; margin-bottom: 10px;"></h3>
-                <div id="detailPrice" style="color: #25d366; font-weight: bold; margin-bottom: 15px;"></div>
-                <div class="feature-list" id="detailFeatures"></div>
+                <span onclick="backToList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
+                <h3 id="detailTitle" style="margin: 15px 0;"></h3>
+                <div id="detailFeatures"></div>
                 <a href="#" id="waLink" target="_blank" class="buy-now-btn">BELI VIA WHATSAPP</a>
             </div>
         </div>
     </div>
 
-    <div id="toast" class="copy-toast">Alamat IP disalin!</div>
+    <div id="toast" class="copy-toast">Tersalin!</div>
 
     <script>
-        // Banner Scroll Logic
-        window.onscroll = function() {scrollFunction()};
+        const rankData = {
+            aviator: { title: "AVIATOR", features: ["Home limit 5", "Warp limit 5", "1 VIP key", "Aviator kits"] },
+            exostic: { title: "EXOSTIC", features: ["Home limit 10", "/feed", "/repair", "EXOSTIC kits"] },
+            force: { title: "FORCE", features: ["Home limit 20", "/pweather", "/anvil", "FORCE kits"] },
+            xerelion: { title: "XERELION", features: ["Home limit 50", "/fly", "/heal", "/nick", "XERELION kits"] },
+            galatics: { title: "GALATICS", features: ["Home unlimited", "/godmode", "/fly", "GALATICS kits"] }
+        };
 
-        function scrollFunction() {
-            const navbar = document.getElementById("mainNavbar");
-            // Add 'scrolled' class if pages is scrolled more than 50px
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+        function toggleMenu() {
+            const menu = document.getElementById('navLinks');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Rank Data
-        const rankData = {
-            aviator: {
-                title: "AVIATOR RANK", price: "15.000",
-                features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"]
-            },
-            exostic: {
-                title: "EXOSTIC RANK", price: "30.000",
-                features: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"]
-            },
-            force: {
-                title: "FORCE RANK", price: "50.000",
-                features: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 Legend key", "2 Aerospace Key", "FORCE kits"]
-            },
-            xerelion: {
-                title: "XERELION RANK", price: "75.000",
-                features: ["Home limit 50", "Warp create limit 50", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"]
-            },
-            galatics: {
-                title: "GALATICS RANK", price: "100.000",
-                features: ["Home unlimited", "Warp create unlimited", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "/tptoggle", "/godmode", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"]
-            }
-        };
+        function openModal() { document.getElementById('rankModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('rankModal').style.display = 'none'; backToList(); }
 
         function showDetail(id) {
             const rank = rankData[id];
             document.getElementById('rankList').style.display = 'none';
             document.getElementById('rankDetail').style.display = 'block';
             document.getElementById('detailTitle').innerText = rank.title;
-            document.getElementById('detailPrice').innerText = "Harga: Rp " + rank.price;
-            
-            let featHtml = '';
-            rank.features.forEach(f => featHtml += `<div class="feature-item">✔ ${f}</div>`);
-            document.getElementById('detailFeatures').innerHTML = featHtml;
-            
-            const message = `Halo AeroBlast, saya ingin membeli Rank ${rank.title} seharga Rp ${rank.price}. Mohon instruksi selanjutnya.`;
-            document.getElementById('waLink').href = `https://wa.me/628123731343?text=${encodeURIComponent(message)}`;
+            let html = '';
+            rank.features.forEach(f => html += `<div class="feature-item">✔ ${f}</div>`);
+            document.getElementById('detailFeatures').innerHTML = html;
+            document.getElementById('waLink').href = `https://wa.me/628123731343?text=Beli%20Rank%20${rank.title}`;
         }
 
         function backToList() {
@@ -302,6 +206,20 @@
             document.getElementById('rankDetail').style.display = 'none';
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('navLinks');
-            menu.style.display =
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        }
+
+        fetch(`https://api.mcsrvstat.us/2/aeroblast.my.id`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('status').innerHTML = data.online ? 
+                    `<span style="color:#4ade80">● ONLINE: ${data.players.online}/${data.players.max}</span>` : 
+                    `<span style="color:#f87171">○ OFFLINE</span>`;
+            });
+    </script>
+</body>
+</html>
