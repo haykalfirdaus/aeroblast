@@ -11,93 +11,101 @@
             background: #050b18; 
             color: #e0f2fe; 
             font-family: 'Minecraftia', sans-serif; 
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; 
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; padding: 40px 20px;
             background-image: radial-gradient(circle, #0a1931 0%, #050b18 100%);
         }
+        .container { width: 100%; max-width: 500px; }
+        
+        /* Card Status Utama */
         .status-card { 
             background: rgba(15, 23, 42, 0.9); 
-            padding: 40px; border-radius: 20px; text-align: center; 
-            width: 90%; max-width: 400px; 
+            padding: 30px; border-radius: 20px; text-align: center; 
             border: 2px solid #38bdf8; 
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); margin-bottom: 25px;
         }
-        .logo { 
-            width: 120px; height: 120px; border-radius: 20px; 
-            margin-bottom: 20px; border: 3px solid #38bdf8;
-            box-shadow: 0 0 15px #38bdf8;
-        }
-        h2 { font-size: 1.5em; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px #38bdf8; }
-        #status { font-size: 1em; margin-bottom: 25px; display: block; }
-        .online { color: #4ade80; text-shadow: 0 0 5px #4ade80; }
-        .offline { color: #f87171; text-shadow: 0 0 5px #f87171; }
-        
-        .info-box { 
-            background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; 
-            text-align: left; border: 1px solid rgba(56, 189, 248, 0.1);
-            margin-bottom: 20px;
-        }
-        .info-item { 
-            display: flex; justify-content: space-between; 
-            margin: 8px 0; font-size: 0.8em; 
-            cursor: pointer; padding: 5px; border-radius: 5px;
-            transition: 0.2s;
-        }
+        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 2px solid #38bdf8; }
+        h2 { font-size: 1.4em; color: #fff; text-shadow: 0 0 10px #38bdf8; margin-bottom: 5px; }
+        #status { font-size: 0.9em; margin-bottom: 20px; display: block; }
+        .online { color: #4ade80; }
+        .offline { color: #f87171; }
+
+        /* Box Informasi */
+        .info-box { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; }
+        .info-item { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.75em; cursor: pointer; padding: 5px; transition: 0.2s; }
         .info-item:hover { background: rgba(56, 189, 248, 0.1); }
         .label { color: #7dd3fc; }
-        .value { color: #fff; }
 
-        /* Tombol Discord */
+        /* Bagian Fitur & Rules */
+        .section-title { font-size: 0.9em; color: #38bdf8; margin: 25px 0 15px; text-align: left; border-left: 4px solid #38bdf8; padding-left: 10px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .grid-item { 
+            background: rgba(15, 23, 42, 0.7); padding: 12px; border-radius: 10px; 
+            font-size: 0.65em; border: 1px solid rgba(56, 189, 248, 0.1);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        /* Tombol & Footer */
         .discord-btn {
             display: block; width: 100%; background: #5865f2;
             color: white; text-decoration: none; padding: 12px;
             border-radius: 10px; font-size: 0.8em; transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px; text-align: center;
         }
-        .discord-btn:hover {
-            background: #4752c4; transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
-        }
+        .discord-btn:hover { background: #4752c4; transform: translateY(-2px); }
+        .footer { margin-top: 40px; font-size: 0.6em; color: #475569; text-align: center; }
 
         .copy-toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: #38bdf8; color: #fff; padding: 10px 20px;
-            border-radius: 10px; font-size: 0.7em; display: none;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
-            z-index: 99;
+            border-radius: 10px; font-size: 0.7em; display: none; z-index: 99;
         }
-        
-        .footer { margin-top: 25px; font-size: 0.6em; color: #475569; }
     </style>
 </head>
 <body>
-    <div class="status-card">
-        <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
-        <h2>AEROBLAST</h2>
-        <span id="status">Mengecek...</span>
-        
-        <div class="info-box">
-            <div class="info-item" onclick="copyText('aeroblast.my.id')">
-                <span class="label">IP:</span>
-                <span class="value">aeroblast.my.id 📋</span>
+    <div class="container">
+        <div class="status-card">
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
+            <h2>AEROBLAST</h2>
+            <span id="status">Mengecek...</span>
+            
+            <div class="info-box">
+                <div class="info-item" onclick="copyText('aeroblast.my.id')">
+                    <span class="label">IP Address:</span>
+                    <span class="value">aeroblast.my.id 📋</span>
+                </div>
+                <div class="info-item" onclick="copyText('25235')">
+                    <span class="label">Port Bedrock:</span>
+                    <span class="value">25235 📋</span>
+                </div>
+                <div class="info-item" style="cursor: default;">
+                    <span class="label">Players:</span>
+                    <span class="value" id="players">0/0</span>
+                </div>
             </div>
-            <div class="info-item" onclick="copyText('25235')">
-                <span class="label">Port Bedrock:</span>
-                <span class="value">25235 📋</span>
-            </div>
-            <div class="info-item" style="cursor: default;">
-                <span class="label">Versi:</span>
-                <span class="value" id="version">-</span>
-            </div>
-            <div class="info-item" style="cursor: default;">
-                <span class="label">Players:</span>
-                <span class="value" id="players">0/0</span>
-            </div>
+            <a href="https://discord.gg/g9YWxgYvj" target="_blank" class="discord-btn">JOIN DISCORD</a>
         </div>
 
-        <a href="https://discord.gg/g9YWxgYvj" target="_blank" class="discord-btn">JOIN DISCORD</a>
+        <div class="section-title">FITUR SERVER</div>
+        <div class="grid">
+            <div class="grid-item">💰 Economy Shop</div>
+            <div class="grid-item">🏦 Auction House</div>
+            <div class="grid-item">🛡️ Claim Land</div>
+            <div class="grid-item">⚔️ Aura Skills</div>
+            <div class="grid-item">🎲 Gacha System</div>
+            <div class="grid-item">🏝️ AFK Zone</div>
+            <div class="grid-item">⛏️ Smart Spawner</div>
+            <div class="grid-item">🌐 Java & Bedrock</div>
+        </div>
+
+        <div class="section-title">RULES</div>
+        <div class="grid">
+            <div class="grid-item">❌ No Cheat</div>
+            <div class="grid-item">🚫 No Griefing</div>
+            <div class="grid-item">🤐 No Toxic</div>
+            <div class="grid-item">🤝 Be Respectful</div>
+        </div>
 
         <p class="footer">2026 &copy; AeroBlast Network</p>
     </div>
@@ -106,7 +114,6 @@
 
     <script>
         const ip = "aeroblast.my.id"; 
-
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('toast');
@@ -114,18 +121,16 @@
                 setTimeout(() => { toast.style.display = 'none'; }, 2000);
             });
         }
-
         function update() {
             fetch(`https://api.mcsrvstat.us/2/${ip}`)
                 .then(res => res.json())
                 .then(data => {
                     const status = document.getElementById('status');
                     if(data.online) {
-                        status.innerHTML = '<span class="online">● ONLINE</span>';
+                        status.innerHTML = '<span class="online">● SERVER ONLINE</span>';
                         document.getElementById('players').innerText = `${data.players.online}/${data.players.max}`;
-                        document.getElementById('version').innerText = data.version;
                     } else {
-                        status.innerHTML = '<span class="offline">○ OFFLINE</span>';
+                        status.innerHTML = '<span class="offline">○ SERVER OFFLINE</span>';
                     }
                 });
         }
