@@ -9,7 +9,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
-            /* Background baru sesuai request */
             background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
             background-size: cover;
             color: #e0f2fe; 
@@ -21,16 +20,14 @@
             padding: 100px 20px 40px;
         }
 
-        /* Overlay gelap agar teks tetap terbaca jelas */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 24, 0.6);
+            background: rgba(5, 11, 24, 0.65);
             z-index: -1;
         }
 
-        /* Navbar Sederhana & Berfungsi */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.9);
@@ -52,7 +49,6 @@
 
         .container { width: 100%; max-width: 500px; z-index: 1; }
         
-        /* Card Styles */
         .status-card, .content-section { 
             background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
             text-align: center; border: 4px solid #38bdf8; 
@@ -62,11 +58,17 @@
 
         .logo { width: 110px; height: 110px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
         h2 { font-size: 1.8em; font-weight: 700; color: #fff; text-shadow: 0 0 10px #38bdf8; margin-bottom: 5px; }
-        #status { font-size: 1em; font-weight: 500; margin-bottom: 20px; display: block; }
-
-        .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; text-align: left; }
-        .info-item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.95em; cursor: pointer; padding: 8px; border-radius: 8px; transition: 0.2s; }
+        
+        /* IP & Port Copy Style */
+        .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px;}
+        .info-item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.95em; cursor: pointer; padding: 8px; border-radius: 8px; transition: 0.2s; position: relative;}
         .info-item:hover { background: rgba(56, 189, 248, 0.2); }
+        .check-icon { display: none; color: #4ade80; font-weight: bold; }
+
+        /* Statistics Bars */
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .stat-bar { background: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); font-size: 0.8em; text-align: center; }
+        .stat-bar span { display: block; color: #38bdf8; font-weight: bold; margin-bottom: 2px; }
 
         .section-title { font-size: 1.1em; font-weight: 700; color: #38bdf8; margin-bottom: 20px; text-align: left; border-left: 5px solid #38bdf8; padding-left: 12px; text-transform: uppercase; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -102,13 +104,9 @@
             cursor: pointer; color: white; border: 1px solid rgba(234, 179, 8, 0.2);
         }
         .rank-detail { display: none; text-align: left; }
-        .feature-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; font-size: 0.85em; }
+        .feature-list { margin: 15px 0; font-size: 0.85em; color: #cbd5e1; line-height: 1.6; }
+        .feature-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 0; }
         .buy-now-btn { display: block; width: 100%; background: #25d366; color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; text-align: center; margin-top: 15px; }
-
-        .copy-toast {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: #38bdf8; color: #fff; padding: 10px 25px; border-radius: 50px; display: none; z-index: 3000;
-        }
     </style>
 </head>
 <body>
@@ -127,11 +125,23 @@
         <div class="status-card">
             <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
             <h2>AEROBLAST</h2>
-            <div id="status">Mengecek...</div>
             
             <div class="info-box">
-                <div class="info-item" onclick="copyText('aeroblast.my.id')"><span>IP: aeroblast.my.id 📋</span></div>
-                <div class="info-item" onclick="copyText('25235')"><span>Port: 25235 📋</span></div>
+                <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
+                    <span>IP: aeroblast.my.id</span>
+                    <span class="check-icon">✓</span>
+                </div>
+                <div class="info-item" onclick="copyText('25235', this)">
+                    <span>Port: 25235</span>
+                    <span class="check-icon">✓</span>
+                </div>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-bar"><span>STATUS</span><p id="s-status">Mengecek...</p></div>
+                <div class="stat-bar"><span>PLAYERS</span><p id="s-players">-/-</p></div>
+                <div class="stat-bar"><span>VERSION</span><p id="s-version">-</p></div>
+                <div class="stat-bar"><span>PING</span><p id="s-ping">- ms</p></div>
             </div>
 
             <button class="rank-btn" onclick="openModal()">👑 BELI RANK PREMIUM</button>
@@ -163,23 +173,21 @@
                 <div class="rank-option" onclick="showDetail('galatics')"><span>👑 GALATICS</span><b>Rp 100k</b></div>
             </div>
             <div id="rankDetail" class="rank-detail">
-                <span onclick="backToList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
-                <h3 id="detailTitle" style="margin: 15px 0;"></h3>
-                <div id="detailFeatures"></div>
+                <span onclick="backToList()" style="cursor:pointer; color:#eab308; font-weight:bold;">← Kembali ke Daftar</span>
+                <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
+                <div id="detailFeatures" class="feature-list"></div>
                 <a href="#" id="waLink" target="_blank" class="buy-now-btn">BELI VIA WHATSAPP</a>
             </div>
         </div>
     </div>
 
-    <div id="toast" class="copy-toast">Tersalin!</div>
-
     <script>
         const rankData = {
-            aviator: { title: "AVIATOR", features: ["Home limit 5", "Warp limit 5", "1 VIP key", "Aviator kits"] },
-            exostic: { title: "EXOSTIC", features: ["Home limit 10", "/feed", "/repair", "EXOSTIC kits"] },
-            force: { title: "FORCE", features: ["Home limit 20", "/pweather", "/anvil", "FORCE kits"] },
-            xerelion: { title: "XERELION", features: ["Home limit 50", "/fly", "/heal", "/nick", "XERELION kits"] },
-            galatics: { title: "GALATICS", features: ["Home unlimited", "/godmode", "/fly", "GALATICS kits"] }
+            aviator: { title: "AVIATOR", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
+            exostic: { title: "EXOSTIC", features: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
+            force: { title: "FORCE", features: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 Legend key", "2 Aerospace Key", "FORCE kits"] },
+            xerelion: { title: "XERELION", features: ["Home limit 50", "Warp create limit 50", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"] },
+            galatics: { title: "GALATICS", features: ["Home unlimited", "Warp create unlimited", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "/tptoggle", "/godmode", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"] }
         };
 
         function toggleMenu() {
@@ -194,11 +202,11 @@
             const rank = rankData[id];
             document.getElementById('rankList').style.display = 'none';
             document.getElementById('rankDetail').style.display = 'block';
-            document.getElementById('detailTitle').innerText = rank.title;
+            document.getElementById('detailTitle').innerText = rank.title + " RANK";
             let html = '';
-            rank.features.forEach(f => html += `<div class="feature-item">✔ ${f}</div>`);
+            rank.features.forEach(f => html += `<div class="feature-item">▸ ${f}</div>`);
             document.getElementById('detailFeatures').innerHTML = html;
-            document.getElementById('waLink').href = `https://wa.me/628123731343?text=Beli%20Rank%20${rank.title}`;
+            document.getElementById('waLink').href = `https://wa.me/628123731343?text=Halo%20Admin,%20saya%20mau%20beli%20rank%20${rank.title}`;
         }
 
         function backToList() {
@@ -206,19 +214,23 @@
             document.getElementById('rankDetail').style.display = 'none';
         }
 
-        function copyText(text) {
+        function copyText(text, element) {
             navigator.clipboard.writeText(text);
-            const toast = document.getElementById('toast');
-            toast.style.display = 'block';
-            setTimeout(() => toast.style.display = 'none', 2000);
+            const check = element.querySelector('.check-icon');
+            check.style.display = 'inline';
+            setTimeout(() => { check.style.display = 'none'; }, 1500);
         }
 
+        const start = Date.now();
         fetch(`https://api.mcsrvstat.us/2/aeroblast.my.id`)
             .then(res => res.json())
             .then(data => {
-                document.getElementById('status').innerHTML = data.online ? 
-                    `<span style="color:#4ade80">● ONLINE: ${data.players.online}/${data.players.max}</span>` : 
-                    `<span style="color:#f87171">○ OFFLINE</span>`;
+                const duration = Date.now() - start;
+                document.getElementById('s-status').innerText = data.online ? 'ONLINE' : 'OFFLINE';
+                document.getElementById('s-status').style.color = data.online ? '#4ade80' : '#f87171';
+                document.getElementById('s-players').innerText = data.online ? `${data.players.online}/${data.players.max}` : '-/-';
+                document.getElementById('s-version').innerText = data.online ? (data.version || 'Bedrock/Java') : '-';
+                document.getElementById('s-ping').innerText = duration + ' ms';
             });
     </script>
 </body>
