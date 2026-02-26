@@ -40,8 +40,8 @@
             border: 2px solid #38bdf8; border-radius: 10px; display: none;
             flex-direction: column; width: 180px; overflow: hidden;
         }
-        .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
-        .nav-links a:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
+        .nav-links a, .nav-links span { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover, .nav-links span:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
 
         .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
         
@@ -139,7 +139,9 @@
             <a href="#status" onclick="toggleMenu()">Status</a>
             <a href="#features" onclick="toggleMenu()">Features</a>
             <a href="#community" onclick="toggleMenu()">Community</a>
-            <a href="#rank" onclick="toggleMenu()">Rank</a>
+            <span onclick="openInputModal('Request'); toggleMenu()">Request</span>
+            <span onclick="openInputModal('Report'); toggleMenu()">Report</span>
+            <a href="#rank" onclick="toggleMenu()">Support Server</a>
         </div>
     </nav>
 
