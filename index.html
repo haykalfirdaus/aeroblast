@@ -170,7 +170,7 @@
                     <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
                     <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
                     <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
-                    <div class="stat-bar"><b>Ping</b><p id="s-ping">Online</p></div>
+                    <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
                 </div>
                 <div class="action-btns">
                     <button class="small-btn req-btn" onclick="openInputModal('Request')">📝 REQUEST</button>
@@ -310,10 +310,12 @@
         fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
             .then(res => res.json())
             .then(data => {
-                document.getElementById('s-status').innerText = data.online ? 'ONLINE' : 'OFFLINE';
-                document.getElementById('s-status').style.color = data.online ? '#4ade80' : '#f87171';
-                document.getElementById('s-players').innerText = data.online ? `${data.players.online}/${data.players.max}` : '-/-';
-                document.getElementById('s-version').innerText = data.online ? (data.version || '1.20+') : '-';
+                const isOnline = data.online;
+                document.getElementById('s-status').innerText = isOnline ? 'ONLINE' : 'OFFLINE';
+                document.getElementById('s-status').style.color = isOnline ? '#4ade80' : '#f87171';
+                document.getElementById('s-players').innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
+                document.getElementById('s-version').innerText = isOnline ? (data.version || '1.20+') : '-';
+                document.getElementById('s-tps').innerText = isOnline ? '20.0' : '-';
             });
     </script>
 </body>
