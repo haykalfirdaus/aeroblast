@@ -4,67 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AeroBlast | Minecraft Survival Server</title>
-    <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { 
             background: #050b18; 
             color: #e0f2fe; 
-            font-family: 'Minecraftia', sans-serif; 
+            font-family: 'Roboto', sans-serif; 
             display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 40px 20px;
+            min-height: 100vh; padding: 80px 20px 40px;
             background-image: radial-gradient(circle, #0a1931 0%, #050b18 100%);
         }
+
+        /* Navbar Garis Tiga */
+        .navbar {
+            position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.95);
+            padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 3px solid #38bdf8; z-index: 1000; backdrop-filter: blur(10px);
+        }
+        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; }
+        .menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; }
+        .nav-links {
+            position: absolute; top: 60px; right: 20px; background: #0f172a;
+            border: 2px solid #38bdf8; border-radius: 10px; display: none;
+            flex-direction: column; width: 180px; overflow: hidden;
+        }
+        .nav-links a {
+            color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        }
+        .nav-links a:hover { background: #38bdf8; color: #050b18; }
+
         .container { width: 100%; max-width: 500px; }
         
-        /* Card Status Utama */
-        .status-card { 
+        /* Border Diperbesar & Glow */
+        .status-card, .content-section { 
             background: rgba(15, 23, 42, 0.9); 
             padding: 30px; border-radius: 20px; text-align: center; 
-            border: 2px solid #38bdf8; 
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
-            backdrop-filter: blur(10px); margin-bottom: 25px;
+            border: 4px solid #38bdf8; /* Border lebih tebal */
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); /* Glow lebih kuat */
+            backdrop-filter: blur(10px); margin-bottom: 35px;
         }
-        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 2px solid #38bdf8; }
-        h2 { font-size: 1.4em; color: #fff; text-shadow: 0 0 10px #38bdf8; margin-bottom: 5px; }
-        #status { font-size: 0.9em; margin-bottom: 20px; display: block; }
+
+        .logo { width: 110px; height: 110px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
+        h2 { font-size: 1.8em; font-weight: 700; color: #fff; text-shadow: 0 0 10px #38bdf8; margin-bottom: 5px; }
+        
+        #status { font-size: 1em; font-weight: 500; margin-bottom: 20px; display: block; }
         .online { color: #4ade80; }
         .offline { color: #f87171; }
 
-        /* Box Informasi */
-        .info-box { background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; }
-        .info-item { display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.75em; cursor: pointer; padding: 5px; transition: 0.2s; }
+        .info-box { background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 12px; text-align: left; }
+        .info-item { display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.95em; cursor: pointer; padding: 8px; border-radius: 8px; transition: 0.2s; }
         .info-item:hover { background: rgba(56, 189, 248, 0.1); }
-        .label { color: #7dd3fc; }
+        .label { color: #7dd3fc; font-weight: 500; }
 
-        /* Bagian Fitur & Rules */
-        .section-title { font-size: 0.9em; color: #38bdf8; margin: 25px 0 15px; text-align: left; border-left: 4px solid #38bdf8; padding-left: 10px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .section-title { font-size: 1.1em; font-weight: 700; color: #38bdf8; margin-bottom: 20px; text-align: left; border-left: 5px solid #38bdf8; padding-left: 12px; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .grid-item { 
-            background: rgba(15, 23, 42, 0.7); padding: 12px; border-radius: 10px; 
-            font-size: 0.65em; border: 1px solid rgba(56, 189, 248, 0.1);
-            display: flex; align-items: center; gap: 8px;
+            background: rgba(15, 23, 42, 0.7); padding: 14px; border-radius: 12px; 
+            font-size: 0.85em; border: 1px solid rgba(56, 189, 248, 0.2);
+            display: flex; align-items: center; gap: 10px;
         }
 
-        /* Tombol & Footer */
+        /* Tutorial Box */
+        .tutorial-text { text-align: left; font-size: 0.85em; line-height: 1.6; color: #cbd5e1; }
+        .tutorial-step { margin-bottom: 10px; padding-left: 10px; border-left: 2px solid #38bdf8; }
+
         .discord-btn {
             display: block; width: 100%; background: #5865f2;
-            color: white; text-decoration: none; padding: 12px;
-            border-radius: 10px; font-size: 0.8em; transition: 0.3s;
-            margin-top: 20px; text-align: center;
+            color: white; text-decoration: none; padding: 15px;
+            border-radius: 12px; font-size: 1em; font-weight: 700; transition: 0.3s;
+            margin-top: 25px; text-align: center; border: none; cursor: pointer;
         }
-        .discord-btn:hover { background: #4752c4; transform: translateY(-2px); }
-        .footer { margin-top: 40px; font-size: 0.6em; color: #475569; text-align: center; }
+        .discord-btn:hover { background: #4752c4; transform: scale(1.02); }
 
         .copy-toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: #38bdf8; color: #fff; padding: 10px 20px;
-            border-radius: 10px; font-size: 0.7em; display: none; z-index: 99;
+            background: #38bdf8; color: #fff; padding: 10px 25px;
+            border-radius: 50px; font-size: 0.85em; display: none; z-index: 2000; font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <nav class="navbar">
+        <div class="nav-logo">AEROBLAST</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" onclick="toggleMenu()">Status</a>
+            <a href="#fitur" onclick="toggleMenu()">Fitur</a>
+            <a href="#rules" onclick="toggleMenu()">Rules</a>
+            <a href="#tutorial" onclick="toggleMenu()">Tutorial</a>
+        </div>
+    </nav>
+
+    <div class="container" id="home">
         <div class="status-card">
             <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp&width=545&height=545" class="logo">
             <h2>AEROBLAST</h2>
@@ -80,40 +114,60 @@
                     <span class="value">25235 📋</span>
                 </div>
                 <div class="info-item" style="cursor: default;">
-                    <span class="label">Players:</span>
+                    <span class="label">Online Players:</span>
                     <span class="value" id="players">0/0</span>
                 </div>
             </div>
             <a href="https://discord.gg/g9YWxgYvj" target="_blank" class="discord-btn">JOIN DISCORD</a>
         </div>
 
-        <div class="section-title">FITUR SERVER</div>
-        <div class="grid">
-            <div class="grid-item">💰 Economy Shop</div>
-            <div class="grid-item">🏦 Auction House</div>
-            <div class="grid-item">🛡️ Claim Land</div>
-            <div class="grid-item">⚔️ Aura Skills</div>
-            <div class="grid-item">🎲 Gacha System</div>
-            <div class="grid-item">🏝️ AFK Zone</div>
-            <div class="grid-item">⛏️ Smart Spawner</div>
-            <div class="grid-item">🌐 Java & Bedrock</div>
+        <div class="content-section" id="fitur">
+            <div class="section-title">Fitur Unggulan</div>
+            <div class="grid">
+                <div class="grid-item">💰 Economy</div>
+                <div class="grid-item">🏦 Auction</div>
+                <div class="grid-item">🛡️ Claim Land</div>
+                <div class="grid-item">⚔️ Skills</div>
+                <div class="grid-item">🎲 Gacha</div>
+                <div class="grid-item">🏝️ AFK Zone</div>
+                <div class="grid-item">⛏️ Spawners</div>
+                <div class="grid-item">🌐 Crossplay</div>
+            </div>
         </div>
 
-        <div class="section-title">RULES</div>
-        <div class="grid">
-            <div class="grid-item">❌ No Cheat</div>
-            <div class="grid-item">🚫 No Griefing</div>
-            <div class="grid-item">🤐 No Toxic</div>
-            <div class="grid-item">🤝 Be Respectful</div>
+        <div class="content-section" id="rules">
+            <div class="section-title">Rules Server</div>
+            <div class="grid">
+                <div class="grid-item">❌ No Cheat</div>
+                <div class="grid-item">🚫 No Grief</div>
+                <div class="grid-item">🤐 No Toxic</div>
+                <div class="grid-item">🤝 Respect</div>
+            </div>
         </div>
 
-        <p class="footer">2026 &copy; AeroBlast Network</p>
+        <div class="content-section" id="tutorial">
+            <div class="section-title">Cara Join</div>
+            <div class="tutorial-text">
+                <div class="tutorial-step">1. Buka Minecraft (Java atau Bedrock).</div>
+                <div class="tutorial-step">2. Pilih <b>Multiplayer</b> > <b>Add Server</b>.</div>
+                <div class="tutorial-step">3. Masukkan IP: <b>aeroblast.my.id</b></div>
+                <div class="tutorial-step">4. Untuk Bedrock, gunakan Port: <b>25235</b>.</div>
+                <div class="tutorial-step">5. Klik Done dan selamat bermain!</div>
+            </div>
+        </div>
+
     </div>
 
-    <div id="toast" class="copy-toast">Tersalin!</div>
+    <div id="toast" class="copy-toast">Berhasil disalin!</div>
 
     <script>
         const ip = "aeroblast.my.id"; 
+        
+        function toggleMenu() {
+            const menu = document.getElementById('navLinks');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
         function copyText(text) {
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('toast');
@@ -121,6 +175,7 @@
                 setTimeout(() => { toast.style.display = 'none'; }, 2000);
             });
         }
+
         function update() {
             fetch(`https://api.mcsrvstat.us/2/${ip}`)
                 .then(res => res.json())
