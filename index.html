@@ -54,8 +54,8 @@
         .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
         .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
-        
         .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;}
+        
         .info-item { 
             display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
             cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.3s;
@@ -76,34 +76,19 @@
         }
         .stat-bar:hover { border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
 
-        /* Hover mode for request and report buttons */
         .action-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
         .small-btn { 
             padding: 10px; border-radius: 8px; font-size: 0.8em; font-weight: 600; 
             cursor: pointer; border: 1px solid rgba(255,255,255,0.1); color: white; transition: 0.3s;
         }
-        .small-btn:hover { 
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            filter: brightness(1.2);
-        }
         .req-btn { background: #3b82f6; }
         .rep-btn { background: #ef4444; }
 
-        /* Hover mode for features */
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .feature-item {
             background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px;
             border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-align: center;
-            cursor: default;
-        }
-        .feature-item:hover {
-            background: rgba(56, 189, 248, 0.1);
-            border-color: #38bdf8;
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
-            color: #fff;
+            transition: 0.3s; text-align: center;
         }
 
         .btn {
