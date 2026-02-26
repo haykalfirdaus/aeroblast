@@ -21,7 +21,6 @@
             background: rgba(5, 11, 24, 0.75); z-index: -1;
         }
 
-        /* Navbar & Hover */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.95);
@@ -43,13 +42,12 @@
         .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
         section { margin-bottom: 50px; scroll-margin-top: 100px; }
         
-        /* Card Hover */
         .card { 
             background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
             text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
             backdrop-filter: blur(5px); transition: 0.3s;
         }
-        .card:hover { border-color: #38bdf8; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1); }
+        .card:hover { border-color: #38bdf8; }
         .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
         .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
@@ -63,12 +61,18 @@
         .check-icon { display: none; color: #4ade80; font-weight: bold; }
         
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .stat-bar { background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); transition: 0.3s; cursor: default; }
+        .stat-bar { background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); transition: 0.3s; }
         .stat-bar:hover { background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; }
 
+        /* Rules Accordion */
         .rules-card { text-align: left !important; }
-        .rule-category { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); }
-        .rule-cat-title { font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .rule-category { margin-bottom: 10px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; overflow: hidden; }
+        .rule-cat-title { 
+            font-weight: 700; padding: 15px; cursor: pointer; background: rgba(15, 23, 42, 0.5);
+            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        }
+        .rule-cat-title:hover { background: rgba(56, 189, 248, 0.1); }
+        .rule-content { display: none; padding: 15px; background: rgba(0, 0, 0, 0.2); }
         .rule-list { list-style: none; font-size: 0.85em; color: #cbd5e1; }
         .rule-list li { margin: 5px 0; padding-left: 15px; position: relative; }
         .rule-list li::before { content: "•"; position: absolute; left: 0; color: #eab308; }
@@ -80,21 +84,21 @@
             border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em; text-align: center;
             transition: 0.3s;
         }
-        .feature-item:hover { background: #38bdf8; color: #0f172a; transform: scale(1.05); }
+        .feature-item:hover { background: #38bdf8; color: #0f172a; }
         
         .btn { display: block; width: 100%; color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; margin-top: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
-        .btn:hover { transform: translateY(-4px); filter: brightness(1.2); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn:hover { transform: translateY(-4px); filter: brightness(1.2); }
         .discord-btn { background: #5865f2; }
         .wa-btn { background: #25d366; }
         .rank-btn { background: #eab308; color: #000; }
         .saweria-btn { background: #fa6400; }
-        .report-btn { background: #ef4444; }
+        .req-btn { background: #38bdf8; color: #0f172a; }
+        .rep-btn { background: #ef4444; }
 
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 90%; max-width: 450px; padding: 25px; text-align: center; max-height: 85vh; overflow-y: auto; }
         .rank-option { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; margin: 10px 0; display: flex; justify-content: space-between; cursor: pointer; border: 1px solid rgba(234, 179, 8, 0.2); transition: 0.3s; }
         .rank-option:hover { background: rgba(234, 179, 8, 0.2); border-color: #eab308; }
-        .qris-img { width: 100%; border-radius: 10px; margin-top: 15px; border: 5px solid white; }
         textarea { width: 100%; height: 100px; border-radius: 10px; background: #1e293b; color: white; padding: 10px; border: 1px solid #38bdf8; margin-top: 10px; resize: none; font-family: inherit; }
     </style>
 </head>
@@ -108,7 +112,8 @@
             <a href="#rules" onclick="toggleMenu()">Rules</a>
             <a href="#features" onclick="toggleMenu()">Features</a>
             <a href="#community" onclick="toggleMenu()">Community</a>
-            <span onclick="openRequestModal(); toggleMenu()">Request & Report</span>
+            <span onclick="openModal('reqModal'); toggleMenu()">Request Feature</span>
+            <span onclick="openModal('repModal'); toggleMenu()">Report Bug</span>
             <a href="#rank" onclick="toggleMenu()">Support</a>
         </div>
     </nav>
@@ -134,7 +139,10 @@
                     <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
                     <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
                 </div>
-                <button class="btn report-btn" onclick="openRequestModal()">🚩 REPORT / REQUEST BUG</button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button class="btn req-btn" style="font-size: 0.8em;" onclick="openModal('reqModal')">💡 REQUEST</button>
+                    <button class="btn rep-btn" style="font-size: 0.8em;" onclick="openModal('repModal')">🚩 REPORT</button>
+                </div>
             </div>
         </section>
 
@@ -142,32 +150,37 @@
             <h3 class="section-title">Server Rules</h3>
             <div class="card rules-card">
                 <div class="rule-category">
-                    <div class="rule-cat-title" style="color: #38bdf8;">📝 1. SOSIAL & CHAT</div>
-                    <ul class="rule-list">
-                        <li>Dilarang SARA & Agama</li>
-                        <li>Dilarang Toxic / Kasar</li>
-                        <li>Dilarang Spam & Promosi</li>
-                        <li>Dilarang Scam / RMT</li>
-                    </ul>
-                    <p class="punishment">SANKSI: Mute / Ban Kekal</p>
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>📝 1. SOSIAL & CHAT</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>Dilarang SARA & Agama</li>
+                            <li>Dilarang Toxic / Kasar</li>
+                            <li>Dilarang Spam & Promosi</li>
+                        </ul>
+                        <p class="punishment">SANKSI: Mute / Ban Kekal</p>
+                    </div>
                 </div>
                 <div class="rule-category">
-                    <div class="rule-cat-title" style="color: #4ade80;">🌳 2. SURVIVAL & GAMEPLAY</div>
-                    <ul class="rule-list">
-                        <li>Dilarang Cheat / Hacks</li>
-                        <li>Dilarang Griefing & Trap</li>
-                        <li>Dilarang meminta Item/Rank</li>
-                    </ul>
-                    <p class="punishment">SANKSI: Jail / Ban 7 Hari - Kekal</p>
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>🌳 2. SURVIVAL</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>Dilarang Cheat / Hacks</li>
+                            <li>Dilarang Griefing & Trap</li>
+                            <li>Dilarang mencuri di area Claim</li>
+                        </ul>
+                        <p class="punishment">SANKSI: Jail / Ban</p>
+                    </div>
                 </div>
                 <div class="rule-category">
-                    <div class="rule-cat-title" style="color: #eab308;">⚙️ 3. BUG & TEKNIKAL</div>
-                    <ul class="rule-list">
-                        <li>Dilarang Exploit / Dupe</li>
-                        <li>Dilarang membuat mesin LAG</li>
-                        <li>Wajib lapor Bug ke Staff</li>
-                    </ul>
-                    <p class="punishment">SANKSI: Ban IP / Wipe Aset</p>
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>⚙️ 3. TEKNIKAL</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>Dilarang Exploit / Dupe</li>
+                            <li>Dilarang membuat mesin LAG</li>
+                            <li>Wajib lapor Bug ke Staff</li>
+                        </ul>
+                        <p class="punishment">SANKSI: Ban IP / Wipe Aset</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -199,39 +212,47 @@
         <section id="rank">
             <h3 class="section-title">Support Server</h3>
             <div class="card">
-                <button class="btn rank-btn" onclick="openRankModal()">👑 BELI RANK PREMIUM</button>
-                <button class="btn saweria-btn" onclick="openSaweria()">💸 DONATE (QRIS)</button>
+                <button class="btn rank-btn" onclick="openModal('rankModal')">👑 BELI RANK PREMIUM</button>
+                <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE (QRIS)</button>
             </div>
         </section>
+    </div>
+
+    <div id="reqModal" class="modal">
+        <div class="modal-content">
+            <h3>💡 REQUEST FITUR</h3>
+            <textarea id="reqText" placeholder="Punya ide fitur baru? Tulis di sini..."></textarea>
+            <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
+            <button class="btn" style="background:#444;" onclick="closeModal('reqModal')">BATAL</button>
+        </div>
+    </div>
+
+    <div id="repModal" class="modal">
+        <div class="modal-content" style="border-color: #ef4444;">
+            <h3>🚩 REPORT BUG/PLAYER</h3>
+            <textarea id="repText" placeholder="Jelaskan bug atau player yang melanggar..."></textarea>
+            <button class="btn rep-btn" style="color:white;" onclick="sendWA('rep')">KIRIM LAPORAN</button>
+            <button class="btn" style="background:#444;" onclick="closeModal('repModal')">BATAL</button>
+        </div>
     </div>
 
     <div id="rankModal" class="modal">
         <div class="modal-content" style="border-color: #eab308;">
             <div id="rankList">
                 <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
-                <div class="rank-option" onclick="showDetail('aviator')"><span>✨ AVIATOR</span><b>15k</b></div>
-                <div class="rank-option" onclick="showDetail('exostic')"><span>🔥 EXOSTIC</span><b>30k</b></div>
-                <div class="rank-option" onclick="showDetail('force')"><span>💎 FORCE</span><b>50k</b></div>
-                <div class="rank-option" onclick="showDetail('xerelion')"><span>🛡️ XERELION</span><b>75k</b></div>
-                <div class="rank-option" onclick="showDetail('galatics')"><span>👑 GALATICS</span><b>100k</b></div>
-                <button class="btn" style="background:#444;" onclick="closeRankModal()">TUTUP</button>
+                <div class="rank-option" onclick="showRankDetail('aviator')"><span>✨ AVIATOR</span><b>15k</b></div>
+                <div class="rank-option" onclick="showRankDetail('exostic')"><span>🔥 EXOSTIC</span><b>30k</b></div>
+                <div class="rank-option" onclick="showRankDetail('force')"><span>💎 FORCE</span><b>50k</b></div>
+                <div class="rank-option" onclick="showRankDetail('xerelion')"><span>🛡️ XERELION</span><b>75k</b></div>
+                <div class="rank-option" onclick="showRankDetail('galatics')"><span>👑 GALATICS</span><b>100k</b></div>
+                <button class="btn" style="background:#444;" onclick="closeModal('rankModal')">TUTUP</button>
             </div>
             <div id="rankDetail" style="display:none; text-align: left;">
-                <span onclick="backToList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
+                <span onclick="backToRankList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
                 <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
                 <div id="detailFeatures" style="font-size: 0.85em; color: #cbd5e1; line-height: 1.6; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;"></div>
-                <a href="#" id="waLink" target="_blank" class="btn" style="background: #25d366;">🛒 BELI SEKARANG</a>
+                <a href="#" id="rankWaLink" target="_blank" class="btn" style="background: #25d366;">🛒 BELI SEKARANG</a>
             </div>
-        </div>
-    </div>
-
-    <div id="requestModal" class="modal">
-        <div class="modal-content">
-            <h3>REQUEST / REPORT</h3>
-            <p style="font-size: 0.8em; color: #94a3b8; margin: 10px 0;">Laporkan bug atau ajukan fitur baru</p>
-            <textarea id="reqText" placeholder="Tulis laporan/request kamu di sini..."></textarea>
-            <button class="btn wa-btn" onclick="sendRequest()">KIRIM KE WHATSAPP</button>
-            <button class="btn" style="background:#444;" onclick="closeRequestModal()">BATAL</button>
         </div>
     </div>
 
@@ -239,51 +260,52 @@
         <div class="modal-content" style="border-color: #fa6400;">
             <h3 style="color: #fa6400;">QRIS AEROBLAST</h3>
             <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png?ex=69a0ff5f&is=699faddf&hm=377f2339ed8e9c3da4d326979bbab1d093402b6a60133e8d12e654dae6cb9f0f&=&format=webp&quality=lossless&width=248&height=350" class="qris-img">
-            <button class="btn" style="background:#444;" onclick="closeSaweria()">TUTUP</button>
+            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
         </div>
     </div>
 
     <script>
         const rankData = {
-            aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Chat Tag: [Aviator]", "Akses /ec (Enderchest)", "Akses /wb (Workbench)", "Kit Aviator (Daily)", "Set Nickname Color"] },
-            exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "Chat Tag: [Exostic]", "Akses /feed", "Akses /repair", "Kit Exostic (Weekly)", "Back on Death (50%)", "Join Message Custom"] },
-            force: { title: "FORCE", price: "Rp 50.000", features: ["Home limit 20", "Chat Tag: [Force]", "Akses /pweather", "Akses /ptime", "Kit Force (Weekly)", "Auto Replant Farm", "Private Vault (1 Page)"] },
-            xerelion: { title: "XERELION", price: "Rp 75.000", features: ["Home limit 50", "Chat Tag: [Xerelion]", "Akses /fly (Bisa Terbang)", "Akses /nick", "Kit Xerelion (Monthly)", "No Fall Damage", "Keep XP 50%"] },
-            galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home Unlimited", "Chat Tag: [Galatics]", "Akses /godmode", "Semua fitur rank bawah", "Kit Galatics (Season)", "Priority Queue", "Bentuk Clan Gratis"] }
+            aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Chat Tag: [Aviator]", "Akses /ec", "Kit Aviator"] },
+            exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "Akses /feed", "Kit Exostic"] },
+            force: { title: "FORCE", price: "Rp 50.000", features: ["Home limit 20", "Akses /ptime", "Kit Force"] },
+            xerelion: { title: "XERELION", price: "Rp 75.000", features: ["Home limit 50", "Akses /fly", "Kit Xerelion"] },
+            galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home Unlimited", "Akses /godmode", "Kit Galatics"] }
         };
 
-        function openRankModal() { document.getElementById('rankModal').style.display = 'flex'; }
-        function closeRankModal() { document.getElementById('rankModal').style.display = 'none'; backToList(); }
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; if(id==='rankModal') backToRankList(); }
         
-        function showDetail(id) {
+        function toggleRule(el) {
+            const content = el.nextElementSibling;
+            const arrow = el.querySelector('span:last-child');
+            const isOpen = content.style.display === 'block';
+            document.querySelectorAll('.rule-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.rule-cat-title span:last-child').forEach(s => s.innerText = '▼');
+            content.style.display = isOpen ? 'none' : 'block';
+            arrow.innerText = isOpen ? '▼' : '▲';
+        }
+
+        function showRankDetail(id) {
             const rank = rankData[id];
             document.getElementById('rankList').style.display = 'none';
             document.getElementById('rankDetail').style.display = 'block';
             document.getElementById('detailTitle').innerText = rank.title + " - " + rank.price;
-            let html = '';
-            rank.features.forEach(f => html += `<div>▸ ${f}</div>`);
-            document.getElementById('detailFeatures').innerHTML = html;
-            
-            // Format WA dengan harga
-            const waMsg = `Halo Admin AeroBlast!%0ASaya mau beli rank *${rank.title}*%0AHarga: *${rank.price}*%0ANickname: `;
-            document.getElementById('waLink').href = `https://wa.me/628123731343?text=${waMsg}`;
+            document.getElementById('detailFeatures').innerHTML = rank.features.map(f => `<div>▸ ${f}</div>`).join('');
+            const msg = `Halo Admin! Saya mau beli rank *${rank.title}* seharga *${rank.price}*. Nick: `;
+            document.getElementById('rankWaLink').href = `https://wa.me/628123731343?text=${encodeURIComponent(msg)}`;
         }
 
-        function backToList() { document.getElementById('rankList').style.display = 'block'; document.getElementById('rankDetail').style.display = 'none'; }
-        
-        function openRequestModal() { document.getElementById('requestModal').style.display = 'flex'; }
-        function closeRequestModal() { document.getElementById('requestModal').style.display = 'none'; }
-        
-        function sendRequest() {
-            const text = document.getElementById('reqText').value;
-            if(!text) return alert("Isi laporannya dulu ya!");
-            window.open(`https://wa.me/628123731343?text=LAPORAN/REQUEST:%0A${encodeURIComponent(text)}`);
-            closeRequestModal();
+        function backToRankList() { document.getElementById('rankList').style.display = 'block'; document.getElementById('rankDetail').style.display = 'none'; }
+
+        function sendWA(type) {
+            const text = document.getElementById(type + 'Text').value;
+            if(!text) return alert("Isi dulu ya!");
+            const prefix = type === 'req' ? "REQUEST FITUR:" : "REPORT BUG/PLAYER:";
+            window.open(`https://wa.me/628123731343?text=*${prefix}*%0A${encodeURIComponent(text)}`);
+            closeModal(type + 'Modal');
         }
 
-        function openSaweria() { document.getElementById('saweriaModal').style.display = 'flex'; }
-        function closeSaweria() { document.getElementById('saweriaModal').style.display = 'none'; }
-        
         function toggleMenu() {
             const menu = document.getElementById('navLinks');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
@@ -292,13 +314,11 @@
         function copyText(val, element) {
             navigator.clipboard.writeText(val);
             const check = element.querySelector('.check-icon');
-            const originalSpan = element.querySelector('span');
-            originalSpan.style.opacity = "0";
-            check.style.display = 'inline-block';
-            setTimeout(() => { check.style.display = 'none'; originalSpan.style.opacity = "1"; }, 1500);
+            const span = element.querySelector('span');
+            span.style.opacity = "0"; check.style.display = 'inline-block';
+            setTimeout(() => { check.style.display = 'none'; span.style.opacity = "1"; }, 1500);
         }
 
-        // Fetch Server Status
         fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
             .then(res => res.json())
             .then(data => {
@@ -307,7 +327,6 @@
                 document.getElementById('s-status').style.color = isOnline ? '#4ade80' : '#f87171';
                 document.getElementById('s-players').innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
                 document.getElementById('s-version').innerText = isOnline ? (data.version || '1.20+') : '-';
-                document.getElementById('s-tps').innerText = isOnline ? '20.0' : '-';
             });
     </script>
 </body>
