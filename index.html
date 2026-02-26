@@ -21,7 +21,6 @@
             background: rgba(5, 11, 24, 0.75); z-index: -1;
         }
 
-        /* Navbar & Hover Nav */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.95);
@@ -46,7 +45,6 @@
 
         .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
         
-        /* Card Styling */
         section { margin-bottom: 50px; scroll-margin-top: 100px; }
         .card { 
             background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
@@ -55,7 +53,6 @@
         }
         .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* IP & Port Hover */
         .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
         .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;}
         
@@ -72,7 +69,6 @@
         }
         .check-icon { display: none; color: #4ade80; font-weight: bold; }
         
-        /* Stats Grid */
         .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .stat-bar { 
             background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; 
@@ -80,7 +76,6 @@
         }
         .stat-bar:hover { border-color: #38bdf8; background: rgba(56, 189, 248, 0.05); }
 
-        /* Features Hover */
         .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .feature-item {
             background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px;
@@ -93,7 +88,6 @@
             border-color: #38bdf8; 
         }
 
-        /* Buttons Hover */
         .btn {
             display: block; width: 100%; color: white; text-decoration: none; 
             padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; 
@@ -108,9 +102,8 @@
         .discord-btn { background: #5865f2; }
         .wa-btn { background: #25d366; }
         .rank-btn { background: #eab308; color: #000; }
-        .buy-now-btn { background: #25d366; color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: 700; display: block; margin-top: 15px; }
+        .saweria-btn { background: #fa6400; color: white; }
 
-        /* Modal & Rank Hover */
         .modal {
             display: none; position: fixed; z-index: 2000; left: 0; top: 0;
             width: 100%; height: 100%; background: rgba(0,0,0,0.9);
@@ -132,6 +125,7 @@
             border-color: #eab308;
             transform: scale(1.03);
         }
+        .qris-img { width: 100%; border-radius: 10px; margin-top: 15px; border: 5px solid white; }
     </style>
 </head>
 <body>
@@ -201,6 +195,7 @@
             <h3 class="section-title">Support Server</h3>
             <div class="card">
                 <button class="btn rank-btn" onclick="openModal()">👑 BELI RANK PREMIUM</button>
+                <button class="btn saweria-btn" onclick="openSaweria()">💸 DONASI VIA SAWERIA (QRIS)</button>
             </div>
         </section>
     </div>
@@ -221,13 +216,21 @@
                 <span onclick="backToList()" style="cursor:pointer; color:#eab308; font-weight:bold;">← Kembali</span>
                 <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
                 <div id="detailFeatures" style="margin: 15px 0; font-size: 0.85em; color: #cbd5e1; line-height: 1.6;"></div>
-                <a href="#" id="waLink" target="_blank" class="buy-now-btn">BELI VIA WHATSAPP</a>
+                <a href="#" id="waLink" target="_blank" class="buy-now-btn" style="background: #25d366; text-decoration: none; text-align: center;">BELI VIA WHATSAPP</a>
             </div>
         </div>
     </div>
 
+    <div id="saweriaModal" class="modal">
+        <div class="modal-content" style="border-color: #fa6400;">
+            <h3 style="color: #fa6400; margin-bottom: 10px;">QRIS AEROBLAST</h3>
+            <p style="font-size: 0.8em; color: #cbd5e1;">Scan QR di bawah untuk donasi via Saweria</p>
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png?ex=69a0ff5f&is=699faddf&hm=377f2339ed8e9c3da4d326979bbab1d093402b6a60133e8d12e654dae6cb9f0f&=&format=webp&quality=lossless&width=248&height=350" class="qris-img">
+            <button class="btn" style="background:#444; margin-top:20px;" onclick="closeSaweria()">TUTUP</button>
+        </div>
+    </div>
+
     <script>
-        // Fitur Rank Lengkap Sesuai Permintaan Sebelumnya
         const rankData = {
             aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
             exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
@@ -240,8 +243,14 @@
             const menu = document.getElementById('navLinks');
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
+
+        // Functions for Rank Modal
         function openModal() { document.getElementById('rankModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('rankModal').style.display = 'none'; backToList(); }
+        
+        // Functions for Saweria Modal
+        function openSaweria() { document.getElementById('saweriaModal').style.display = 'flex'; }
+        function closeSaweria() { document.getElementById('saweriaModal').style.display = 'none'; }
 
         function showDetail(id) {
             const rank = rankData[id];
