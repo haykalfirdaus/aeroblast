@@ -133,31 +133,36 @@
 
     <div class="container">
         <section id="status">
-            <div class="card">
-                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
-                <h2>SERVER STATUS</h2>
-                <div class="info-box">
-                    <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
-                        <span>IP: aeroblast.my.id</span>
-                        <span class="check-icon">✓ Disalin</span>
-                    </div>
-                    <div class="info-item" onclick="copyText('25235', this)">
-                        <span>Port: 25235</span>
-                        <span class="check-icon">✓ Disalin</span>
-                    </div>
-                </div>
-                <div class="stat-grid">
-                    <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
-                    <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
-                    <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
-                    <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <button class="btn req-btn" style="font-size: 0.8em;" onclick="openModal('reqModal')">💡 REQUEST</button>
-                    <button class="btn rep-btn" style="font-size: 0.8em;" onclick="openModal('repModal')">🚩 REPORT</button>
-                </div>
+    <div class="card">
+        <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
+        <h2>SERVER STATUS</h2>
+        <div class="info-box">
+            <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
+                <span>IP: aeroblast.my.id</span>
+                <span class="check-icon">✓ Disalin</span>
             </div>
-        </section>
+            <div class="info-item" onclick="copyText('25235', this)">
+                <span>Port: 25235</span>
+                <span class="check-icon">✓ Disalin</span>
+            </div>
+        </div>
+        
+        <button class="btn rank-btn" style="margin-bottom: 20px; background: #4ade80; color: #050b18;" onclick="openModal('voteModal')">
+            📩 VOTE SERVER (DAPAT HADIAH)
+        </button>
+
+        <div class="stat-grid">
+            <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
+            <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
+            <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
+            <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <button class="btn req-btn" style="font-size: 0.8em;" onclick="openModal('reqModal')">💡 REQUEST</button>
+            <button class="btn rep-btn" style="font-size: 0.8em;" onclick="openModal('repModal')">🚩 REPORT</button>
+        </div>
+    </div>
+</section>
 
         <section id="special-ranks">
             <h3 class="section-title">Special Ranks</h3>
@@ -330,6 +335,22 @@
         </div>
     </div>
 
+    <div id="voteModal" class="modal">
+    <div class="modal-content" style="border-color: #4ade80;">
+        <h3 style="color: #4ade80; margin-bottom: 15px;">🎁 HADIAH VOTE</h3>
+        <p style="font-size: 0.9em; margin-bottom: 15px; color: #cbd5e1;">Terima kasih sudah mendukung AeroBlast!</p>
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px;">
+            <ul class="rule-list">
+                <li>💰 <b>15.000 Money</b></li>
+                <li>🗳️ <b>1x Vote Key</b></li>
+                <li>📦 <b>5x Basic Key</b></li>
+            </ul>
+        </div>
+        <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18;">GAS VOTE SEKARANG</a>
+        <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('voteModal')">TUTUP</button>
+    </div>
+</div>
+    
     <script>
         const rankData = {
             aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
