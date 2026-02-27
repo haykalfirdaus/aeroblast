@@ -33,7 +33,6 @@
         
         .container { width: 100%; max-width: 1100px; z-index: 1; padding: 0 20px; flex: 1; }
         
-        /* Category Tabs */
         .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
         .tab-btn { 
             padding: 12px 25px; background: rgba(15, 23, 42, 0.8); border: 2px solid #38bdf8; 
@@ -46,7 +45,7 @@
 
         .grid-store { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
             gap: 25px; margin-bottom: 50px;
         }
 
@@ -58,25 +57,25 @@
         }
         .item-card:hover { border-color: #ffffff; transform: translateY(-5px); }
         
-        .item-name { font-size: 1.8em; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .item-name { font-size: 1.6em; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
         .price { font-size: 1.4em; font-weight: bold; color: #4ade80; margin-bottom: 15px; }
 
         /* Colors */
         .color-aviator { color: #a3ffac; }
-        .color-exostic { color: #1e40af; }
+        .color-exostic { color: #3b82f6; }
         .color-force { color: #facc15; }
         .color-xerelion { color: #ef4444; }
         .color-galatics { color: #d8b4fe; }
         .color-key { color: #38bdf8; }
 
-        .item-desc { font-size: 0.9em; color: #cbd5e1; margin-bottom: 20px; line-height: 1.5; flex-grow: 1; }
-        .feat-list { text-align: left; margin-bottom: 20px; font-size: 0.85em; color: #cbd5e1; }
-        .feat-list div { margin-bottom: 5px; padding-left: 20px; position: relative; }
-        .feat-list div::before { content: "✔"; position: absolute; left: 0; color: #4ade80; }
+        .item-desc { font-size: 0.85em; color: #cbd5e1; margin-bottom: 20px; line-height: 1.5; flex-grow: 1; }
+        .feat-list { text-align: left; margin-bottom: 20px; font-size: 0.85em; color: #cbd5e1; flex-grow: 1; }
+        .feat-list div { margin-bottom: 4px; padding-left: 22px; position: relative; }
+        .feat-list div::before { content: "✔"; position: absolute; left: 0; color: #4ade80; font-weight: bold; }
 
         .buy-btn { 
             display: block; width: 100%; background: #25d366; color: white; 
-            text-decoration: none; padding: 14px; border-radius: 12px; 
+            padding: 14px; border-radius: 12px; 
             font-weight: 700; cursor: pointer; border: none; transition: 0.3s;
         }
         .buy-btn:hover { filter: brightness(1.2); }
@@ -92,7 +91,8 @@
         .pay-option img { width: 100%; height: auto; object-fit: contain; }
         .pay-option.selected { border-color: #eab308; background: #fffbeb; }
 
-        .snk-check { display: flex; gap: 10px; font-size: 0.8em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; }
+        .snk-container { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; text-align: left; }
+        .snk-container input { width: auto; margin-top: 3px; }
 
         .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
     </style>
@@ -135,8 +135,13 @@
                 <div class="pay-option" onclick="selectPay('OVO', this)"><img src="https://image.pngaaa.com/283/1986283-middle.png"></div>
                 <div class="pay-option" onclick="selectPay('QRIS', this)"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61cddbcd-7f89-428f-b89c-b0d3e84be479/dffcgxe-affa955a-55c8-4513-ba72-06b77b3810af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"></div>
             </div>
-            <label class="snk-check"><input type="checkbox" id="snkAgree"> Setuju S&K AeroBlast</label>
-            <button class="buy-btn" onclick="prosesBeli()">BELI VIA WHATSAPP</button>
+            
+            <label class="snk-container">
+                <input type="checkbox" id="snkAgree">
+                <span>Saya menyetujui Syarat & Ketentuan AeroBlast dan memahami bahwa pembelian ini bersifat final.</span>
+            </label>
+
+            <button class="buy-btn" onclick="prosesBeli()">KONFIRMASI WHATSAPP</button>
             <button class="buy-btn" style="background: #444; margin-top: 10px;" onclick="closeModal()">BATAL</button>
         </div>
     </div>
@@ -148,11 +153,26 @@
 
     <script>
         const rankData = {
-            aviator: { name: "AVIATOR", price: "15.000", cls: "color-aviator", feats: ["Home limit 5", "Warp limit 5", "/ec & /wb", "1 VIP & 1 Legend Key"] },
-            exostic: { name: "EXOSTIC", price: "30.000", cls: "color-exostic", feats: ["Home limit 10", "/feed, /repair", "5 VIP & 3 Legend Key"] },
-            force: { name: "FORCE", price: "50.000", cls: "color-force", feats: ["Home limit 20", "/pweather & /ptime", "10 VIP & 5 Legend Key"] },
-            xerelion: { name: "XERELION", price: "75.000", cls: "color-xerelion", feats: ["Home limit 50", "/fly, /heal, /nick", "15 VIP & 10 Legend Key"] },
-            galatics: { name: "GALATICS", price: "100.000", cls: "color-galatics", feats: ["Unlimited Home/Warp", "/godmode, All Features", "18 VIP & 12 Legend Key"] }
+            aviator: { 
+                name: "AVIATOR", price: "15.000", cls: "color-aviator", 
+                feats: ["Home limit 5", "Warp create limit 5", "/ec & /wb", "1 VIP Key", "1 Legend Key", "1 Aerospace Key", "Aviator kits"] 
+            },
+            exostic: { 
+                name: "EXOSTIC", price: "30.000", cls: "color-exostic", 
+                feats: ["Home limit 10", "Warp create limit 10", "/ec, /wb, /feed", "/recipe, /repair", "/stonecutter", "5 VIP Key", "3 Legend Key", "1 Aerospace Key", "EXOSTIC kits"] 
+            },
+            force: { 
+                name: "FORCE", price: "50.000", cls: "color-force", 
+                feats: ["Home limit 20", "Warp create limit 20", "/ec, /wb, /feed", "/repair, /stonecutter", "/pweather, /ptime, /anvil", "10 VIP Key", "5 Legend Key", "2 Aerospace Key", "FORCE kits"] 
+            },
+            xerelion: { 
+                name: "XERELION", price: "75.000", cls: "color-xerelion", 
+                feats: ["Home limit 50", "Warp create limit 50", "/ec, /wb, /feed, /repair", "/pweather, /ptime, /anvil", "/fly, /heal, /hat, /nick", "/msgtoggle", "15 VIP Key", "10 Legend Key", "2 Aerospace Key", "XERELION kits"] 
+            },
+            galatics: { 
+                name: "GALATICS", price: "100.000", cls: "color-galatics", 
+                feats: ["Home unlimited", "Warp unlimited", "/ec, /wb, /feed, /repair", "/pweather, /ptime, /anvil", "/fly, /heal, /hat, /nick", "/tptoggle, /godmode", "18 VIP Key", "12 Legend Key", "3 Aerospace Key", "GALATICS kits"] 
+            }
         };
 
         const keyData = {
@@ -173,7 +193,6 @@
             btn.classList.add('active');
         }
 
-        // Render Ranks
         const rGrid = document.getElementById('rankGrid');
         Object.keys(rankData).forEach(k => {
             const r = rankData[k];
@@ -186,7 +205,6 @@
                 </div>`;
         });
 
-        // Render Keys
         const kGrid = document.getElementById('keyGrid');
         Object.keys(keyData).forEach(k => {
             const key = keyData[k];
@@ -207,23 +225,32 @@
 
         function openCheckout(type, id) {
             activeProduct = type === 'rank' ? rankData[id] : keyData[id];
-            document.getElementById('modalTitle').innerText = "BELI " + activeProduct.name;
+            const titleEl = document.getElementById('modalTitle');
+            titleEl.innerText = "CHECKOUT: " + activeProduct.name;
+            titleEl.className = activeProduct.cls || 'color-key';
             document.getElementById('checkoutModal').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('checkoutModal').style.display = 'none';
             selectedPayment = "";
+            document.getElementById('snkAgree').checked = false;
             document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
         }
 
         function prosesBeli() {
             const nick = document.getElementById('playerNick').value;
             const platform = document.getElementById('playerPlatform').value;
-            if (!nick || !platform || !selectedPayment || !document.getElementById('snkAgree').checked) return alert("Lengkapi data & centang S&K!");
+            const agree = document.getElementById('snkAgree').checked;
 
-            const msg = `Halo Admin!%0A%0A*PESANAN BARU*%0A- Item: ${activeProduct.name}%0A- Harga: Rp ${activeProduct.price}%0A- Nick: ${nick}%0A- Platform: ${platform}%0A- Bayar: ${selectedPayment}`;
+            if (!nick) return alert("Nickname harus diisi!");
+            if (!platform) return alert("Pilih platform bermain!");
+            if (!selectedPayment) return alert("Pilih metode pembayaran!");
+            if (!agree) return alert("Harap setujui Syarat & Ketentuan!");
+
+            const msg = `Halo Admin AeroBlast!%0A%0A*PESANAN BARU*%0A- Produk: ${activeProduct.name}%0A- Harga: Rp ${activeProduct.price}%0A- Nickname: ${nick}%0A- Platform: ${platform}%0A- Pembayaran: ${selectedPayment}%0A%0ASaya sudah menyetujui S&K.`;
             window.open(`https://wa.me/628123731343?text=${msg}`);
+            closeModal();
         }
     </script>
 </body>
