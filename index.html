@@ -1,223 +1,397 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroBlast | Minecraft Survival Server</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body { 
-            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
-            background-size: cover;
-            color: #e0f2fe; font-family: 'Roboto', sans-serif; 
-            display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 100px 20px 40px;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroBlast | Minecraft Survival Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body { 
+            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
+            background-size: cover;
+            color: #e0f2fe; font-family: 'Roboto', sans-serif; 
+            display: flex; flex-direction: column; align-items: center; 
+            min-height: 100vh; padding: 100px 20px 40px;
+        }
 
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 24, 0.75); z-index: -1;
-        }
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 11, 24, 0.75); z-index: -1;
+        }
 
-        .navbar {
-            position: fixed; top: 0; width: 100%; 
-            background: rgba(15, 23, 42, 0.95);
-            padding: 15px 25px; display: flex; 
-            justify-content: space-between; align-items: center;
-            border-bottom: 3px solid #38bdf8; z-index: 1000; 
-            backdrop-filter: blur(10px);
-        }
-        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; transition: 0.3s; }
-        
-        .menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; transition: 0.5s ease; display: inline-block; }
-        .menu-icon:hover { transform: rotate(90deg); color: #38bdf8; }
+        .navbar {
+            position: fixed; top: 0; width: 100%; 
+            background: rgba(15, 23, 42, 0.95);
+            padding: 15px 25px; display: flex; 
+            justify-content: space-between; align-items: center;
+            border-bottom: 3px solid #38bdf8; z-index: 1000; 
+            backdrop-filter: blur(10px);
+        }
+        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; transition: 0.3s; }
+        
+        .menu-icon { 
+            font-size: 1.5em; 
+            cursor: pointer; 
+            color: #fff; 
+            transition: 0.5s ease; 
+            display: inline-block;
+        }
+        .menu-icon:hover { 
+            transform: rotate(90deg); 
+            color: #38bdf8;
+        }
 
-        .nav-links {
-            position: absolute; top: 60px; right: 20px; background: #0f172a;
-            border: 2px solid #38bdf8; border-radius: 10px; display: none;
-            flex-direction: column; width: 180px; overflow: hidden;
-        }
-        .nav-links a, .nav-links span { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover, .nav-links span:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
+        .nav-links {
+            position: absolute; top: 60px; right: 20px; background: #0f172a;
+            border: 2px solid #38bdf8; border-radius: 10px; display: none;
+            flex-direction: column; width: 180px; overflow: hidden;
+        }
+        .nav-links a, .nav-links span { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover, .nav-links span:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
 
-        .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
-        section { margin-bottom: 50px; scroll-margin-top: 100px; }
-        
-        .card { 
-            background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
-            text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
-            backdrop-filter: blur(5px); transition: 0.3s;
-        }
-        .card:hover { border-color: #38bdf8; }
-        .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .container { width: 100%; max-width: 600px; z-index: 1; position: relative; }
+        section { margin-bottom: 50px; scroll-margin-top: 100px; }
+        
+        .card { 
+            background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
+            text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
+            backdrop-filter: blur(5px); transition: 0.3s;
+        }
+        .card:hover { border-color: #38bdf8; }
+        .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
-        .info-item { 
-            display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
-            cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.3s;
-            border: 1px solid rgba(56, 189, 248, 0.1); background: rgba(15, 23, 42, 0.5);
-        }
-        .info-item:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
-        .check-icon { display: none; color: #4ade80; font-weight: bold; }
-        
-        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .stat-bar { background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); }
+        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
+        .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;}
+        .info-item { 
+            display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
+            cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.3s;
+            border: 1px solid rgba(56, 189, 248, 0.1); background: rgba(15, 23, 42, 0.5);
+        }
+        .info-item:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
+        .check-icon { display: none; color: #4ade80; font-weight: bold; }
+        
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-bar { background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); transition: 0.3s; }
+        .stat-bar:hover { background: rgba(56, 189, 248, 0.1); border-color: #38bdf8; }
 
-        .rule-list { list-style: none; font-size: 0.85em; color: #cbd5e1; text-align: left; }
-        .rule-list li { margin: 5px 0; padding-left: 15px; position: relative; }
-        .rule-list li::before { content: "•"; position: absolute; left: 0; color: #eab308; }
+        .rules-card { text-align: left !important; }
+        .rule-category { margin-bottom: 10px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; overflow: hidden; }
+        .rule-cat-title { 
+            font-weight: 700; padding: 15px; cursor: pointer; background: rgba(15, 23, 42, 0.5);
+            display: flex; justify-content: space-between; align-items: center; transition: 0.3s;
+        }
+        .rule-cat-title:hover { background: rgba(56, 189, 248, 0.1); }
+        .rule-content { display: none; padding: 15px; background: rgba(0, 0, 0, 0.2); }
+        .rule-list { list-style: none; font-size: 0.85em; color: #cbd5e1; }
+        .rule-list li { margin: 5px 0; padding-left: 15px; position: relative; }
+        .rule-list li::before { content: "•"; position: absolute; left: 0; color: #eab308; }
+        .punishment { font-size: 0.8em; color: #f87171; font-weight: 600; margin-top: 8px; }
 
-        /* VOTE SECTION */
-        .vote-header-btn {
-            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-            color: #050b18; font-weight: 800; font-size: 1.2em;
-            padding: 20px; border-radius: 15px; margin-bottom: 20px;
-            display: flex; align-items: center; justify-content: center;
-            gap: 10px; cursor: pointer; border: none; width: 100%;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); transition: 0.3s;
-        }
-        .vote-header-btn:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(56, 189, 248, 0.6); }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .feature-item { 
+            background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px; 
+            border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em; text-align: center;
+            transition: 0.3s;
+        }
+        .feature-item:hover { background: #38bdf8; color: #0f172a; }
+        
+        .btn { display: block; width: 100%; color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; margin-top: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
+        .btn:hover { transform: translateY(-4px); filter: brightness(1.2); }
+        .discord-btn { background: #5865f2; }
+        .wa-btn { background: #25d366; }
+        .rank-btn { background: #eab308; color: #000; }
+        .saweria-btn { background: #fa6400; }
+        .req-btn { background: #38bdf8; color: #0f172a; }
+        .rep-btn { background: #ef4444; }
 
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .feature-item { 
-            background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px; 
-            border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em; text-align: center;
-        }
-        
-        .btn { display: block; width: 100%; color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; margin-top: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
-        .discord-btn { background: #5865f2; }
-        .wa-btn { background: #25d366; }
-        .rank-btn { background: #eab308; color: #000; }
-        .saweria-btn { background: #fa6400; }
-
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 90%; max-width: 450px; padding: 25px; text-align: center; }
-        textarea { width: 100%; height: 100px; border-radius: 10px; background: #1e293b; color: white; padding: 10px; border: 1px solid #38bdf8; margin-top: 10px; resize: none; }
-    </style>
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 90%; max-width: 450px; padding: 25px; text-align: center; max-height: 85vh; overflow-y: auto; }
+        .rank-option { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; margin: 10px 0; display: flex; justify-content: space-between; cursor: pointer; border: 1px solid rgba(234, 179, 8, 0.2); transition: 0.3s; }
+        .rank-option:hover { background: rgba(234, 179, 8, 0.2); border-color: #eab308; }
+        textarea { width: 100%; height: 100px; border-radius: 10px; background: #1e293b; color: white; padding: 10px; border: 1px solid #38bdf8; margin-top: 10px; resize: none; font-family: inherit; }
+        .qris-img { width: 100%; max-width: 250px; border-radius: 10px; margin: 15px 0; border: 2px solid #fa6400; }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="nav-logo" onclick="window.location.reload()">AEROBLAST</div>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        <div class="nav-links" id="navLinks">
-            <a href="#status" onclick="toggleMenu()">Status</a>
-            <a href="#features" onclick="toggleMenu()">Vote & Features</a>
-            <a href="#special-ranks" onclick="toggleMenu()">Special Ranks</a>
-            <a href="#rules" onclick="toggleMenu()">Rules</a>
-            <a href="#community" onclick="toggleMenu()">Community</a>
-            <a href="#rank" onclick="toggleMenu()">Support</a>
-        </div>
-    </nav>
+    <nav class="navbar">
+        <div class="nav-logo" onclick="window.location.reload()">AEROBLAST</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#status" onclick="toggleMenu()">Status</a>
+            <a href="#special-ranks" onclick="toggleMenu()">Special Ranks</a>
+            <a href="#rules" onclick="toggleMenu()">Rules</a>
+            <a href="#features" onclick="toggleMenu()">Features</a>
+            <a href="#community" onclick="toggleMenu()">Community</a>
+            <span onclick="openModal('reqModal'); toggleMenu()">Request Feature</span>
+            <span onclick="openModal('repModal'); toggleMenu()">Report Bug</span>
+            <a href="#rank" onclick="toggleMenu()">Support</a>
+        </div>
+    </nav>
 
-    <div class="container">
-        <section id="status">
-            <div class="card">
-                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
-                <h2>SERVER STATUS</h2>
-                <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
-                    <span>IP: aeroblast.my.id</span> <span class="check-icon">✓</span>
-                </div>
-                <div class="stat-grid">
-                    <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
-                    <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
-                </div>
-            </div>
-        </section>
+    <div class="container">
+        <section id="status">
+            <div class="card">
+                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
+                <h2>SERVER STATUS</h2>
+                <div class="info-box">
+                    <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
+                        <span>IP: aeroblast.my.id</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                    <div class="info-item" onclick="copyText('25235', this)">
+                        <span>Port: 25235</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
+                    <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
+                    <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
+                    <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button class="btn req-btn" style="font-size: 0.8em;" onclick="openModal('reqModal')">💡 REQUEST</button>
+                    <button class="btn rep-btn" style="font-size: 0.8em;" onclick="openModal('repModal')">🚩 REPORT</button>
+                </div>
+            </div>
+        </section>
 
-        <section id="features">
-            <h3 class="section-title">Vote & Features</h3>
-            <div class="card">
-                <button class="vote-header-btn" onclick="openModal('voteModal')">📩 VOTE SERVER (DAPAT HADIAH)</button>
-                
-                <div class="feature-grid">
-                    <div class="feature-item">🛒 Shop & Auction</div>
-                    <div class="feature-item">👾 Smart Spawner</div>
-                    <div class="feature-item">💼 Jobs System</div>
-                    <div class="feature-item">📜 Epic Quests</div>
-                    <div class="feature-item">🛡️ Claim Land</div>
-                    <div class="feature-item">🎁 Free Rank</div>
-                </div>
-            </div>
-        </section>
+        <section id="special-ranks">
+            <h3 class="section-title">Special Ranks</h3>
+            <div class="card" style="text-align: left;">
+                <p onclick="openModal('snkModal')" style="font-size: 0.85em; color: #38bdf8; margin-bottom: 15px; font-style: italic; cursor: pointer; text-decoration: underline;">
+                    Dapatkan rank khusus (S&K berlaku - Klik di sini)
+                </p>
+                
+                <div style="margin-bottom: 20px; border-bottom: 1px dashed rgba(56, 189, 248, 0.2); padding-bottom: 15px;">
+                    <h4 style="color: #eab308; margin-bottom: 10px;">✨ BUILDER RANK</h4>
+                    <ul class="rule-list" style="margin-bottom: 10px;">
+                        <li>Prefix Eksklusif [BUILDER]</li>
+                        <li>Fitur Fly di area claim</li>
+                    </ul>
+                    <button class="btn req-btn" style="padding: 8px; font-size: 0.8em; width: auto;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Builder%20Rank')">DAFTAR BUILDER</button>
+                </div>
 
-        <section id="special-ranks">
-            <h3 class="section-title">Special Ranks</h3>
-            <div class="card" style="text-align: left;">
-                <p onclick="openModal('snkModal')" style="color: #38bdf8; cursor: pointer; text-decoration: underline; font-size: 0.9em; margin-bottom: 15px;">S&K Berlaku - Klik Detail</p>
-                <h4 style="color: #eab308;">🏗️ BUILDER RANK</h4>
-                <ul class="rule-list" style="margin-bottom: 15px;">
-                    <li>Prefix Eksklusif [BUILDER]</li>
-                    <li>Fitur Fly di area claim</li>
-                </ul>
-                <h4 style="color: #eab308;">📱 MEDIA RANK</h4>
-                <ul class="rule-list">
-                    <li>Prefix Eksklusif [MEDIA]</li>
-                    <li>Akses /fly Cinematic</li>
-                    <li>Izin Share Link (Anti-spam)</li>
-                </ul>
-            </div>
-        </section>
+                <div>
+                    <h4 style="color: #eab308; margin-bottom: 10px;">✨ MEDIA RANK</h4>
+                    <ul class="rule-list" style="margin-bottom: 10px;">
+                        <li>Prefix Eksklusif [MEDIA]</li>
+                        <li>Akses /fly (Cinematic)</li>
+                        <li>Izin Share Link</li>
+                    </ul>
+                    <button class="btn req-btn" style="padding: 8px; font-size: 0.8em; width: auto;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Media%20Rank')">DAFTAR MEDIA</button>
+                </div>
+            </div>
+        </section>
 
-        <section id="community">
-            <h3 class="section-title">Community</h3>
-            <div class="card">
-                <a href="https://discord.gg/ZfyEuq72sg" target="_blank" class="btn discord-btn">JOIN DISCORD</a>
-                <a href="https://chat.whatsapp.com/F1d5WMvuuiiGGhpPZdAI36" target="_blank" class="btn wa-btn">JOIN WHATSAPP</a>
-            </div>
-        </section>
+        <section id="rules">
+            <h3 class="section-title">Server Rules</h3>
+            <div class="card rules-card">
+                <div class="rule-category">
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>📝 1. SOSIAL & CHAT</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>🚫 Dilarang SARA & Agama</li>
+                            <li>🤬 Dilarang Toxic / Kasar</li>
+                            <li>📢 Dilarang Spam & Promosi</li>
+                            <li>🤫 Hormati sesama player</li>
+                        </ul>
+                        <p class="punishment">⚠️ SANKSI: Mute / Ban Kekal</p>
+                    </div>
+                </div>
+                <div class="rule-category">
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>🌳 2. SURVIVAL</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>🚫 Dilarang Cheat / Hacks</li>
+                            <li>🧨 Dilarang Griefing & Trap</li>
+                            <li>💰 Dilarang mencuri di area Claim</li>
+                            <li>⚔️ Pvp hanya jika disetujui kedua pihak</li>
+                        </ul>
+                        <p class="punishment">⚠️ SANKSI: Jail / Ban</p>
+                    </div>
+                </div>
+                <div class="rule-category">
+                    <div class="rule-cat-title" onclick="toggleRule(this)"><span>⚙️ 3. TEKNIKAL</span> <span>▼</span></div>
+                    <div class="rule-content">
+                        <ul class="rule-list">
+                            <li>👾 Dilarang Exploit / Dupe</li>
+                            <li>📉 Dilarang membuat mesin LAG</li>
+                            <li>📞 Wajib lapor Bug ke Staff</li>
+                            <li>🔄 Jangan salahgunakan sistem</li>
+                        </ul>
+                        <p class="punishment">⚠️ SANKSI: Ban IP / Wipe Aset</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <section id="rank">
-            <h3 class="section-title">Support Server</h3>
-            <div class="card">
-                <button class="btn rank-btn" onclick="openModal('rankModal')">👑 BELI RANK PREMIUM</button>
-                <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE (QRIS)</button>
-            </div>
-        </section>
-    </div>
+        <section id="features">
+            <h3 class="section-title">Server Features</h3>
+            <div class="card">
+                <div class="feature-grid">
+                    <div class="feature-item">🛒 Shop & Auction</div>
+                    <div class="feature-item">👾 Smart Spawner</div>
+                    <div class="feature-item">💼 Jobs System</div>
+                    <div class="feature-item">📜 Epic Quests</div>
+                    <div class="feature-item">🛡️ Claim Land</div>
+                    <div class="feature-item">🎁 Free Rank</div>
+                    <div class="feature-item">🧹 Clear Lag</div>
+                    <div class="feature-item">⛏️ Mining Simulator</div>
+                </div>
+            </div>
+        </section>
 
-    <div id="voteModal" class="modal">
-        <div class="modal-content" style="border-color: #38bdf8;">
-            <h2 style="color: #38bdf8; margin-bottom: 15px;">HADIAH VOTE</h2>
-            <div style="text-align: left; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-                <p style="margin-bottom: 10px;">Setiap kali kamu vote, kamu bakal dapet:</p>
-                <ul class="rule-list">
-                    <li>💵 <b>$15.000 Money</b> (Langsung masuk dompet!)</li>
-                    <li>🗳️ <b>1x Vote Key</b></li>
-                    <li>📦 <b>5x Basic Key</b></li>
-                </ul>
-                <p style="margin-top: 15px; font-size: 0.8em; color: #eab308; font-style: italic;">"Makin sering vote, makin sultan! 🤑"</p>
-            </div>
-            <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #38bdf8; color: #000;">GAS VOTE SEKARANG</a>
-            <button class="btn" style="background:#444;" onclick="closeModal('voteModal')">NANTI DEH</button>
-        </div>
-    </div>
+        <section id="community">
+            <h3 class="section-title">Community</h3>
+            <div class="card">
+                <a href="https://discord.gg/ZfyEuq72sg" target="_blank" class="btn discord-btn">JOIN DISCORD</a>
+                <a href="https://chat.whatsapp.com/F1d5WMvuuiiGGhpPZdAI36" target="_blank" class="btn wa-btn">JOIN WHATSAPP</a>
+            </div>
+        </section>
 
-    <div id="snkModal" class="modal"><div class="modal-content"><h3>SYARAT & KETENTUAN</h3><p>Builder: Jago build & main 3 jam.</p><p>Media: 1k followers TikTok/YT.</p><button class="btn" onclick="closeModal('snkModal')">OKE</button></div></div>
-    <div id="rankModal" class="modal"><div class="modal-content"><h3>RANK LIST</h3><p>Aviator, Exostic, Force, Xerelion, Galatics</p><button class="btn" onclick="closeModal('rankModal')">TUTUP</button></div></div>
-    <div id="saweriaModal" class="modal"><div class="modal-content"><h3>QRIS DONASI</h3><img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png?width=200" style="width:200px;"><button class="btn" onclick="closeModal('saweriaModal')">TUTUP</button></div></div>
+        <section id="rank">
+            <h3 class="section-title">Support Server</h3>
+            <div class="card">
+                <button class="btn rank-btn" onclick="openModal('rankModal')">👑 BELI RANK PREMIUM</button>
+                <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE (QRIS)</button>
+            </div>
+        </section>
+    </div>
 
-    <script>
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function toggleMenu() {
-            const menu = document.getElementById('navLinks');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-        }
-        function copyText(val, element) {
-            navigator.clipboard.writeText(val);
-            element.querySelector('.check-icon').style.display = 'inline';
-            setTimeout(() => { element.querySelector('.check-icon').style.display = 'none'; }, 2000);
-        }
+    <div id="snkModal" class="modal">
+        <div class="modal-content" style="border-color: #38bdf8; text-align: left;">
+            <h3 style="color: #38bdf8; margin-bottom: 15px; text-align: center;">SYARAT & KETENTUAN</h3>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                <h4 style="color: #eab308; margin-bottom: 5px;">🏗️ Builder Rank:</h4>
+                <ul class="rule-list">
+                    <li>Wajib membangun bangunan yang besar & bagus.</li>
+                    <li>Minimal play time (waktu main) 3 jam.</li>
+                </ul>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+                <h4 style="color: #eab308; margin-bottom: 5px;">📱 Media Rank:</h4>
+                <ul class="rule-list">
+                    <li>Wajib upload video/live tentang AeroBlast.</li>
+                    <li>Minimal 1k followers TikTok atau YouTube.</li>
+                    <li>Dilarang keras menggunakan follower suntik/bot.</li>
+                </ul>
+            </div>
+            <button class="btn" style="background:#444; margin-top: 15px;" onclick="closeModal('snkModal')">MENGERTI</button>
+        </div>
+    </div>
 
-        fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('s-status').innerText = data.online ? 'ONLINE' : 'OFFLINE';
-                document.getElementById('s-players').innerText = data.online ? `${data.players.online}/${data.players.max}` : '-/-';
-            });
-    </script>
+    <div id="reqModal" class="modal">
+        <div class="modal-content">
+            <h3>💡 REQUEST FITUR</h3>
+            <textarea id="reqText" placeholder="Punya ide fitur baru? Tulis di sini..."></textarea>
+            <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
+            <button class="btn" style="background:#444;" onclick="closeModal('reqModal')">BATAL</button>
+        </div>
+    </div>
+
+    <div id="repModal" class="modal">
+        <div class="modal-content" style="border-color: #ef4444;">
+            <h3>🚩 REPORT BUG/PLAYER</h3>
+            <textarea id="repText" placeholder="Jelaskan bug atau player yang melanggar..."></textarea>
+            <button class="btn rep-btn" style="color:white;" onclick="sendWA('rep')">KIRIM LAPORAN</button>
+            <button class="btn" style="background:#444;" onclick="closeModal('repModal')">BATAL</button>
+        </div>
+    </div>
+
+    <div id="rankModal" class="modal">
+        <div class="modal-content" style="border-color: #eab308;">
+            <div id="rankList">
+                <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
+                <div class="rank-option" onclick="showRankDetail('aviator')"><span>✨ AVIATOR</span><b>15k</b></div>
+                <div class="rank-option" onclick="showRankDetail('exostic')"><span>🔥 EXOSTIC</span><b>30k</b></div>
+                <div class="rank-option" onclick="showRankDetail('force')"><span>💎 FORCE</span><b>50k</b></div>
+                <div class="rank-option" onclick="showRankDetail('xerelion')"><span>🛡️ XERELION</span><b>75k</b></div>
+                <div class="rank-option" onclick="showRankDetail('galatics')"><span>👑 GALATICS</span><b>100k</b></div>
+                <button class="btn" style="background:#444;" onclick="closeModal('rankModal')">TUTUP</button>
+            </div>
+            <div id="rankDetail" style="display:none; text-align: left;">
+                <span onclick="backToRankList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
+                <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
+                <div id="detailFeatures" style="font-size: 0.85em; color: #cbd5e1; line-height: 1.6; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;"></div>
+                <a href="#" id="rankWaLink" target="_blank" class="btn" style="background: #25d366;">🛒 BELI SEKARANG</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="saweriaModal" class="modal">
+        <div class="modal-content" style="border-color: #fa6400;">
+            <h3 style="color: #fa6400;">QRIS AEROBLAST</h3>
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png?ex=69a0ff5f&is=699faddf&hm=377f2339ed8e9c3da4d326979bbab1d093402b6a60133e8d12e654dae6cb9f0f&=&format=webp&quality=lossless&width=248&height=350" class="qris-img">
+            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
+        </div>
+    </div>
+
+    <script>
+        const rankData = {
+            aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
+            exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
+            force: { title: "FORCE", price: "Rp 50.000", features: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 legend key", "2 Aerospace Key", "FORCE kits"] },
+            xerelion: { title: "XERELION", price: "Rp 75.000", features: ["Home limit 50", "Warp create limit 50", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"] },
+            galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home unlimited", "Warp create unlimited", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "/tptoggle", "/godmode", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"] }
+        };
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; if(id==='rankModal') backToRankList(); }
+        
+        function toggleRule(el) {
+            const content = el.nextElementSibling;
+            const arrow = el.querySelector('span:last-child');
+            const isOpen = content.style.display === 'block';
+            content.style.display = isOpen ? 'none' : 'block';
+            arrow.innerText = isOpen ? '▼' : '▲';
+        }
+
+        function showRankDetail(id) {
+            const rank = rankData[id];
+            document.getElementById('rankList').style.display = 'none';
+            document.getElementById('rankDetail').style.display = 'block';
+            document.getElementById('detailTitle').innerText = rank.title + " - " + rank.price;
+            document.getElementById('detailFeatures').innerHTML = rank.features.map(f => `<div>▸ ${f}</div>`).join('');
+            const msg = `Halo Admin! Saya mau beli rank *${rank.title}* seharga *${rank.price}*. Nick: `;
+            document.getElementById('rankWaLink').href = `https://wa.me/628123731343?text=${encodeURIComponent(msg)}`;
+        }
+
+        function backToRankList() { document.getElementById('rankList').style.display = 'block'; document.getElementById('rankDetail').style.display = 'none'; }
+
+        function sendWA(type) {
+            const text = document.getElementById(type + 'Text').value;
+            if(!text) return alert("Isi dulu ya!");
+            const prefix = type === 'req' ? "REQUEST FITUR:" : "REPORT BUG/PLAYER:";
+            window.open(`https://wa.me/628123731343?text=*${prefix}*%0A${encodeURIComponent(text)}`);
+            closeModal(type + 'Modal');
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('navLinks');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function copyText(val, element) {
+            navigator.clipboard.writeText(val);
+            const check = element.querySelector('.check-icon');
+            const span = element.querySelector('span');
+            span.style.opacity = "0"; check.style.display = 'inline-block';
+            setTimeout(() => { check.style.display = 'none'; span.style.opacity = "1"; }, 1500);
+        }
+
+        fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
+            .then(res => res.json())
+            .then(data => {
+                const isOnline = data.online;
+                document.getElementById('s-status').innerText = isOnline ? 'ONLINE' : 'OFFLINE';
+                document.getElementById('s-status').style.color = isOnline ? '#4ade80' : '#f87171';
+                document.getElementById('s-players').innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
+                document.getElementById('s-version').innerText = isOnline ? (data.version || '1.20+') : '-';
+            });
+    </script>
 </body>
 </html>
