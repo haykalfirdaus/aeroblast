@@ -67,7 +67,7 @@
         .feat-full div { margin-bottom: 5px; padding-left: 15px; position: relative; }
         .feat-full div::before { content: "▸"; position: absolute; left: 0; color: #38bdf8; }
 
-        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
+        input[type="text"], select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
         .snk-check { display: flex; align-items: flex-start; gap: 10px; text-align: left; font-size: 0.8em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; }
         .snk-check input { margin-top: 3px; }
 
@@ -89,39 +89,15 @@
     <div class="container">
         <div class="header-title">
             <h2>OFFICIAL STORE</h2>
-            <p style="color: #cbd5e1; font-size: 0.9em;">Klik beli untuk melihat detail fitur & syarat.</p>
+            <p style="color: #cbd5e1; font-size: 0.9em;">Pilih rank dan isi detail karaktermu.</p>
         </div>
 
         <div class="grid-store">
-            <div class="rank-card">
-                <div class="rank-name">✨ AVIATOR</div>
-                <div class="price">Rp 15.000</div>
-                <button class="buy-btn" onclick="openCheckout('aviator')">BELI SEKARANG</button>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-name">🔥 EXOSTIC</div>
-                <div class="price">Rp 30.000</div>
-                <button class="buy-btn" onclick="openCheckout('exostic')">BELI SEKARANG</button>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-name">💎 FORCE</div>
-                <div class="price">Rp 50.000</div>
-                <button class="buy-btn" onclick="openCheckout('force')">BELI SEKARANG</button>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-name">🛡️ XERELION</div>
-                <div class="price">Rp 75.000</div>
-                <button class="buy-btn" onclick="openCheckout('xerelion')">BELI SEKARANG</button>
-            </div>
-
-            <div class="rank-card" style="border-color: #eab308;">
-                <div class="rank-name">👑 GALATICS</div>
-                <div class="price">Rp 100.000</div>
-                <button class="buy-btn" style="background: #eab308; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
-            </div>
+            <div class="rank-card"><div class="rank-name">✨ AVIATOR</div><div class="price">Rp 15.000</div><button class="buy-btn" onclick="openCheckout('aviator')">BELI SEKARANG</button></div>
+            <div class="rank-card"><div class="rank-name">🔥 EXOSTIC</div><div class="price">Rp 30.000</div><button class="buy-btn" onclick="openCheckout('exostic')">BELI SEKARANG</button></div>
+            <div class="rank-card"><div class="rank-name">💎 FORCE</div><div class="price">Rp 50.000</div><button class="buy-btn" onclick="openCheckout('force')">BELI SEKARANG</button></div>
+            <div class="rank-card"><div class="rank-name">🛡️ XERELION</div><div class="price">Rp 75.000</div><button class="buy-btn" onclick="openCheckout('xerelion')">BELI SEKARANG</button></div>
+            <div class="rank-card" style="border-color: #eab308;"><div class="rank-name">👑 GALATICS</div><div class="price">Rp 100.000</div><button class="buy-btn" style="background: #eab308; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button></div>
         </div>
     </div>
 
@@ -132,9 +108,23 @@
             
             <input type="text" id="playerNick" placeholder="Masukkan Nickname Minecraft...">
             
+            <select id="playerPlatform">
+                <option value="" disabled selected>Pilih Platform Bermain...</option>
+                <option value="Java Edition">Java Edition</option>
+                <option value="Bedrock / PE">Bedrock / PE</option>
+            </select>
+
+            <select id="paymentMethod">
+                <option value="" disabled selected>Pilih Metode Pembayaran...</option>
+                <option value="DANA">DANA</option>
+                <option value="GOPAY">GOPAY</option>
+                <option value="OVO">OVO</option>
+                <option value="QRIS">QRIS</option>
+            </select>
+            
             <label class="snk-check">
                 <input type="checkbox" id="snkAgree">
-                <span>Saya telah membaca dan menyetujui <a href="snk.html" target="_blank" style="color: #38bdf8;">Syarat & Ketentuan</a> yang berlaku.</span>
+                <span>Saya telah membaca dan menyetujui <a href="snk.html" target="_blank" style="color: #38bdf8;">Syarat & Ketentuan</a>.</span>
             </label>
 
             <button class="buy-btn" onclick="prosesBeli()">KONFIRMASI KE WHATSAPP</button>
@@ -146,7 +136,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4 style="font-weight: 700;">AEROBLAST</h4>
-                <p>Server Minecraft Survival Indonesia terbaik dengan fitur unik dan solid.</p>
+                <p>Server Minecraft Survival Indonesia terbaik.</p>
             </div>
             <div class="footer-section">
                 <h4>LEGAL</h4>
@@ -161,11 +151,11 @@
 
     <script>
         const rankData = {
-            aviator: { name: "AVIATOR", price: "15.000", feats: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
-            exostic: { name: "EXOSTIC", price: "30.000", feats: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
-            force: { name: "FORCE", price: "50.000", feats: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 Aerospace Key", "FORCE kits"] },
-            xerelion: { name: "XERELION", price: "75.000", feats: ["Home limit 50", "Warp limit 50", "/fly", "/heal", "/hat", "/nick", "/msgtoggle", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"] },
-            galatics: { name: "GALATICS", price: "100.000", feats: ["Home unlimited", "Warp unlimited", "/godmode", "/tptoggle", "/fly", "/heal", "/nick", "/ptime", "/pweather", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"] }
+            aviator: { name: "AVIATOR", price: "15.000", feats: ["Home limit 5", "Warp limit 5", "/ec & /wb", "1 VIP & 1 Legend Key", "Aviator kits"] },
+            exostic: { name: "EXOSTIC", price: "30.000", feats: ["Home limit 10", "Warp limit 10", "/feed, /repair, /recipe", "5 VIP & 3 Legend Key", "Exostic kits"] },
+            force: { name: "FORCE", price: "50.000", feats: ["Home limit 20", "Warp limit 20", "/pweather & /ptime", "10 VIP & 5 Legend Key", "Force kits"] },
+            xerelion: { name: "XERELION", price: "75.000", feats: ["Home limit 50", "/fly, /heal, /nick", "/hat & /msgtoggle", "15 VIP & 10 Legend Key", "Xerelion kits"] },
+            galatics: { name: "GALATICS", price: "100.000", feats: ["Home & Warp Unlimited", "/godmode & /tptoggle", "Semua fitur di bawahnya", "18 VIP & 12 Legend Key", "Galatics kits"] }
         };
 
         let activeRank = null;
@@ -180,17 +170,23 @@
         function closeModal() {
             document.getElementById('checkoutModal').style.display = 'none';
             document.getElementById('playerNick').value = "";
+            document.getElementById('playerPlatform').value = "";
+            document.getElementById('paymentMethod').value = "";
             document.getElementById('snkAgree').checked = false;
         }
 
         function prosesBeli() {
             const nick = document.getElementById('playerNick').value;
+            const platform = document.getElementById('playerPlatform').value;
+            const payment = document.getElementById('paymentMethod').value;
             const agree = document.getElementById('snkAgree').checked;
 
-            if (!nick) return alert("Masukkan Nickname dulu bos!");
-            if (!agree) return alert("Centang dulu persetujuan S&K!");
+            if (!nick) return alert("Nickname belum diisi!");
+            if (!platform) return alert("Pilih platform dulu!");
+            if (!payment) return alert("Pilih metode pembayaran dulu!");
+            if (!agree) return alert("Centang persetujuan S&K!");
 
-            const msg = `Halo Admin! Saya ingin membeli rank di AeroBlast.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Rank: ${activeRank.name}%0A- Harga: Rp ${activeRank.price}%0A%0ASaya sudah menyetujui S&K yang berlaku.`;
+            const msg = `Halo Admin! Saya ingin beli rank.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Platform: ${platform}%0A- Rank: ${activeRank.name}%0A- Harga: Rp ${activeRank.price}%0A- Pembayaran: ${payment}%0A%0ASaya sudah setuju S&K.`;
             window.open(`https://wa.me/628123731343?text=${msg}`);
             closeModal();
         }
