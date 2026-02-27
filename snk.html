@@ -29,7 +29,6 @@
             z-index: -1;
         }
 
-        /* NAVBAR STYLES (Sama kayak file utama) */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.95);
@@ -60,7 +59,6 @@
         .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
         .nav-links a:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
 
-        /* CONTENT STYLES */
         .container { 
             max-width: 800px; 
             width: 90%;
@@ -84,18 +82,6 @@
         li { margin-bottom: 8px; color: #cbd5e1; font-size: 0.9em; position: relative; }
         .container li::before { content: "▸"; position: absolute; left: -15px; color: #38bdf8; }
 
-        .back-btn {
-            display: inline-block;
-            text-decoration: none;
-            color: #38bdf8;
-            font-weight: bold;
-            margin-bottom: 25px;
-            transition: 0.3s;
-            font-size: 0.9em;
-        }
-        .back-btn:hover { color: #fff; transform: translateX(-5px); }
-
-        /* FOOTER STYLES */
         .main-footer {
             background: rgba(15, 23, 42, 0.98);
             border-top: 3px solid #38bdf8;
@@ -138,8 +124,6 @@
     </nav>
 
     <div class="container">
-        <a href="index.html" class="back-btn">← KEMBALI KE BERANDA</a>
-        
         <h1>Syarat & Ketentuan</h1>
         <p>Dengan bermain di AeroBlast Network, lo dianggap setuju sama semua poin di bawah ini.</p>
 
@@ -196,7 +180,6 @@
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // Nutup menu kalau klik di luar area menu
         window.onclick = function(event) {
             if (!event.target.matches('.menu-icon')) {
                 const dropdowns = document.getElementsByClassName("nav-links");
