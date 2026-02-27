@@ -6,24 +6,38 @@
     <title>S&K | AeroBlast Network</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
-            background: #050b18; 
+            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a249e7&is=69a0f867&hm=74834d3819dace6865b9fd90a654d17965ea4eb84b2b3433cb9cc54fd4e0197c&=&format=webp&width=662&height=373') no-repeat center center fixed;
+            background-size: cover;
             color: #e0f2fe; 
             font-family: 'Roboto', sans-serif; 
             line-height: 1.6;
-            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 11, 24, 0.85);
+            z-index: -1;
         }
 
         .container { 
             max-width: 800px; 
-            margin: 0 auto; 
-            background: rgba(15, 23, 42, 0.95);
-            padding: 30px; 
+            width: 90%;
+            margin: 100px auto 50px; 
+            background: rgba(15, 23, 42, 0.9);
+            padding: 35px; 
             border-radius: 20px; 
             border: 2px solid #38bdf8;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         h1 { color: #38bdf8; margin-bottom: 20px; text-align: center; font-size: 1.8em; }
@@ -31,65 +45,101 @@
         
         p { margin-bottom: 15px; color: #cbd5e1; font-size: 0.95em; }
         
-        ul { margin-bottom: 20px; padding-left: 20px; }
-        li { margin-bottom: 8px; color: #cbd5e1; font-size: 0.9em; }
+        ul { margin-bottom: 20px; padding-left: 20px; list-style: none; }
+        li { margin-bottom: 8px; color: #cbd5e1; font-size: 0.9em; position: relative; }
+        li::before { content: "▸"; position: absolute; left: -15px; color: #38bdf8; }
 
         .back-btn {
             display: inline-block;
             text-decoration: none;
             color: #38bdf8;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             transition: 0.3s;
+            font-size: 0.9em;
         }
         .back-btn:hover { color: #fff; transform: translateX(-5px); }
 
-        .footer-note {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 0.8em;
-            color: #64748b;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+        /* FOOTER STYLES (Sama kayak index.html) */
+        .main-footer {
+            background: rgba(15, 23, 42, 0.98);
+            border-top: 3px solid #38bdf8;
+            padding: 50px 20px 20px;
+            width: 100%;
+            margin-top: auto; /* Paksa footer ke paling bawah */
         }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-section h4 { color: #38bdf8; margin-bottom: 20px; font-size: 1em; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-section p { font-size: 0.85em; color: #cbd5e1; line-height: 1.6; }
+        .footer-section a { display: block; color: #cbd5e1; text-decoration: none; font-size: 0.85em; margin-bottom: 12px; transition: 0.3s; }
+        .footer-section a:hover { color: #38bdf8; transform: translateX(5px); }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75em; color: #64748b; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+        <a href="index.html" class="back-btn">← KEMBALI KE BERANDA</a>
         
         <h1>Syarat & Ketentuan</h1>
-        <p>Selamat datang di AeroBlast Network. Dengan bermain di server kami atau menggunakan layanan kami, Anda dianggap telah menyetujui poin-poin berikut:</p>
+        <p>Dengan bermain di AeroBlast Network, lo dianggap setuju sama semua poin di bawah ini.</p>
 
-        <h2>1. Peraturan Umum</h2>
+        <h2>1. PERATURAN UMUM</h2>
         <ul>
-            <li>Dilarang keras menggunakan program ilegal, cheat, modifikasi client yang memberikan keuntungan tidak wajar.</li>
-            <li>Dilarang melakukan eksploitasi bug. Jika menemukan bug, wajib lapor ke staff.</li>
-            <li>Hormati seluruh pemain dan staff. Tidak ada toleransi untuk perilaku toksik yang berlebihan.</li>
+            <li>Dilarang pake cheat, hack, atau mod ilegal.</li>
+            <li>Dilarang exploit bug. Ketemu bug wajib lapor staff.</li>
+            <li>No SARA & respect semua player.</li>
         </ul>
 
-        <h2>2. Ketentuan Donasi & Rank</h2>
+        <h2>2. DONASI & RANK</h2>
         <ul>
-            <li>Semua bentuk donasi bersifat sukarela untuk mendukung operasional server.</li>
-            <li>Rank yang sudah dibeli tidak dapat diuangkan kembali (Non-Refundable).</li>
-            <li>Staff berhak mencabut rank jika pemain terbukti melanggar peraturan berat tanpa pengembalian dana.</li>
+            <li>Donasi bersifat sukarela.</li>
+            <li>Barang/Rank yang sudah dibeli No-Refund.</li>
+            <li>Ban berat = Rank hangus.</li>
         </ul>
 
-        <h2>3. Keamanan Akun</h2>
+        <h2>3. KEAMANAN AKUN</h2>
         <ul>
-            <li>Keamanan akun adalah tanggung jawab masing-masing pemain.</li>
-            <li>Gunakan password yang kuat jika Anda menggunakan akun non-premium (/register).</li>
-            <li>Pihak AeroBlast tidak bertanggung jawab atas kehilangan aset akibat kelalaian pemilik akun.</li>
+            <li>Tanggung jawab akun ada di tangan pemilik.</li>
+            <li>Staff gak bakal minta password lo.</li>
         </ul>
-
-        <h2>4. Perubahan Ketentuan</h2>
-        <p>AeroBlast berhak mengubah syarat dan ketentuan ini sewaktu-waktu tanpa pemberitahuan sebelumnya demi kenyamanan bersama.</p>
-
-        <div class="footer-note">
-            &copy; 2026 AeroBlast Network. Pastikan Anda membaca aturan secara berkala.
-        </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 style="font-weight: 700;">AEROBLAST</h4>
+                <p>Server Minecraft Survival Indonesia terbaik dengan fitur unik dan komunitas yang solid.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>NAVIGASI</h4>
+                <a href="index.html#status">Status Server</a>
+                <a href="index.html#rules">Peraturan</a>
+                <a href="index.html#features">Fitur Utama</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>LEGAL</h4>
+                <a href="snk.html">Syarat & Ketentuan</a>
+                <a href="https://wa.me/628123731343">Hubungi Admin</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 AeroBlast Network. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
