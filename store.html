@@ -47,15 +47,23 @@
             backdrop-filter: blur(5px); transition: 0.3s;
             display: flex; flex-direction: column; align-items: center;
         }
-        .rank-card:hover { border-color: #eab308; transform: translateY(-5px); }
+        .rank-card:hover { border-color: #ffffff; transform: translateY(-5px); }
         
-        /* RANK IMAGE STYLE */
-        .rank-img { 
-            width: 180px; 
-            height: auto; 
-            margin-bottom: 15px; 
-            image-rendering: pixelated; /* Biar tetep tajam walau low pixel */
+        /* RANK TEXT STYLE */
+        .rank-name {
+            font-size: 1.8em;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        /* Warna spesifik rank */
+        .color-aviator { color: #a8a8a8; text-shadow: 0 0 8px rgba(168, 168, 168, 0.5); }
+        .color-exostic { color: #ff5555; text-shadow: 0 0 8px rgba(255, 85, 85, 0.5); }
+        .color-force { color: #55ffff; text-shadow: 0 0 8px rgba(85, 255, 255, 0.5); }
+        .color-xerelion { color: #55ff55; text-shadow: 0 0 8px rgba(85, 255, 85, 0.5); }
+        .color-galatics { color: #ffaa00; text-shadow: 0 0 10px rgba(255, 170, 0, 0.6); }
         
         .price { font-size: 1.2em; font-weight: bold; color: #4ade80; margin-bottom: 20px; }
 
@@ -117,36 +125,36 @@
 
         <div class="grid-store">
             <div class="rank-card">
-                <img src="https://media.discordapp.net/attachments/1461619948500684955/1476929184637915358/aviator.png?ex=69a2e8fd&is=69a1977d&hm=76c07a887c74f73959bea7fc2bacaa05b31ccc19d37beace36b81899c749240f&=&format=webp&quality=lossless&width=49&height=8" class="rank-img" alt="Aviator">
+                <div class="rank-name color-aviator">AVIATOR</div>
                 <div class="price">Rp 15.000</div>
                 <button class="buy-btn" onclick="openCheckout('aviator')">BELI SEKARANG</button>
             </div>
             <div class="rank-card">
-                <img src="https://media.discordapp.net/attachments/1461619948500684955/1476929183606243441/exostic.png?ex=69a2e8fd&is=69a1977d&hm=a91015868fe8a74e89a2cbc4e5651f60e31f63bfb1cbce611c5e3a921936647d&=&format=webp&quality=lossless&width=49&height=8" class="rank-img" alt="Exostic">
+                <div class="rank-name color-exostic">EXOSTIC</div>
                 <div class="price">Rp 30.000</div>
                 <button class="buy-btn" onclick="openCheckout('exostic')">BELI SEKARANG</button>
             </div>
             <div class="rank-card">
-                <img src="https://media.discordapp.net/attachments/1461619948500684955/1476929182976966656/force.png?ex=69a2e8fd&is=69a1977d&hm=cecfc7588857a1ae8663b494e97e0f491f3a4ab37d33b6ed9161b0b0355f0fbf&=&format=webp&quality=lossless&width=49&height=8" class="rank-img" alt="Force">
+                <div class="rank-name color-force">FORCE</div>
                 <div class="price">Rp 50.000</div>
                 <button class="buy-btn" onclick="openCheckout('force')">BELI SEKARANG</button>
             </div>
             <div class="rank-card">
-                <img src="https://media.discordapp.net/attachments/1461619948500684955/1476929182566187291/xerelion.png?ex=69a2e8fd&is=69a1977d&hm=786d814ee826f5392d4048fe189f795d6c2b7204df7e77bc2e292be5f2d403cd&=&format=webp&quality=lossless&width=49&height=8" class="rank-img" alt="Xerelion">
+                <div class="rank-name color-xerelion">XERELION</div>
                 <div class="price">Rp 75.000</div>
                 <button class="buy-btn" onclick="openCheckout('xerelion')">BELI SEKARANG</button>
             </div>
-            <div class="rank-card" style="border-color: #eab308;">
-                <img src="https://media.discordapp.net/attachments/1461619948500684955/1476929182100357153/galatics.png?ex=69a2e8fd&is=69a1977d&hm=1c88e4e9f6bc5b24d2389fa5b60eb997a4c455a635ad5f9cb10090a0ba3668ff&=&format=webp&quality=lossless&width=49&height=8" class="rank-img" alt="Galatics">
+            <div class="rank-card" style="border-color: #ffaa00;">
+                <div class="rank-name color-galatics">GALATICS</div>
                 <div class="price">Rp 100.000</div>
-                <button class="buy-btn" style="background: #eab308; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
+                <button class="buy-btn" style="background: #ffaa00; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
             </div>
         </div>
     </div>
 
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
-            <h3 id="modalTitle" style="color: #eab308; text-align: center;"></h3>
+            <h3 id="modalTitle" style="color: #ffaa00; text-align: center;"></h3>
             <div id="modalFeat" class="feat-full"></div>
             
             <input type="text" id="playerNick" placeholder="Masukkan Nickname Minecraft...">
