@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroBlast Store | Ranks & Items</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Pakai style yang sama dengan index.html kamu */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: rgba(5, 11, 24, 0.95) url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg') no-repeat center center fixed;
+            background-size: cover; background-blend-mode: overlay;
+            color: #e0f2fe; font-family: 'Roboto', sans-serif; padding-top: 80px;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .back-btn { color: #38bdf8; text-decoration: none; display: inline-block; margin-bottom: 20px; font-weight: bold; }
+        .grid-store { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .rank-card { 
+            background: rgba(15, 23, 42, 0.85); border: 2px solid rgba(56, 189, 248, 0.2);
+            padding: 25px; border-radius: 20px; text-align: center; transition: 0.3s;
+        }
+        .rank-card:hover { border-color: #eab308; transform: translateY(-5px); }
+        .rank-name { color: #eab308; font-size: 1.5em; font-weight: 700; margin-bottom: 10px; }
+        .price { font-size: 1.2em; font-weight: bold; color: #4ade80; margin-bottom: 15px; }
+        .feat-list { text-align: left; font-size: 0.85em; color: #cbd5e1; list-style: none; margin-bottom: 20px; }
+        .feat-list li { margin: 5px 0; padding-left: 15px; position: relative; }
+        .feat-list li::before { content: "▸"; position: absolute; left: 0; color: #38bdf8; }
+        .buy-btn { 
+            display: block; background: #25d366; color: white; text-decoration: none; 
+            padding: 12px; border-radius: 10px; font-weight: bold; font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Kembali ke Home</a>
+        
+        <h2 style="text-align: center; color: #38bdf8; margin-bottom: 30px; letter-spacing: 2px;">AEROBLAST OFFICIAL STORE</h2>
+
+        <div class="grid-store">
+            <div class="rank-card">
+                <div class="rank-name">✨ AVIATOR</div>
+                <div class="price">Rp 15.000</div>
+                <ul class="feat-list">
+                    <li>Home limit 5</li>
+                    <li>Warp limit 5</li>
+                    <li>Akses /ec & /wb</li>
+                    <li>1 VIP & 1 Legend Key</li>
+                </ul>
+                <a href="https://wa.me/628123731343?text=Beli%20Rank%20Aviator" class="buy-btn">BELI VIA WA</a>
+            </div>
+
+            <div class="rank-card">
+                <div class="rank-name">🔥 EXOSTIC</div>
+                <div class="price">Rp 30.000</div>
+                <ul class="feat-list">
+                    <li>Home limit 10</li>
+                    <li>Akses /feed & /repair</li>
+                    <li>5 VIP & 3 Legend Key</li>
+                    <li>Exostic Kits</li>
+                </ul>
+                <a href="https://wa.me/628123731343?text=Beli%20Rank%20Exostic" class="buy-btn">BELI VIA WA</a>
+            </div>
+
+            </div>
+    </div>
+
+</body>
+</html>
