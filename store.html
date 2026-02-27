@@ -18,10 +18,9 @@
 
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 24, 0.8); z-index: -1;
+            background: rgba(5, 11, 24, 0.85); z-index: -1;
         }
 
-        /* NAVBAR SAMA DENGAN INDEX */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.95);
@@ -33,7 +32,6 @@
         .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; text-decoration: none; }
         
         .container { width: 100%; max-width: 900px; z-index: 1; padding: 0 20px; flex: 1; }
-
         .header-title { text-align: center; margin-bottom: 40px; }
         .header-title h2 { color: #38bdf8; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
 
@@ -54,29 +52,28 @@
         .rank-name { color: #eab308; font-size: 1.5em; font-weight: 700; margin-bottom: 10px; }
         .price { font-size: 1.2em; font-weight: bold; color: #4ade80; margin-bottom: 20px; }
 
-        .feat-list { text-align: left; font-size: 0.85em; color: #cbd5e1; list-style: none; margin-bottom: 25px; flex: 1; }
-        .feat-list li { margin: 6px 0; padding-left: 20px; position: relative; }
-        .feat-list li::before { content: "▸"; position: absolute; left: 0; color: #38bdf8; }
-
         .buy-btn { 
             display: block; width: 100%; background: #25d366; color: white; 
             text-decoration: none; padding: 14px; border-radius: 12px; 
             font-weight: 700; cursor: pointer; border: none; transition: 0.3s;
         }
-        .buy-btn:hover { filter: brightness(1.2); transform: scale(1.02); }
+        .buy-btn:hover { filter: brightness(1.2); }
 
-        /* FOOTER SAMA DENGAN INDEX */
-        .main-footer {
-            background: rgba(15, 23, 42, 0.98);
-            border-top: 3px solid #38bdf8;
-            padding: 50px 20px 20px;
-            width: 100%;
-            margin-top: 50px;
-        }
-        .footer-content {
-            max-width: 800px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;
-        }
+        /* MODAL STYLE */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 20px; }
+        .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 100%; max-width: 450px; padding: 25px; max-height: 90vh; overflow-y: auto; position: relative; }
+        
+        .feat-full { text-align: left; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 0.85em; color: #cbd5e1; line-height: 1.6; }
+        .feat-full div { margin-bottom: 5px; padding-left: 15px; position: relative; }
+        .feat-full div::before { content: "▸"; position: absolute; left: 0; color: #38bdf8; }
+
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
+        .snk-check { display: flex; align-items: flex-start; gap: 10px; text-align: left; font-size: 0.8em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; }
+        .snk-check input { margin-top: 3px; }
+
+        /* FOOTER */
+        .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 50px 20px 20px; width: 100%; margin-top: 50px; }
+        .footer-content { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-section h4 { color: #38bdf8; margin-bottom: 20px; font-size: 1em; text-transform: uppercase; }
         .footer-section p, .footer-section a { font-size: 0.85em; color: #cbd5e1; text-decoration: none; line-height: 1.6; display: block; }
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75em; color: #64748b; }
@@ -92,74 +89,56 @@
     <div class="container">
         <div class="header-title">
             <h2>OFFICIAL STORE</h2>
-            <p style="color: #cbd5e1; font-size: 0.9em;">Pilih rank impianmu dan dukung server kami!</p>
+            <p style="color: #cbd5e1; font-size: 0.9em;">Klik beli untuk melihat detail fitur & syarat.</p>
         </div>
 
         <div class="grid-store">
             <div class="rank-card">
                 <div class="rank-name">✨ AVIATOR</div>
                 <div class="price">Rp 15.000</div>
-                <ul class="feat-list">
-                    <li>Home limit 5</li>
-                    <li>Warp create limit 5</li>
-                    <li>Akses /ec & /wb</li>
-                    <li>1 VIP & 1 Legend Key</li>
-                    <li>Aviator Kits</li>
-                </ul>
-                <button class="buy-btn" onclick="beliRank('AVIATOR', '15.000')">BELI SEKARANG</button>
+                <button class="buy-btn" onclick="openCheckout('aviator')">BELI SEKARANG</button>
             </div>
 
             <div class="rank-card">
                 <div class="rank-name">🔥 EXOSTIC</div>
                 <div class="price">Rp 30.000</div>
-                <ul class="feat-list">
-                    <li>Home limit 10</li>
-                    <li>Warp create limit 10</li>
-                    <li>Akses /feed, /repair, /recipe</li>
-                    <li>5 VIP & 3 Legend Key</li>
-                    <li>Exostic Kits</li>
-                </ul>
-                <button class="buy-btn" onclick="beliRank('EXOSTIC', '30.000')">BELI SEKARANG</button>
+                <button class="buy-btn" onclick="openCheckout('exostic')">BELI SEKARANG</button>
             </div>
 
             <div class="rank-card">
                 <div class="rank-name">💎 FORCE</div>
                 <div class="price">Rp 50.000</div>
-                <ul class="feat-list">
-                    <li>Home limit 20</li>
-                    <li>Warp create limit 20</li>
-                    <li>Akses /pweather & /ptime</li>
-                    <li>10 VIP & 5 Legend Key</li>
-                    <li>Force Kits</li>
-                </ul>
-                <button class="buy-btn" onclick="beliRank('FORCE', '50.000')">BELI SEKARANG</button>
+                <button class="buy-btn" onclick="openCheckout('force')">BELI SEKARANG</button>
             </div>
 
             <div class="rank-card">
                 <div class="rank-name">🛡️ XERELION</div>
                 <div class="price">Rp 75.000</div>
-                <ul class="feat-list">
-                    <li>Home limit 50</li>
-                    <li>Akses /fly, /heal, /nick</li>
-                    <li>Akses /hat & /msgtoggle</li>
-                    <li>15 VIP & 10 Legend Key</li>
-                    <li>Xerelion Kits</li>
-                </ul>
-                <button class="buy-btn" onclick="beliRank('XERELION', '75.000')">BELI SEKARANG</button>
+                <button class="buy-btn" onclick="openCheckout('xerelion')">BELI SEKARANG</button>
             </div>
 
             <div class="rank-card" style="border-color: #eab308;">
                 <div class="rank-name">👑 GALATICS</div>
                 <div class="price">Rp 100.000</div>
-                <ul class="feat-list">
-                    <li>Home & Warp Unlimited</li>
-                    <li>Akses /godmode & /tptoggle</li>
-                    <li>Semua fitur rank di bawahnya</li>
-                    <li>18 VIP & 12 Legend Key</li>
-                    <li>Galatics Kits</li>
-                </ul>
-                <button class="buy-btn" style="background: #eab308; color: #000;" onclick="beliRank('GALATICS', '100.000')">BELI SEKARANG</button>
+                <button class="buy-btn" style="background: #eab308; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
             </div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle" style="color: #eab308; text-align: center;"></h3>
+            <div id="modalFeat" class="feat-full"></div>
+            
+            <input type="text" id="playerNick" placeholder="Masukkan Nickname Minecraft...">
+            
+            <label class="snk-check">
+                <input type="checkbox" id="snkAgree">
+                <span>Saya telah membaca dan menyetujui <a href="snk.html" target="_blank" style="color: #38bdf8;">Syarat & Ketentuan</a> yang berlaku.</span>
+            </label>
+
+            <button class="buy-btn" onclick="prosesBeli()">KONFIRMASI KE WHATSAPP</button>
+            <button class="buy-btn" style="background: #444; margin-top: 10px;" onclick="closeModal()">BATAL</button>
         </div>
     </div>
 
@@ -167,7 +146,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4 style="font-weight: 700;">AEROBLAST</h4>
-                <p>Server Minecraft Survival Indonesia terbaik dengan fitur unik dan komunitas yang solid.</p>
+                <p>Server Minecraft Survival Indonesia terbaik dengan fitur unik dan solid.</p>
             </div>
             <div class="footer-section">
                 <h4>LEGAL</h4>
@@ -181,17 +160,39 @@
     </footer>
 
     <script>
-        function beliRank(rank, harga) {
-            const nick = prompt("Masukkan Nickname Minecraft kamu:");
-            if (nick === null || nick === "") {
-                alert("Nickname wajib diisi ya!");
-                return;
-            }
-            
-            const adminWA = "628123731343";
-            const pesan = `Halo Admin! Saya ingin membeli rank di AeroBlast.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Rank: ${rank}%0A- Harga: Rp ${harga}%0A%0AInfo cara bayarnya min!`;
-            
-            window.open(`https://wa.me/${adminWA}?text=${pesan}`);
+        const rankData = {
+            aviator: { name: "AVIATOR", price: "15.000", feats: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
+            exostic: { name: "EXOSTIC", price: "30.000", feats: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
+            force: { name: "FORCE", price: "50.000", feats: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 Aerospace Key", "FORCE kits"] },
+            xerelion: { name: "XERELION", price: "75.000", feats: ["Home limit 50", "Warp limit 50", "/fly", "/heal", "/hat", "/nick", "/msgtoggle", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"] },
+            galatics: { name: "GALATICS", price: "100.000", feats: ["Home unlimited", "Warp unlimited", "/godmode", "/tptoggle", "/fly", "/heal", "/nick", "/ptime", "/pweather", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"] }
+        };
+
+        let activeRank = null;
+
+        function openCheckout(id) {
+            activeRank = rankData[id];
+            document.getElementById('modalTitle').innerText = "DETAIL RANK " + activeRank.name;
+            document.getElementById('modalFeat').innerHTML = activeRank.feats.map(f => `<div>${f}</div>`).join('');
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+            document.getElementById('playerNick').value = "";
+            document.getElementById('snkAgree').checked = false;
+        }
+
+        function prosesBeli() {
+            const nick = document.getElementById('playerNick').value;
+            const agree = document.getElementById('snkAgree').checked;
+
+            if (!nick) return alert("Masukkan Nickname dulu bos!");
+            if (!agree) return alert("Centang dulu persetujuan S&K!");
+
+            const msg = `Halo Admin! Saya ingin membeli rank di AeroBlast.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Rank: ${activeRank.name}%0A- Harga: Rp ${activeRank.price}%0A%0ASaya sudah menyetujui S&K yang berlaku.`;
+            window.open(`https://wa.me/628123731343?text=${msg}`);
+            closeModal();
         }
     </script>
 </body>
