@@ -58,12 +58,12 @@
             letter-spacing: 1px;
         }
 
-        /* Warna spesifik rank */
-        .color-aviator { color: #a8a8a8; text-shadow: 0 0 8px rgba(168, 168, 168, 0.5); }
-        .color-exostic { color: #ff5555; text-shadow: 0 0 8px rgba(255, 85, 85, 0.5); }
-        .color-force { color: #55ffff; text-shadow: 0 0 8px rgba(85, 255, 255, 0.5); }
-        .color-xerelion { color: #55ff55; text-shadow: 0 0 8px rgba(85, 255, 85, 0.5); }
-        .color-galatics { color: #ffaa00; text-shadow: 0 0 10px rgba(255, 170, 0, 0.6); }
+        /* Warna spesifik rank sesuai request */
+        .color-aviator { color: #a3ffac; text-shadow: 0 0 8px rgba(163, 255, 172, 0.5); }
+        .color-exostic { color: #1e40af; text-shadow: 0 0 8px rgba(30, 64, 175, 0.5); }
+        .color-force { color: #facc15; text-shadow: 0 0 8px rgba(250, 204, 21, 0.5); }
+        .color-xerelion { color: #ef4444; text-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+        .color-galatics { color: #d8b4fe; text-shadow: 0 0 10px rgba(216, 180, 254, 0.6); }
         
         .price { font-size: 1.2em; font-weight: bold; color: #4ade80; margin-bottom: 20px; }
 
@@ -84,7 +84,6 @@
 
         input[type="text"], select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
         
-        /* PAYMENT LOGO GRID */
         .payment-label { font-size: 0.85em; color: #38bdf8; margin-bottom: 10px; display: block; text-align: left; font-weight: bold; }
         .payment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
         
@@ -144,17 +143,17 @@
                 <div class="price">Rp 75.000</div>
                 <button class="buy-btn" onclick="openCheckout('xerelion')">BELI SEKARANG</button>
             </div>
-            <div class="rank-card" style="border-color: #ffaa00;">
+            <div class="rank-card" style="border-color: #d8b4fe;">
                 <div class="rank-name color-galatics">GALATICS</div>
                 <div class="price">Rp 100.000</div>
-                <button class="buy-btn" style="background: #ffaa00; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
+                <button class="buy-btn" style="background: #d8b4fe; color: #000;" onclick="openCheckout('galatics')">BELI SEKARANG</button>
             </div>
         </div>
     </div>
 
     <div id="checkoutModal" class="modal">
         <div class="modal-content">
-            <h3 id="modalTitle" style="color: #ffaa00; text-align: center;"></h3>
+            <h3 id="modalTitle" style="text-align: center;"></h3>
             <div id="modalFeat" class="feat-full"></div>
             
             <input type="text" id="playerNick" placeholder="Masukkan Nickname Minecraft...">
@@ -222,11 +221,11 @@
 
     <script>
         const rankData = {
-            aviator: { name: "AVIATOR", price: "15.000", feats: ["Home limit 5", "Warp limit 5", "/ec & /wb", "1 VIP & 1 Legend Key", "Aviator kits"] },
-            exostic: { name: "EXOSTIC", price: "30.000", feats: ["Home limit 10", "Warp limit 10", "/feed, /repair, /recipe", "5 VIP & 3 Legend Key", "Exostic kits"] },
-            force: { name: "FORCE", price: "50.000", feats: ["Home limit 20", "Warp limit 20", "/pweather & /ptime", "10 VIP & 5 Legend Key", "Force kits"] },
-            xerelion: { name: "XERELION", price: "75.000", feats: ["Home limit 50", "/fly, /heal, /nick", "/hat & /msgtoggle", "15 VIP & 10 Legend Key", "Xerelion kits"] },
-            galatics: { name: "GALATICS", price: "100.000", feats: ["Home & Warp Unlimited", "/godmode & /tptoggle", "Semua fitur di bawahnya", "18 VIP & 12 Legend Key", "Galatics kits"] }
+            aviator: { name: "AVIATOR", price: "15.000", color: "#a3ffac", feats: ["Home limit 5", "Warp limit 5", "/ec & /wb", "1 VIP & 1 Legend Key", "Aviator kits"] },
+            exostic: { name: "EXOSTIC", price: "30.000", color: "#1e40af", feats: ["Home limit 10", "Warp limit 10", "/feed, /repair, /recipe", "5 VIP & 3 Legend Key", "Exostic kits"] },
+            force: { name: "FORCE", price: "50.000", color: "#facc15", feats: ["Home limit 20", "Warp limit 20", "/pweather & /ptime", "10 VIP & 5 Legend Key", "Force kits"] },
+            xerelion: { name: "XERELION", price: "75.000", color: "#ef4444", feats: ["Home limit 50", "/fly, /heal, /nick", "/hat & /msgtoggle", "15 VIP & 10 Legend Key", "Xerelion kits"] },
+            galatics: { name: "GALATICS", price: "100.000", color: "#d8b4fe", feats: ["Home & Warp Unlimited", "/godmode & /tptoggle", "Semua fitur di bawahnya", "18 VIP & 12 Legend Key", "Galatics kits"] }
         };
 
         let activeRank = null;
@@ -242,7 +241,9 @@
 
         function openCheckout(id) {
             activeRank = rankData[id];
-            document.getElementById('modalTitle').innerText = "DETAIL RANK " + activeRank.name;
+            const title = document.getElementById('modalTitle');
+            title.innerText = "DETAIL RANK " + activeRank.name;
+            title.style.color = activeRank.color;
             document.getElementById('modalFeat').innerHTML = activeRank.feats.map(f => `<div>${f}</div>`).join('');
             document.getElementById('checkoutModal').style.display = 'flex';
         }
