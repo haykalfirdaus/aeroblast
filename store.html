@@ -68,10 +68,21 @@
         .feat-full div::before { content: "▸"; position: absolute; left: 0; color: #38bdf8; }
 
         input[type="text"], select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
+        
+        /* PAYMENT LOGO GRID */
+        .payment-label { font-size: 0.85em; color: #38bdf8; margin-bottom: 10px; display: block; text-align: left; font-weight: bold; }
+        .payment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+        .pay-option { 
+            background: white; border-radius: 8px; padding: 5px; cursor: pointer; 
+            border: 3px solid transparent; transition: 0.2s; display: flex; align-items: center; justify-content: center;
+            height: 45px; overflow: hidden;
+        }
+        .pay-option img { width: 100%; height: auto; object-fit: contain; }
+        .pay-option.selected { border-color: #eab308; background: #fffbeb; }
+
         .snk-check { display: flex; align-items: flex-start; gap: 10px; text-align: left; font-size: 0.8em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; }
         .snk-check input { margin-top: 3px; }
 
-        /* FOOTER */
         .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 50px 20px 20px; width: 100%; margin-top: 50px; }
         .footer-content { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-section h4 { color: #38bdf8; margin-bottom: 20px; font-size: 1em; text-transform: uppercase; }
@@ -114,13 +125,21 @@
                 <option value="Bedrock / PE">Bedrock / PE</option>
             </select>
 
-            <select id="paymentMethod">
-                <option value="" disabled selected>Pilih Metode Pembayaran...</option>
-                <option value="DANA">DANA</option>
-                <option value="GOPAY">GOPAY</option>
-                <option value="OVO">OVO</option>
-                <option value="QRIS">QRIS</option>
-            </select>
+            <span class="payment-label">METODE PEMBAYARAN:</span>
+            <div class="payment-grid">
+                <div class="pay-option" onclick="selectPay('DANA', this)">
+                    <img src="https://1000logos.net/wp-content/uploads/2021/03/Dana-logo.jpg" alt="DANA">
+                </div>
+                <div class="pay-option" onclick="selectPay('GOPAY', this)">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInqMXWFz_GVOxaKFgQMJjjtcK6Hiw8G20pw&s" alt="GOPAY">
+                </div>
+                <div class="pay-option" onclick="selectPay('OVO', this)">
+                    <img src="https://image.pngaaa.com/283/1986283-middle.png" alt="OVO">
+                </div>
+                <div class="pay-option" onclick="selectPay('QRIS', this)">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/61cddbcd-7f89-428f-b89c-b0d3e84be479/dffcgxe-affa955a-55c8-4513-ba72-06b77b3810af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi82MWNkZGJjZC03Zjg5LTQyOGYtYjg5Yy1iMGQzZTg0YmU0NzkvZGZmY2d4ZS1hZmZhOTU1YS01NWM4LTQ1MTMtYmE3Mi0wNmI3N2IzODEwYWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ieQiDgdWBWgJeUT7SAJ-FrSHsASmja1oVi5VpY6kstM" alt="QRIS">
+                </div>
+            </div>
             
             <label class="snk-check">
                 <input type="checkbox" id="snkAgree">
@@ -159,6 +178,13 @@
         };
 
         let activeRank = null;
+        let selectedPayment = "";
+
+        function selectPay(method, element) {
+            selectedPayment = method;
+            document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
 
         function openCheckout(id) {
             activeRank = rankData[id];
@@ -171,22 +197,22 @@
             document.getElementById('checkoutModal').style.display = 'none';
             document.getElementById('playerNick').value = "";
             document.getElementById('playerPlatform').value = "";
-            document.getElementById('paymentMethod').value = "";
+            selectedPayment = "";
+            document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected'));
             document.getElementById('snkAgree').checked = false;
         }
 
         function prosesBeli() {
             const nick = document.getElementById('playerNick').value;
             const platform = document.getElementById('playerPlatform').value;
-            const payment = document.getElementById('paymentMethod').value;
             const agree = document.getElementById('snkAgree').checked;
 
             if (!nick) return alert("Nickname belum diisi!");
             if (!platform) return alert("Pilih platform dulu!");
-            if (!payment) return alert("Pilih metode pembayaran dulu!");
+            if (!selectedPayment) return alert("Pilih metode pembayaran dulu!");
             if (!agree) return alert("Centang persetujuan S&K!");
 
-            const msg = `Halo Admin! Saya ingin beli rank.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Platform: ${platform}%0A- Rank: ${activeRank.name}%0A- Harga: Rp ${activeRank.price}%0A- Pembayaran: ${payment}%0A%0ASaya sudah setuju S&K.`;
+            const msg = `Halo Admin! Saya ingin beli rank.%0A%0A*DETAIL PESANAN*%0A- Nickname: ${nick}%0A- Platform: ${platform}%0A- Rank: ${activeRank.name}%0A- Harga: Rp ${activeRank.price}%0A- Pembayaran: ${selectedPayment}%0A%0ASaya sudah setuju S&K.`;
             window.open(`https://wa.me/628123731343?text=${msg}`);
             closeModal();
         }
