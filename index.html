@@ -219,12 +219,44 @@
     </div>
 </div>
 
-<div id="repModal" class="modal">
-    <div class="modal-content" style="border-color: #ef4444;">
-        <h3>🚩 REPORT BUG</h3>
-        <textarea id="repText" placeholder="Mohon jelaskan kendala atau bug yang Anda temukan secara detail..."></textarea>
-        <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
-        <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
+<div id="voteModal" class="modal">
+    <div class="modal-content" style="border-color: #4ade80; max-width: 450px;">
+        <div style="font-size: 2.5em; margin-bottom: 10px;">🗳️</div>
+        <h3 style="color: #4ade80; letter-spacing: 1px; margin-bottom: 5px;">VOTE REWARDS</h3>
+        <p style="font-size: 0.8em; color: #94a3b8; margin-bottom: 15px;">Dukung server kami dan dapatkan hadiah eksklusif!</p>
+        
+        <div style="height: 2px; background: linear-gradient(to right, transparent, #4ade80, transparent); margin: 20px 0;"></div>
+
+        <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 15px; border: 1px dashed rgba(74, 222, 128, 0.3);">
+            <ul class="rule-list" style="margin: 0; padding: 0; list-style: none;">
+                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    <span>💰</span> 
+                    <span><b>15.000</b> In-Game Money</span>
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    <span>🔑</span> 
+                    <span><b>1x</b> Vote Crate Key</span>
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px;">
+                    <span>📦</span> 
+                    <span><b>5x</b> Basic Crate Key</span>
+                </li>
+            </ul>
+        </div>
+
+        <div style="height: 2px; background: linear-gradient(to right, transparent, #4ade80, transparent); margin: 20px 0;"></div>
+
+        <p style="font-size: 0.75em; color: #ef4444; margin-bottom: 15px; font-style: italic;">
+            *Pastikan Anda sedang online di server saat melakukan Vote!
+        </p>
+
+        <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18; box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);">
+            🚀 VOTE SEKARANG
+        </a>
+        
+        <button class="btn" style="background: rgba(255,255,255,0.05); color: #94a3b8; margin-top: 10px; font-size: 0.8em;" onclick="closeModal('voteModal')">
+            NANTI SAJA
+        </button>
     </div>
 </div>
 
