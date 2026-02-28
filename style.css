@@ -59,20 +59,19 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
     text-align: center; 
     border: 2px solid rgba(56, 189, 248, 0.3); 
     backdrop-filter: blur(5px); 
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Durasi transisi hover */
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; text-align: center; }
 .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; object-fit: cover; }
 
-/* --- KHUSUS STATUS SERVER (GLOW & HOVER) --- */
+/* --- STATUS SERVER --- */
 #status .card {
     border: 2px solid #38bdf8;
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
     animation: float 3s ease-in-out infinite;
 }
 
-/* EFEK YANG LU MINTA: NAIK, BESAR, GLOW */
 #status .card:hover {
     transform: translateY(-20px) scale(1.05) !important; 
     box-shadow: 0 25px 50px rgba(56, 189, 248, 0.5), 0 0 30px rgba(56, 189, 248, 0.3);
@@ -103,7 +102,7 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .stat-bar b { color: #38bdf8; font-size: 0.8em; }
 .stat-bar p { font-weight: 700; font-size: 1.1em; }
 
-/* --- RULES GLOW --- */
+/* --- RULES --- */
 .rule-category { margin-bottom: 12px; border-radius: 12px; overflow: hidden; background: rgba(15, 23, 42, 0.5); transition: 0.4s; border: 1px solid rgba(255,255,255,0.1); }
 .rule-category:hover { transform: translateY(-5px); }
 .rule-category:nth-of-type(1):hover { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
@@ -127,7 +126,8 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .req-btn { background: #38bdf8; color: #0f172a; }
 .rep-btn { background: #ef4444; }
 .saweria-btn { background: #ff8c00; color: white; }
-/* --- FOOTER SIMPEL & PROPORSIONAL --- */
+
+/* --- FOOTER SIMPEL (ABU-ABU) --- */
 .main-footer { 
     background: rgba(10, 15, 28, 0.98); 
     border-top: 2px solid #38bdf8; 
@@ -152,8 +152,8 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 
 .footer-links { display: flex; flex-direction: column; gap: 5px; }
 
-/* WARNA ABU-ABU UNTUK LINK */
-.footer-section a { 
+/* LINK WARNA ABU (GAK UNGU) */
+.footer-section a, .footer-section a:visited { 
     color: #94a3b8 !important; 
     text-decoration: none; 
     font-size: 0.8em; 
@@ -170,3 +170,8 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
     color: #64748b; 
     text-align: center;
 }
+
+/* --- MODAL --- */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
+.modal-content { background: #0f172a; border: 2px solid #38bdf8; padding: 25px; border-radius: 20px; width: 90%; max-width: 400px; }
+textarea { width: 100%; height: 100px; margin-top: 10px; background: #1e293b; color: #fff; border: 1px solid #38bdf8; padding: 10px; border-radius: 10px; }
