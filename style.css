@@ -1,0 +1,115 @@
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+body { 
+    background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0f2fe; font-family: 'Roboto', sans-serif; 
+    display: flex; flex-direction: column; align-items: center; 
+    min-height: 100vh; padding: 100px 0 0;
+}
+
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 11, 24, 0.75); z-index: -1;
+}
+
+.navbar {
+    position: fixed; top: 0; width: 100%; 
+    background: rgba(15, 23, 42, 0.95);
+    padding: 15px 25px; display: flex; 
+    justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #38bdf8; z-index: 1000; 
+    backdrop-filter: blur(10px);
+}
+
+.nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; transition: 0.3s; }
+
+.menu-icon { font-size: 1.5em; cursor: pointer; color: #fff; transition: 0.5s ease; display: inline-block; }
+.menu-icon:hover { transform: rotate(90deg); color: #38bdf8; }
+
+.nav-links {
+    position: absolute; top: 60px; right: 20px; background: #0f172a;
+    border: 2px solid #38bdf8; border-radius: 10px; display: none;
+    flex-direction: column; width: 180px; overflow: hidden;
+}
+
+.nav-links a, .nav-links span { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; cursor: pointer; }
+.nav-links a:hover, .nav-links span:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
+
+.container { width: 100%; max-width: 600px; z-index: 1; position: relative; padding: 0 20px; }
+
+section { margin-bottom: 50px; scroll-margin-top: 100px; }
+
+.card { 
+    background: rgba(15, 23, 42, 0.85); padding: 30px; border-radius: 20px; 
+    text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
+    backdrop-filter: blur(5px); transition: 0.3s;
+}
+
+.section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+
+.logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
+
+.info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px; }
+
+.info-item { 
+    display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
+    cursor: pointer; padding: 12px; border-radius: 8px; transition: 0.3s;
+    border: 1px solid rgba(56, 189, 248, 0.1); background: rgba(15, 23, 42, 0.5);
+}
+
+.info-item:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; }
+
+.check-icon { display: none; color: #4ade80; font-weight: bold; }
+
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+
+.stat-bar { background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px; border: 1px solid rgba(56, 189, 248, 0.3); }
+
+.rule-category { margin-bottom: 10px; border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; overflow: hidden; }
+
+.rule-cat-title { 
+    font-weight: 700; padding: 15px; cursor: pointer; background: rgba(15, 23, 42, 0.5);
+    display: flex; justify-content: space-between; align-items: center; 
+}
+
+.rule-content { display: none; padding: 15px; background: rgba(0, 0, 0, 0.2); }
+
+.rule-list { list-style: none; font-size: 0.85em; color: #cbd5e1; text-align: left; }
+
+.rule-list li { margin: 5px 0; padding-left: 15px; position: relative; }
+
+.rule-list li::before { content: "•"; position: absolute; left: 0; color: #eab308; }
+
+.punishment { font-size: 0.8em; color: #f87171; font-weight: 600; margin-top: 8px; }
+
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.feature-item { 
+    background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px; 
+    border: 1px solid rgba(56, 189, 248, 0.2); font-size: 0.85em; text-align: center;
+}
+
+.btn { display: block; width: 100%; color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-size: 1em; font-weight: 700; margin-top: 15px; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
+.btn:hover { transform: translateY(-4px); filter: brightness(1.2); }
+
+.discord-btn { background: #5865f2; }
+.wa-btn { background: #25d366; }
+.rank-btn { background: #eab308; color: #000; }
+.saweria-btn { background: #fa6400; }
+.req-btn { background: #38bdf8; color: #0f172a; }
+.rep-btn { background: #ef4444; color: white; }
+
+.main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 50px 20px 20px; width: 100%; margin-top: 50px; }
+.footer-content { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+.footer-section h4 { color: #38bdf8; margin-bottom: 20px; font-size: 1em; text-transform: uppercase; }
+.footer-section a { display: block; color: #cbd5e1; text-decoration: none; font-size: 0.85em; margin-bottom: 12px; }
+.footer-bottom { text-align: center; margin-top: 50px; font-size: 0.75em; color: #64748b; }
+
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+.modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 90%; max-width: 450px; padding: 25px; text-align: center; }
+
+.rank-option { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; margin: 10px 0; display: flex; justify-content: space-between; cursor: pointer; border: 1px solid rgba(234, 179, 8, 0.2); }
+
+textarea { width: 100%; height: 100px; border-radius: 10px; background: #1e293b; color: white; padding: 10px; border: 1px solid #38bdf8; margin-top: 10px; resize: none; font-family: inherit; }
+.qris-img { width: 100%; max-width: 250px; border-radius: 10px; margin: 15px 0; }
