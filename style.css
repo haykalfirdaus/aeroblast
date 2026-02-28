@@ -98,3 +98,43 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .footer-links-list a, .footer-links-list span { color: #94a3b8 !important; text-decoration: none; margin: 0 10px; cursor: pointer; font-size: 0.9em; }
 .footer-links-list a:hover { color: #38bdf8 !important; }
 .aeroblast-glow { color: #38bdf8; font-weight: bold; }
+
+/* --- 9. TEXTAREA & FORM INPUT --- */
+textarea {
+    width: 100%;
+    height: 140px;
+    padding: 15px;
+    margin: 15px 0;
+    background: rgba(15, 23, 42, 0.6); /* Background gelap transparan */
+    color: #e0f2fe;
+    border: 1px solid rgba(56, 189, 248, 0.2); /* Border tipis biru */
+    border-radius: 12px; /* Sudut melengkung halus */
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    resize: none; /* Biar user gak bisa narik-narik ukurannya */
+    outline: none;
+    transition: all 0.3s ease;
+    line-height: 1.5;
+}
+
+textarea:focus {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: #38bdf8; /* Border nyala pas diketik */
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Styling Placeholder (Teks bayangan di dalam) */
+textarea::placeholder {
+    color: rgba(148, 163, 184, 0.6);
+    font-style: italic;
+}
+
+/* Biar scrollbar di dalam textarea juga rapi */
+textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: #38bdf8;
+    border-radius: 10px;
+}
