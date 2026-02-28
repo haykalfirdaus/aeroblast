@@ -6,9 +6,17 @@ const rankData = {
     galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home unlimited", "/godmode", "/fly", "18 VIP key", "GALATICS kits"] }
 };
 
-function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; if(id==='rankModal') backToRankList(); }
+// MODAL SYSTEM
+function openModal(id) { 
+    document.getElementById(id).style.display = 'flex'; 
+}
 
+function closeModal(id) { 
+    document.getElementById(id).style.display = 'none'; 
+    if(id === 'rankModal') backToRankList(); 
+}
+
+// RULES ACCORDION
 function toggleRule(el) {
     const content = el.nextElementSibling;
     const arrow = el.querySelector('span:last-child');
@@ -17,6 +25,7 @@ function toggleRule(el) {
     arrow.innerText = isOpen ? '▼' : '▲';
 }
 
+// RANK DETAIL SYSTEM
 function showRankDetail(id) {
     const rank = rankData[id];
     document.getElementById('rankList').style.display = 'none';
@@ -32,6 +41,7 @@ function backToRankList() {
     document.getElementById('rankDetail').style.display = 'none'; 
 }
 
+// WHATSAPP SENDER
 function sendWA(type) {
     const text = document.getElementById(type + 'Text').value;
     if(!text) return alert("Isi dulu ya!");
@@ -40,26 +50,45 @@ function sendWA(type) {
     closeModal(type + 'Modal');
 }
 
+// NAVBAR MOBILE
 function toggleMenu() {
     const menu = document.getElementById('navLinks');
     menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
 }
 
+// COPY TEXT FIX (Centang muncul pas diklik aja)
 function copyText(val, element) {
     navigator.clipboard.writeText(val);
     const check = element.querySelector('.check-icon');
-    const span = element.querySelector('span');
-    span.style.opacity = "0"; check.style.display = 'inline-block';
-    setTimeout(() => { check.style.display = 'none'; span.style.opacity = "1"; }, 1500);
+    
+    // Munculkan centang
+    check.style.display = 'inline-block';
+    
+    // Sembunyikan lagi setelah 1.5 detik
+    setTimeout(() => { 
+        check.style.display = 'none'; 
+    }, 1500);
 }
 
-// Fetch server status
+// FETCH SERVER STATUS
 fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
     .then(res => res.json())
     .then(data => {
         const isOnline = data.online;
-        document.getElementById('s-status').innerText = isOnline ? 'ONLINE' : 'OFFLINE';
-        document.getElementById('s-status').style.color = isOnline ? '#4ade80' : '#f87171';
-        document.getElementById('s-players').innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
-        document.getElementById('s-version').innerText = isOnline ? (data.version || '1.20+') : '-';
-    });
+        const statusEl = document.getElementById('s-status');
+        if(statusEl) {
+            statusEl.innerText = isOnline ? 'ONLINE' : 'OFFLINE';
+            statusEl.style.color = isOnline ? '#4ade80' : '#f87171';
+        }
+        
+        const playersEl = document.getElementById('s-players');
+        if(playersEl) {
+            playersEl.innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
+        }
+
+        const versionEl = document.getElementById('s-version');
+        if(versionEl) {
+            versionEl.innerText = isOnline ? (data.version || '1.20+') : '-';
+        }
+    })
+    .catch(err => console.error("Error fetching status:", err));
