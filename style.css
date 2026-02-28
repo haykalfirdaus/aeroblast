@@ -1,8 +1,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
 body { 
-    /* Ganti ke file lokal */
-    background: url('background.jpg') no-repeat center center fixed;
+    /* Pakai link langsung biar GitHub nggak bingung */
+    background: url('https://store.aeroblast.my.id/background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e0f2fe; 
     font-family: 'Roboto', sans-serif; 
@@ -211,7 +211,6 @@ section {
     position: relative; 
 }
 
-/* Peluru list pakai bintang */
 .rule-list li::before { 
     content: "⭐"; 
     position: absolute; 
