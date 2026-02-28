@@ -6,10 +6,12 @@
     <title>Syarat & Ketentuan | AeroBlast Network</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* --- 1. BASE SETUP --- */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
-            background: url('<img src="https://store.aeroblast.my.id/background.jpg" alt="Aeroblast Background" style="width: 100%; max-width: 400px; border-radius: 15px; border: 2px solid #38bdf8;">') no-repeat center center fixed;
+            /* Perbaikan URL Background */
+            background: url('https://store.aeroblast.my.id/background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #e0f2fe; 
             font-family: 'Roboto', sans-serif; 
@@ -21,6 +23,7 @@
             padding-top: 80px;
         }
 
+        /* Overlay gelap agar teks terbaca */
         body::before {
             content: "";
             position: fixed;
@@ -29,6 +32,7 @@
             z-index: -1;
         }
 
+        /* --- 2. NAVBAR --- */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             background: rgba(15, 23, 42, 0.95);
@@ -44,7 +48,6 @@
             cursor: pointer; 
             color: #fff; 
             transition: 0.5s ease; 
-            display: inline-block;
         }
         .menu-icon:hover { 
             transform: rotate(90deg); 
@@ -56,9 +59,10 @@
             border: 2px solid #38bdf8; border-radius: 10px; display: none;
             flex-direction: column; width: 180px; overflow: hidden;
         }
-        .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
+        .nav-links a { color: white; padding: 12px 15px; text-decoration: none; font-size: 0.9em; transition: 0.3s; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-links a:hover { background: #38bdf8; color: #050b18; padding-left: 20px; }
 
+        /* --- 3. CONTENT CONTAINER --- */
         .container { 
             max-width: 800px; 
             width: 90%;
@@ -66,30 +70,30 @@
             background: rgba(15, 23, 42, 0.9);
             padding: 35px; 
             border-radius: 20px; 
-            border: 2px solid #38bdf8;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
         }
 
-        h1 { color: #38bdf8; margin-bottom: 20px; text-align: center; font-size: 1.8em; }
+        h1 { color: #38bdf8; margin-bottom: 20px; text-align: center; font-size: 1.8em; text-transform: uppercase; letter-spacing: 1px; }
         h2 { color: #eab308; margin: 25px 0 10px; font-size: 1.2em; border-left: 4px solid #eab308; padding-left: 10px; text-transform: uppercase; }
         
         p { margin-bottom: 15px; color: #cbd5e1; font-size: 0.95em; text-align: justify; }
         
         ul { margin-bottom: 20px; padding-left: 20px; list-style: none; }
-        li { margin-bottom: 10px; color: #cbd5e1; font-size: 0.9em; position: relative; text-align: justify; }
-        .container li::before { content: "•"; position: absolute; left: -15px; color: #38bdf8; font-weight: bold; }
+        li { margin-bottom: 12px; color: #cbd5e1; font-size: 0.9em; position: relative; text-align: justify; padding-left: 5px; }
+        li::before { content: "▸"; position: absolute; left: -15px; color: #38bdf8; font-weight: bold; }
 
+        /* --- 4. FOOTER --- */
         .main-footer {
             background: rgba(15, 23, 42, 0.98);
             border-top: 3px solid #38bdf8;
-            padding: 50px 20px 20px;
+            padding: 50px 20px 30px;
             width: 100%;
             margin-top: auto;
             position: relative;
-            z-index: 1;
         }
         .footer-content {
             max-width: 800px;
@@ -99,24 +103,19 @@
             gap: 40px;
         }
         .footer-section h4 { color: #38bdf8; margin-bottom: 20px; font-size: 1em; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-section p { font-size: 0.85em; color: #cbd5e1; line-height: 1.6; text-align: left; }
+        .footer-section p { font-size: 0.85em; color: #94a3b8; line-height: 1.6; }
         .footer-section a { display: block; color: #cbd5e1; text-decoration: none; font-size: 0.85em; margin-bottom: 12px; transition: 0.3s; }
         .footer-section a:hover { color: #38bdf8; transform: translateX(5px); }
         
-        /* CSS untuk Footer Bottom yang sudah dipusatkan */
         .footer-bottom { 
             text-align: center; 
             margin-top: 50px; 
             padding-top: 20px; 
             border-top: 1px solid rgba(255, 255, 255, 0.05); 
         }
-        .footer-bottom p { 
-            font-size: 0.75em; 
-            color: #94a3b8; /* Warna abu-abu yang lebih lembut */
-            text-align: center;
-            margin-bottom: 0;
-        }
+        .footer-bottom p { font-size: 0.75em; color: #64748b; text-align: center; margin-bottom: 0; }
 
+        /* Scrollbar Styling */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
@@ -129,7 +128,7 @@
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
             <a href="index.html">Beranda</a>
-            <a href="index.html#status">Status</a>
+            <a href="index.html#status">Status Server</a>
             <a href="index.html#rules">Peraturan</a>
             <a href="index.html#features">Fitur</a>
             <a href="snk.html" style="color: #38bdf8;">Syarat & Ketentuan</a>
@@ -196,6 +195,7 @@
             menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
         }
 
+        // Close menu if click outside
         window.onclick = function(event) {
             if (!event.target.matches('.menu-icon')) {
                 const dropdowns = document.getElementsByClassName("nav-links");
