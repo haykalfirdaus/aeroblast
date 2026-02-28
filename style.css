@@ -1,7 +1,12 @@
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
+/* --- BASE SETUP --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    scroll-behavior: smooth; 
+}
+
 body { 
-    /* Pakai link langsung biar GitHub nggak bingung */
     background: url('https://store.aeroblast.my.id/background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e0f2fe; 
@@ -13,7 +18,6 @@ body {
     padding: 100px 0 0;
 }
 
-/* Overlay biar tulisan tetep jelas dibaca */
 body::before {
     content: ""; 
     position: fixed; 
@@ -25,6 +29,7 @@ body::before {
     z-index: -1;
 }
 
+/* --- NAVIGATION --- */
 .navbar {
     position: fixed; 
     top: 0; 
@@ -89,6 +94,7 @@ body::before {
     padding-left: 20px; 
 }
 
+/* --- CONTAINERS & CARDS --- */
 .container { 
     width: 100%; 
     max-width: 600px; 
@@ -130,6 +136,7 @@ section {
     object-fit: cover;
 }
 
+/* --- INFO & STATS --- */
 .info-box { 
     background: rgba(0, 0, 0, 0.5); 
     padding: 15px; 
@@ -153,12 +160,7 @@ section {
 .info-item:hover { 
     background: rgba(56, 189, 248, 0.2); 
     border-color: #38bdf8; 
-}
-
-.check-icon { 
-    display: none; 
-    color: #4ade80; 
-    font-weight: bold; 
+    transform: scale(1.02);
 }
 
 .stat-grid { 
@@ -175,63 +177,67 @@ section {
     border: 1px solid rgba(56, 189, 248, 0.3); 
 }
 
+/* --- RULES WITH COLOR GLOW --- */
 .rule-category { 
-    margin-bottom: 10px; 
+    margin-bottom: 12px; 
     border: 1px solid rgba(56, 189, 248, 0.2); 
     border-radius: 12px; 
     overflow: hidden; 
+    background: rgba(15, 23, 42, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
 }
 
 .rule-cat-title { 
     font-weight: 700; 
-    padding: 15px; 
+    padding: 18px; 
     cursor: pointer; 
-    background: rgba(15, 23, 42, 0.5);
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    transition: 0.3s;
+}
+
+.rule-category:hover {
+    transform: translateY(-8px) scale(1.02);
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.8);
+}
+
+/* Rule 1: Biru */
+.rule-category:nth-of-type(1):hover {
+    border-color: #38bdf8;
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3), 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Rule 2: Hijau */
+.rule-category:nth-of-type(2):hover {
+    border-color: #4ade80;
+    box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3), 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+/* Rule 3: Merah */
+.rule-category:nth-of-type(3):hover {
+    border-color: #ef4444;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3), 0 0 15px rgba(239, 68, 68, 0.4);
 }
 
 .rule-content { 
     display: none; 
     padding: 15px; 
-    background: rgba(0, 0, 0, 0.2); 
+    background: rgba(0, 0, 0, 0.3); 
 }
 
-.rule-list { 
-    list-style: none; 
-    font-size: 0.85em; 
-    color: #cbd5e1; 
-    text-align: left; 
-}
+.rule-list { list-style: none; font-size: 0.85em; color: #cbd5e1; text-align: left; }
+.rule-list li { margin: 5px 0; padding-left: 15px; position: relative; }
+.rule-list li::before { content: "⭐"; position: absolute; left: -5px; font-size: 0.8em; }
 
-.rule-list li { 
-    margin: 5px 0; 
-    padding-left: 15px; 
-    position: relative; 
-}
-
-.rule-list li::before { 
-    content: "⭐"; 
-    position: absolute; 
-    left: -5px; 
-    font-size: 0.8em;
-}
-
-.punishment { 
-    font-size: 0.8em; 
-    color: #f87171; 
-    font-weight: 600; 
-    margin-top: 8px; 
-}
-
+/* --- FEATURES WITH GLOW --- */
 .feature-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     gap: 12px; 
 }
 
-/* Update Feature Item dengan Efek Glow & Hover */
 .feature-item { 
     background: rgba(15, 23, 42, 0.6); 
     padding: 15px; 
@@ -239,28 +245,22 @@ section {
     border: 1px solid rgba(56, 189, 248, 0.2); 
     font-size: 0.85em; 
     text-align: center;
-    transition: all 0.3s ease; /* Biar transisi halus */
+    transition: all 0.3s ease;
     cursor: default;
     position: relative;
-    overflow: hidden;
 }
 
-/* Efek pas kursor nempel (Hover) */
-/* Efek pas kursor nempel (Hover) */
 .feature-item:hover {
-    background: rgba(56, 189, 248, 0.2); /* Background lebih terang */
-    border-color: #38bdf8; /* Border biru neon */
-    
-    /* Gerakan: Geser ke atas (-10px) dan Diperbesar (1.05) */
+    background: rgba(56, 189, 248, 0.2); 
+    border-color: #38bdf8; 
     transform: translateY(-10px) scale(1.05); 
-    
-    /* Efek Glow: Bayangan luar lebih tebal biar berasa menyala */
-    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4), 0 0 15px rgba(56, 189, 248, 0.6);
-    
-    color: #fff;
-    text-shadow: 0 0 8px rgba(56, 189, 248, 1); /* Tulisan ikut glowing kuat */
-    z-index: 10; /* Biar nggak ketutup kotak sebelahnya pas membesar */
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4), 0 0 15px rgba(56, 189, 248, 0.5); 
+    color: #fff; 
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+    z-index: 10;
 }
+
+/* --- BUTTONS --- */
 .btn { 
     display: block; 
     width: 100%; 
@@ -278,8 +278,9 @@ section {
 }
 
 .btn:hover { 
-    transform: translateY(-4px); 
+    transform: translateY(-5px) scale(1.02); 
     filter: brightness(1.2); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .discord-btn { background: #5865f2; }
@@ -289,6 +290,7 @@ section {
 .req-btn { background: #38bdf8; color: #0f172a; }
 .rep-btn { background: #ef4444; color: white; }
 
+/* --- FOOTER & MODAL --- */
 .main-footer { 
     background: rgba(15, 23, 42, 0.98); 
     border-top: 3px solid #38bdf8; 
@@ -305,27 +307,7 @@ section {
     gap: 40px; 
 }
 
-.footer-section h4 { 
-    color: #38bdf8; 
-    margin-bottom: 20px; 
-    font-size: 1em; 
-    text-transform: uppercase; 
-}
-
-.footer-section a { 
-    display: block; 
-    color: #cbd5e1; 
-    text-decoration: none; 
-    font-size: 0.85em; 
-    margin-bottom: 12px; 
-}
-
-.footer-bottom { 
-    text-align: center; 
-    margin-top: 50px; 
-    font-size: 0.75em; 
-    color: #64748b; 
-}
+.footer-section a:hover { color: #38bdf8; padding-left: 5px; transition: 0.3s; }
 
 .modal { 
     display: none; 
@@ -361,14 +343,5 @@ textarea {
     border: 1px solid #38bdf8; 
     margin-top: 10px; 
     resize: none; 
-    font-family: inherit; 
     outline: none;
-}
-
-.qris-img { 
-    width: 100%; 
-    max-width: 250px; 
-    border-radius: 10px; 
-    margin: 15px 0; 
-    object-fit: contain;
 }
