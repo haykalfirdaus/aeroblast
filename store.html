@@ -5,100 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AeroBlast Store | Ranks & Keys</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body { 
-            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a249e7&is=69a0f867&hm=74834d3819dace6865b9fd90a654d17965ea4eb84b2b3433cb9cc54fd4e0197c&=&format=webp&width=662&height=373') no-repeat center center fixed;
-            background-size: cover;
-            color: #e0f2fe; font-family: 'Roboto', sans-serif; 
-            display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 100px 0 0;
-        }
-
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(5, 11, 24, 0.85); z-index: -1;
-        }
-
-        .navbar {
-            position: fixed; top: 0; width: 100%; 
-            background: rgba(15, 23, 42, 0.95);
-            padding: 15px 25px; display: flex; 
-            justify-content: space-between; align-items: center;
-            border-bottom: 3px solid #38bdf8; z-index: 1000; 
-            backdrop-filter: blur(10px);
-        }
-        .nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; text-decoration: none; }
-        
-        .container { width: 100%; max-width: 1100px; z-index: 1; padding: 0 20px; flex: 1; }
-        
-        .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .tab-btn { 
-            padding: 12px 25px; background: rgba(15, 23, 42, 0.8); border: 2px solid #38bdf8; 
-            color: #38bdf8; border-radius: 50px; cursor: pointer; font-weight: 700; transition: 0.3s;
-        }
-        .tab-btn.active { background: #38bdf8; color: #0f172a; box-shadow: 0 0 15px #38bdf8; }
-
-        .store-section { display: none; }
-        .store-section.active { display: block; }
-
-        .grid-store { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 25px; margin-bottom: 50px;
-        }
-
-        .item-card { 
-            background: rgba(15, 23, 42, 0.85); padding: 25px; border-radius: 20px; 
-            text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
-            backdrop-filter: blur(5px); transition: 0.3s;
-            display: flex; flex-direction: column;
-        }
-        .item-card:hover { border-color: #ffffff; transform: translateY(-5px); }
-        
-        .item-name { font-size: 1.6em; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-        .price { font-size: 1.4em; font-weight: bold; color: #4ade80; margin-bottom: 15px; }
-
-        .color-aviator { color: #a3ffac; }
-        .color-exostic { color: #3b82f6; }
-        .color-force { color: #facc15; }
-        .color-xerelion { color: #ef4444; }
-        .color-galatics { color: #d8b4fe; }
-        .color-key { color: #38bdf8; }
-
-        .feat-list { text-align: left; margin-bottom: 20px; font-size: 0.85em; color: #cbd5e1; flex-grow: 1; }
-        .feat-list div { margin-bottom: 4px; padding-left: 22px; position: relative; }
-        .feat-list div::before { content: "✔"; position: absolute; left: 0; color: #4ade80; font-weight: bold; }
-
-        .buy-btn { 
-            display: block; width: 100%; background: #25d366; color: white; 
-            padding: 14px; border-radius: 12px; 
-            font-weight: 700; cursor: pointer; border: none; transition: 0.3s;
-        }
-        .buy-btn:hover { filter: brightness(1.2); }
-
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 20px; }
-        .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 100%; max-width: 450px; padding: 25px; max-height: 90vh; overflow-y: auto; }
-        
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
-        
-        .payment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
-        .pay-option { background: white; border-radius: 8px; padding: 5px; cursor: pointer; border: 3px solid transparent; height: 45px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .pay-option img { width: 100%; height: auto; object-fit: contain; }
-        .pay-option.selected { border-color: #eab308; background: #fffbeb; }
-
-        .snk-container { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; text-align: left; }
-        .snk-container input { width: auto; margin-top: 3px; }
-        .snk-container a:hover { color: #7dd3fc !important; }
-
-        .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
-    </style>
+    <link rel="stylesheet" href="store.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="#" class="nav-logo">AEROBLAST</a>
+        <a href="index.html" class="nav-logo">AEROBLAST</a>
         <a href="index.html" style="color: white; text-decoration: none; font-size: 0.9em;">← Kembali</a>
     </nav>
 
@@ -118,128 +30,53 @@
     </div>
 
     <div id="checkoutModal" class="modal">
-    <div class="modal-content">
-        <h3 id="modalTitle" style="text-align: center; margin-bottom: 20px;"></h3>
-        <input type="text" id="playerNick" placeholder="Nickname Minecraft...">
-        <select id="playerPlatform">
-            <option value="" disabled selected>Pilih Platform...</option>
-            <option value="Java Edition">Java Edition</option>
-            <option value="Bedrock / PE">Bedrock / PE</option>
-        </select>
-        
-        <p style="font-size: 0.8em; color: #38bdf8; margin-bottom: 10px; font-weight: bold;">METODE PEMBAYARAN:</p>
-        
-        <div class="payment-grid">
-            <div style="text-align: center;">
-                <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">DANA</p>
-                <div class="pay-option" onclick="selectPay('DANA', this)"><img src="https://1000logos.net/wp-content/uploads/2021/03/Dana-logo.jpg"></div>
+        <div class="modal-content">
+            <h3 id="modalTitle" style="text-align: center; margin-bottom: 20px;"></h3>
+            <input type="text" id="playerNick" placeholder="Nickname Minecraft...">
+            <select id="playerPlatform">
+                <option value="" disabled selected>Pilih Platform...</option>
+                <option value="Java Edition">Java Edition</option>
+                <option value="Bedrock / PE">Bedrock / PE</option>
+            </select>
+            
+            <p style="font-size: 0.8em; color: #38bdf8; margin-bottom: 10px; font-weight: bold;">METODE PEMBAYARAN:</p>
+            
+            <div class="payment-grid">
+                <div style="text-align: center;">
+                    <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">DANA</p>
+                    <div class="pay-option" onclick="selectPay('DANA', this)"><img src="https://1000logos.net/wp-content/uploads/2021/03/Dana-logo.jpg"></div>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">GOPAY</p>
+                    <div class="pay-option" onclick="selectPay('GOPAY', this)"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInqMXWFz_GVOxaKFgQMJjjtcK6Hiw8G20pw&s"></div>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">OVO</p>
+                    <div class="pay-option" onclick="selectPay('OVO', this)"><img src="https://image.pngaaa.com/283/1986283-middle.png"></div>
+                </div>
+                <div style="text-align: center;">
+                    <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">QRIS</p>
+                    <div class="pay-option" onclick="selectPay('QRIS', this)"><img src="https://tel-access.biz/wp-content/uploads/2020/12/Icon-Posts-QRIS-7.png"></div>
+                </div>
             </div>
-            <div style="text-align: center;">
-                <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">GOPAY</p>
-                <div class="pay-option" onclick="selectPay('GOPAY', this)"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInqMXWFz_GVOxaKFgQMJjjtcK6Hiw8G20pw&s"></div>
-            </div>
-            <div style="text-align: center;">
-                <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">OVO</p>
-                <div class="pay-option" onclick="selectPay('OVO', this)"><img src="https://image.pngaaa.com/283/1986283-middle.png"></div>
-            </div>
-            <div style="text-align: center;">
-                <p style="font-size: 0.65em; margin-bottom: 4px; font-weight: bold; color: #cbd5e1;">QRIS</p>
-                <div class="pay-option" onclick="selectPay('QRIS', this)"><img src="https://tel-access.biz/wp-content/uploads/2020/12/Icon-Posts-QRIS-7.png"></div>
-            </div>
-        </div>
-        
-        <label class="snk-container">
-            <input type="checkbox" id="snkAgree">
-            <span>
-                Saya menyetujui 
-                <a href="snk.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: bold; cursor: pointer;">
-                    Syarat & Ketentuan
-                </a> 
-                AeroBlast dan memahami bahwa pembelian ini bersifat final.
-            </span>
-        </label>
+            
+            <label class="snk-container">
+                <input type="checkbox" id="snkAgree">
+                <span>
+                    Saya menyetujui <a href="snk.html" target="_blank" style="color: #38bdf8; text-decoration: underline; font-weight: bold; cursor: pointer;">Syarat & Ketentuan</a> AeroBlast.
+                </span>
+            </label>
 
-        <button class="buy-btn" onclick="prosesBeli()">KONFIRMASI WHATSAPP</button>
-        <button class="buy-btn" style="background: #444; margin-top: 10px;" onclick="closeModal()">BATAL</button>
+            <button class="buy-btn" onclick="prosesBeli()">KONFIRMASI WHATSAPP</button>
+            <button class="buy-btn" style="background: #444; margin-top: 10px;" onclick="closeModal()">BATAL</button>
+        </div>
     </div>
-</div>
 
     <footer class="main-footer">
         <p style="color: #38bdf8; font-weight: bold;">AEROBLAST NETWORK</p>
         <p style="font-size: 0.8em; color: #64748b; margin-top: 10px;">&copy; 2026 Official Store. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        // Data rank dan key tetap sama seperti sebelumnya
-        const rankData = {
-            aviator: { name: "AVIATOR", price: "15.000", cls: "color-aviator", feats: ["Home limit 5", "Warp create limit 5", "/ec & /wb", "1 VIP Key", "1 Legend Key", "1 Aerospace Key", "Aviator kits"] },
-            exostic: { name: "EXOSTIC", price: "30.000", cls: "color-exostic", feats: ["Home limit 10", "Warp create limit 10", "/ec, /wb, /feed", "/recipe, /repair", "/stonecutter", "5 VIP Key", "3 Legend Key", "1 Aerospace Key", "EXOSTIC kits"] },
-            force: { name: "FORCE", price: "50.000", cls: "color-force", feats: ["Home limit 20", "Warp create limit 20", "/ec, /wb, /feed", "/repair, /stonecutter", "/pweather, /ptime, /anvil", "10 VIP Key", "5 Legend Key", "2 Aerospace Key", "FORCE kits"] },
-            xerelion: { name: "XERELION", price: "75.000", cls: "color-xerelion", feats: ["Home limit 50", "Warp create limit 50", "/ec, /wb, /feed, /repair", "/pweather, /ptime, /anvil", "/fly, /heal, /hat, /nick", "/msgtoggle", "15 VIP Key", "10 Legend Key", "2 Aerospace Key", "XERELION kits"] },
-            galatics: { name: "GALATICS", price: "100.000", cls: "color-galatics", feats: ["Home unlimited", "Warp unlimited", "/ec, /wb, /feed, /repair", "/pweather, /ptime, /anvil", "/fly, /heal, /hat, /nick", "/tptoggle, /godmode", "18 VIP Key", "12 Legend Key", "3 Aerospace Key", "GALATICS kits"] }
-        };
-
-        const keyData = {
-            basic: { name: "BASIC KEY", price: "1.000", desc: "Kunci standar untuk memulai petualanganmu!" },
-            vote: { name: "VOTE KEY", price: "2.000", desc: "Dapatkan item menarik hanya dengan mendukung server!" },
-            vip: { name: "VIP KEY", price: "4.000", desc: "Dapatkan tools dan armor yang lebih kuat!" },
-            legend: { name: "LEGEND KEY", price: "8.000", desc: "Dapatkan hadiah legendaris dengan kekuatan menarik!" },
-            aerospace: { name: "AEROSPACE KEY", price: "12.000", desc: "Dapatkan item langka dan kekuatan super besar!" }
-        };
-
-        let activeProduct = null;
-        let selectedPayment = "";
-
-        function switchTab(id, btn) {
-            document.querySelectorAll('.store-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            btn.classList.add('active');
-        }
-
-        const rGrid = document.getElementById('rankGrid');
-        Object.keys(rankData).forEach(k => {
-            const r = rankData[k];
-            rGrid.innerHTML += `<div class="item-card"><div class="item-name ${r.cls}">${r.name}</div><div class="price">Rp ${r.price}</div><div class="feat-list">${r.feats.map(f => `<div>${f}</div>`).join('')}</div><button class="buy-btn" onclick="openCheckout('rank', '${k}')">BELI SEKARANG</button></div>`;
-        });
-
-        const kGrid = document.getElementById('keyGrid');
-        Object.keys(keyData).forEach(k => {
-            const key = keyData[k];
-            kGrid.innerHTML += `<div class="item-card"><div class="item-name color-key">${key.name}</div><div class="price">Rp ${key.price}</div><div style="font-size:0.85em;color:#cbd5e1;margin-bottom:20px;flex-grow:1;">${key.desc}</div><button class="buy-btn" onclick="openCheckout('key', '${k}')">BELI SEKARANG</button></div>`;
-        });
-
-        function selectPay(m, el) {
-            selectedPayment = m;
-            document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-
-        function openCheckout(type, id) {
-            activeProduct = type === 'rank' ? rankData[id] : keyData[id];
-            const titleEl = document.getElementById('modalTitle');
-            titleEl.innerText = "CHECKOUT: " + activeProduct.name;
-            titleEl.className = activeProduct.cls || 'color-key';
-            document.getElementById('checkoutModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('checkoutModal').style.display = 'none';
-            selectedPayment = "";
-            document.getElementById('snkAgree').checked = false;
-            document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
-        }
-
-        function prosesBeli() {
-            const nick = document.getElementById('playerNick').value;
-            const platform = document.getElementById('playerPlatform').value;
-            const agree = document.getElementById('snkAgree').checked;
-            if (!nick || !platform || !selectedPayment || !agree) return alert("Lengkapi data, pilih pembayaran, dan setujui S&K!");
-
-            const msg = `Halo Admin AeroBlast!%0A%0A*PESANAN BARU*%0A- Produk: ${activeProduct.name}%0A- Harga: Rp ${activeProduct.price}%0A- Nickname: ${nick}%0A- Platform: ${platform}%0A- Pembayaran: ${selectedPayment}%0A%0ASaya sudah menyetujui S&K.`;
-            window.open(`https://wa.me/628123731343?text=${msg}`);
-            closeModal();
-        }
-    </script>
+    <script src="store.js"></script>
 </body>
 </html>
