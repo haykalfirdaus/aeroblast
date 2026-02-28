@@ -126,6 +126,7 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .rank-btn { background: #eab308; color: #000; }
 .req-btn { background: #38bdf8; color: #0f172a; }
 .rep-btn { background: #ef4444; }
+.saweria-btn { background: #fa6400; color: white; } /* <--- INI YANG BARU */
 
 /* --- FOOTER & MODAL --- */
 .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
