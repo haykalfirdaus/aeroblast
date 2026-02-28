@@ -74,17 +74,15 @@ function toggleMenu() {
 // COPY TEXT FIX (Centang muncul pas diklik aja)
 function copyText(val, element) {
     navigator.clipboard.writeText(val);
-    const check = element.querySelector('.check-icon');
+    if (navigator.vibrate) navigator.vibrate(50); // Getar halus 50ms
     
-    // Munculkan centang
+    const check = element.querySelector('.check-icon');
     check.style.display = 'inline-block';
     
-    // Sembunyikan lagi setelah 1.5 detik
     setTimeout(() => { 
         check.style.display = 'none'; 
     }, 1500);
 }
-
 // FETCH SERVER STATUS
 fetch('https://api.mcsrvstat.us/2/aeroblast.my.id')
     .then(res => res.json())
