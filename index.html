@@ -210,22 +210,23 @@
         </div>
     </div>
 
-    <div id="repModal" class="modal">
-        <div class="modal-content" style="border-color: #ef4444;">
-            <h3>🚩 REPORT BUG</h3>
-            <textarea id="repText" placeholder="Jelaskan bug..."></textarea>
-            <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
-            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
-        </div>
+    <div id="reqModal" class="modal">
+    <div class="modal-content">
+        <h3>💡 REQUEST FITUR</h3>
+        <textarea id="reqText" placeholder="Tuliskan saran atau ide fitur yang ingin Anda tambahkan di server..."></textarea>
+        <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
+        <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('reqModal')">BATAL</button>
     </div>
+</div>
 
-    <div id="saweriaModal" class="modal">
-        <div class="modal-content" style="border-color: #fa6400;">
-            <h3 style="color: #fa6400; margin-bottom: 15px;">QRIS AEROBLAST</h3>
-            <img src="https://store.aeroblast.my.id/qris.png" alt="QRIS" style="width: 100%; max-width: 250px; display: block; margin: 15px auto; border-radius: 10px;">
-            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
-        </div>
+<div id="repModal" class="modal">
+    <div class="modal-content" style="border-color: #ef4444;">
+        <h3>🚩 REPORT BUG</h3>
+        <textarea id="repText" placeholder="Mohon jelaskan kendala atau bug yang Anda temukan secara detail..."></textarea>
+        <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
+        <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
     </div>
+</div>
 
     <div id="voteModal" class="modal">
         <div class="modal-content" style="border-color: #4ade80;">
