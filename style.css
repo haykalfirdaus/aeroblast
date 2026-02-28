@@ -7,7 +7,7 @@
 }
 
 html, body {
-    height: 100%; /* Penting untuk posisi footer */
+    height: 100%;
 }
 
 body { 
@@ -18,7 +18,7 @@ body {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    padding-top: 100px; /* Jarak untuk navbar fixed */
+    padding-top: 100px;
 }
 
 body::before {
@@ -58,7 +58,7 @@ body::before {
     z-index: 1; 
     position: relative; 
     padding: 0 20px; 
-    flex: 1 0 auto; /* Mendorong footer ke bawah */
+    flex: 1 0 auto; 
 }
 
 section { margin-bottom: 50px; scroll-margin-top: 100px; }
@@ -83,13 +83,6 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
     animation: float 3s ease-in-out infinite;
 }
 
-#status .card:hover {
-    transform: translateY(-20px) scale(1.05) !important; 
-    box-shadow: 0 25px 50px rgba(56, 189, 248, 0.5), 0 0 30px rgba(56, 189, 248, 0.3);
-    border-color: #7dd3fc;
-    z-index: 100;
-}
-
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -99,10 +92,18 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
     display: flex; justify-content: space-between; margin: 10px 0; 
     padding: 15px; border-radius: 12px; transition: 0.3s;
     border: 1px solid rgba(56, 189, 248, 0.3); background: rgba(15, 23, 42, 0.8);
-    cursor: pointer;
+    cursor: pointer; position: relative;
 }
 
 .info-item:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: scale(1.02); }
+
+/* --- FIX CENTANG DISALIN --- */
+.check-icon { 
+    display: none; /* Sembunyi secara default */
+    color: #4ade80; 
+    font-weight: bold; 
+    font-size: 0.85em;
+}
 
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
 .stat-bar { 
@@ -115,20 +116,15 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 /* --- 5. RULES & FEATURES --- */
 .rule-category { margin-bottom: 12px; border-radius: 12px; overflow: hidden; background: rgba(15, 23, 42, 0.5); transition: 0.4s; border: 1px solid rgba(255,255,255,0.1); }
 .rule-category:hover { transform: translateY(-5px); }
-.rule-category:nth-of-type(1):hover { border-color: #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
-.rule-category:nth-of-type(2):hover { border-color: #4ade80; box-shadow: 0 0 15px rgba(74, 222, 128, 0.4); }
-.rule-category:nth-of-type(3):hover { border-color: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-
 .rule-cat-title { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; }
 .rule-content { display: none; padding: 15px; background: rgba(0, 0, 0, 0.3); text-align: left; font-size: 0.85em; }
 
 .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .feature-item { background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.2); transition: 0.3s; font-size: 0.85em; }
-.feature-item:hover { transform: translateY(-5px); border-color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
 
-/* --- 6. MODAL SYSTEM (PERBAIKAN) --- */
+/* --- 6. MODAL SYSTEM (FIX DISPLAY) --- */
 .modal {
-    display: none; /* Sembunyi secara default */
+    display: none !important; /* Paksa sembunyi saat load */
     position: fixed; 
     z-index: 2000; 
     left: 0; top: 0; width: 100%; height: 100%;
@@ -152,7 +148,6 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 /* --- 7. BUTTONS --- */
 .btn { display: block; width: 100%; color: white; padding: 16px; border-radius: 12px; font-weight: 700; margin-top: 10px; border: none; cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; }
 .btn:hover { filter: brightness(1.2); transform: scale(1.02); }
-
 .discord-btn { background: #5865f2; }
 .wa-btn { background: #25d366; }
 .rank-btn { background: #eab308; color: #000; }
@@ -170,7 +165,6 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
     width: 100%;
 }
 
-.footer-links-list { margin-bottom: 15px; color: #334155; }
 .footer-links-list a, .footer-links-list span {
     color: #94a3b8 !important;
     text-decoration: none;
@@ -188,9 +182,4 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .aeroblast-glow {
     color: #38bdf8;
     font-weight: bold;
-    transition: 0.5s;
-}
-
-.aeroblast-glow:hover {
-    text-shadow: 0 0 15px #38bdf8;
 }
