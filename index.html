@@ -100,7 +100,7 @@
                         <p class="punishment">⚠️ SANKSI: Mute / Ban Kekal</p>
                     </div>
                 </div>
-                </div>
+            </div>
         </section>
 
         <section id="features">
@@ -128,13 +128,12 @@
         </section>
 
         <section id="rank">
-    <h3 class="section-title">Support Server</h3>
-    <div class="card">
-        <a href="store.html" class="btn rank-btn">👑 DAPATKAN RANK & ITEM</a>
-        
-        <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE DONATE US</button>
-    </div>
-</section>
+            <h3 class="section-title">Support Server</h3>
+            <div class="card">
+                <a href="store.html" class="btn rank-btn">👑 DAPATKAN RANK & ITEM</a>
+                <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE US (QRIS)</button>
+            </div>
+        </section>
     </div>
 
     <footer class="main-footer">
@@ -162,9 +161,9 @@
 
     <div id="snkModal" class="modal">
         <div class="modal-content" style="text-align: left;">
-            <h3 style="color: #38bdf8; text-align: center;">SYARAT & KETENTUAN</h3>
-            <p>1. Builder Rank: Wajib membangun bangunan besar & bagus.</p>
-            <p>2. Media Rank: Minimal 1k followers TikTok/YouTube.</p>
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 15px;">SYARAT & KETENTUAN</h3>
+            <p style="margin-bottom: 10px;"><b>1. Builder Rank:</b> Wajib membangun bangunan yang besar & bagus secara detail.</p>
+            <p style="margin-bottom: 20px;"><b>2. Media Rank:</b> Minimal memiliki 1.000 followers di TikTok atau YouTube.</p>
             <button class="btn" style="background:#444;" onclick="closeModal('snkModal')">MENGERTI</button>
         </div>
     </div>
@@ -172,59 +171,39 @@
     <div id="reqModal" class="modal">
         <div class="modal-content">
             <h3>💡 REQUEST FITUR</h3>
-            <textarea id="reqText" placeholder="Punya ide fitur baru?"></textarea>
+            <textarea id="reqText" placeholder="Punya ide fitur baru?" style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #38bdf8;"></textarea>
             <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
-            <button class="btn" style="background:#444;" onclick="closeModal('reqModal')">BATAL</button>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('reqModal')">BATAL</button>
         </div>
     </div>
 
     <div id="repModal" class="modal">
         <div class="modal-content" style="border-color: #ef4444;">
             <h3>🚩 REPORT BUG/PLAYER</h3>
-            <textarea id="repText" placeholder="Jelaskan bug atau player..."></textarea>
+            <textarea id="repText" placeholder="Jelaskan bug atau player..." style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #ef4444;"></textarea>
             <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
-            <button class="btn" style="background:#444;" onclick="closeModal('repModal')">BATAL</button>
-        </div>
-    </div>
-
-    <div id="rankModal" class="modal">
-        <div class="modal-content" style="border-color: #eab308;">
-            <div id="rankList">
-                <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
-                <div class="rank-option" onclick="showRankDetail('aviator')"><span>✨ AVIATOR</span><b>15k</b></div>
-                <div class="rank-option" onclick="showRankDetail('exostic')"><span>🔥 EXOSTIC</span><b>30k</b></div>
-                <div class="rank-option" onclick="showRankDetail('force')"><span>💎 FORCE</span><b>50k</b></div>
-                <div class="rank-option" onclick="showRankDetail('xerelion')"><span>🛡️ XERELION</span><b>75k</b></div>
-                <div class="rank-option" onclick="showRankDetail('galatics')"><span>👑 GALATICS</span><b>100k</b></div>
-                <button class="btn" style="background:#444;" onclick="closeModal('rankModal')">TUTUP</button>
-            </div>
-            <div id="rankDetail" style="display:none; text-align: left;">
-                <span onclick="backToRankList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
-                <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
-                <div id="detailFeatures"></div>
-                <a href="#" id="rankWaLink" target="_blank" class="btn" style="background: #25d366;">🛒 BELI SEKARANG</a>
-            </div>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
         </div>
     </div>
 
     <div id="saweriaModal" class="modal">
         <div class="modal-content" style="border-color: #fa6400;">
-            <h3 style="color: #fa6400;">QRIS AEROBLAST</h3>
-            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png" class="qris-img">
+            <h3 style="color: #fa6400; margin-bottom: 15px;">QRIS AEROBLAST</h3>
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
             <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
         </div>
     </div>
 
     <div id="voteModal" class="modal">
         <div class="modal-content" style="border-color: #4ade80;">
-            <h3 style="color: #4ade80;">🎁 HADIAH VOTE</h3>
-            <ul class="rule-list">
+            <h3 style="color: #4ade80; margin-bottom: 15px;">🎁 HADIAH VOTE</h3>
+            <ul class="rule-list" style="text-align: left; margin-bottom: 20px;">
                 <li>💰 15.000 Money</li>
                 <li>🗳️ 1x Vote Key</li>
                 <li>📦 5x Basic Key</li>
             </ul>
             <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18;">GAS VOTE SEKARANG</a>
-            <button class="btn" style="background:#444;" onclick="closeModal('voteModal')">TUTUP</button>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('voteModal')">TUTUP</button>
         </div>
     </div>
 
