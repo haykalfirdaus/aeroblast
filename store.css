@@ -2,7 +2,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
 body { 
-    background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg') no-repeat center center fixed;
+    /* Link background sudah diganti ke yang baru */
+    background: url('https://store.aeroblast.my.id/background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #e0f2fe; font-family: 'Roboto', sans-serif; 
     display: flex; flex-direction: column; align-items: center; 
@@ -11,6 +12,7 @@ body {
 
 body::before {
     content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    /* Layer gelap 85% biar tulisan dan card tetep kebaca jelas */
     background: rgba(5, 11, 24, 0.85); z-index: -1;
 }
 
