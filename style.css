@@ -126,8 +126,7 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .rank-btn { background: #eab308; color: #000; }
 .req-btn { background: #38bdf8; color: #0f172a; }
 .rep-btn { background: #ef4444; }
-.saweria-btn { background: #fa6400; color: white; } /* <--- INI YANG BARU */
-
+.saweria-btn { background: #ff8c00; color: white; }
 /* --- FOOTER & MODAL --- */
 .main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
