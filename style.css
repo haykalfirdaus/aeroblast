@@ -231,6 +231,7 @@ section {
     gap: 12px; 
 }
 
+/* Update Feature Item dengan Efek Glow & Hover */
 .feature-item { 
     background: rgba(15, 23, 42, 0.6); 
     padding: 15px; 
@@ -238,6 +239,20 @@ section {
     border: 1px solid rgba(56, 189, 248, 0.2); 
     font-size: 0.85em; 
     text-align: center;
+    transition: all 0.3s ease; /* Biar transisi halus */
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek pas kursor nempel (Hover) */
+.feature-item:hover {
+    background: rgba(56, 189, 248, 0.15); /* Background agak terang dikit */
+    border-color: #38bdf8; /* Border jadi biru terang */
+    transform: translateY(-5px); /* Ngangkat dikit */
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); /* Efek GLOW di luar kotak */
+    color: #fff; /* Tulisan jadi putih bersih */
+    text-shadow: 0 0 5px rgba(56, 189, 248, 0.8); /* Glow di tulisannya juga */
 }
 
 .btn { 
