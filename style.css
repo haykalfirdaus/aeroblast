@@ -64,14 +64,60 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .stat-bar b { color: #38bdf8; font-size: 0.8em; }
 
 /* --- 5. RULES & FEATURES --- */
-.rule-category { margin-bottom: 12px; border-radius: 12px; overflow: hidden; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+.rule-category { 
+    margin-bottom: 12px; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    background: rgba(15, 23, 42, 0.5); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    transition: 0.3s; 
+}
+
 .rule-category:hover { border-color: #38bdf8; }
+
+/* EFEK KHUSUS RULES 3 (TEKNIKAL) */
+.rule-category:nth-child(3):hover {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
 .rule-cat-title { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; }
+
+/* Animasi Putar Ikon Gear di Rules 3 */
+.rule-category:nth-child(3) .rule-cat-title:hover span:first-child {
+    display: inline-block;
+    animation: rotateGear 2s linear infinite;
+}
+
+@keyframes rotateGear {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .rule-content { display: none; padding: 15px; background: rgba(0, 0, 0, 0.3); text-align: left; font-size: 0.85em; }
 
-.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.feature-item { background: rgba(15, 23, 42, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.2); }
+/* Efek List Rules 3 */
+.rule-category:nth-child(3) .rule-list li:hover {
+    color: #f87171;
+    transform: translateX(8px);
+    transition: 0.3s;
+}
 
+.feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.feature-item { 
+    background: rgba(15, 23, 42, 0.6); 
+    padding: 15px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(56, 189, 248, 0.2); 
+    transition: 0.3s;
+}
+
+/* Tambahan: Efek hover buat feature biar makin cakep */
+.feature-item:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-color: #38bdf8;
+    transform: scale(1.05);
+}
 /* --- 6. MODAL SYSTEM --- */
 .modal {
     display: none; /* Jangan pakai important di sini */
