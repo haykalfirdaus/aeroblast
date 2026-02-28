@@ -138,3 +138,91 @@ textarea::-webkit-scrollbar-thumb {
     background: #38bdf8;
     border-radius: 10px;
 }
+
+/* --- 10. ANIMATIONS & COOL EFFECTS --- */
+
+/* Efek Glow Bernapas untuk Logo */
+.logo {
+    animation: glowPulse 3s infinite ease-in-out;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5)); 
+        transform: scale(1); 
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.9)); 
+        transform: scale(1.05); 
+    }
+}
+
+/* Animasi Hover Navigasi (Garis Bawah Glow) */
+.nav-links a, .nav-links span {
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.nav-links a::after, .nav-links span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 50%;
+    background: #38bdf8;
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px #38bdf8;
+}
+
+.nav-links a:hover::after, .nav-links span:hover::after {
+    width: 70%; /* Panjang garis pas di-hover */
+}
+
+.nav-links a:hover, .nav-links span:hover {
+    color: #38bdf8 !important;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* Animasi Ikon Menu 3 Bar */
+.menu-icon {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    padding: 5px;
+}
+
+.menu-icon:hover {
+    transform: scale(1.2) rotate(90deg);
+    color: #38bdf8;
+    text-shadow: 0 0 10px #38bdf8;
+}
+
+/* Efek Glow pada Card saat di-hover */
+.card:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Efek Kilatan pada Tombol */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
