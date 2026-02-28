@@ -6,13 +6,19 @@ const rankData = {
     galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home unlimited", "/godmode", "/fly", "18 VIP key", "GALATICS kits"] }
 };
 
-// MODAL SYSTEM
+// MODAL SYSTEM (ANTI BUG)
 function openModal(id) { 
-    document.getElementById(id).style.display = 'flex'; 
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.setProperty('display', 'flex', 'important');
+    }
 }
 
 function closeModal(id) { 
-    document.getElementById(id).style.display = 'none'; 
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.setProperty('display', 'none', 'important');
+    }
     if(id === 'rankModal') backToRankList(); 
 }
 
