@@ -1,0 +1,92 @@
+/* CSS KHUSUS HALAMAN STORE */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+body { 
+    background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0f2fe; font-family: 'Roboto', sans-serif; 
+    display: flex; flex-direction: column; align-items: center; 
+    min-height: 100vh; padding: 100px 0 0;
+}
+
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(5, 11, 24, 0.85); z-index: -1;
+}
+
+.navbar {
+    position: fixed; top: 0; width: 100%; 
+    background: rgba(15, 23, 42, 0.95);
+    padding: 15px 25px; display: flex; 
+    justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #38bdf8; z-index: 1000; 
+    backdrop-filter: blur(10px);
+}
+
+.nav-logo { font-weight: 700; color: #38bdf8; font-size: 1.2em; text-shadow: 0 0 10px #38bdf8; cursor: pointer; text-decoration: none; }
+
+.container { width: 100%; max-width: 1100px; z-index: 1; padding: 0 20px; flex: 1; }
+
+.tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+
+.tab-btn { 
+    padding: 12px 25px; background: rgba(15, 23, 42, 0.8); border: 2px solid #38bdf8; 
+    color: #38bdf8; border-radius: 50px; cursor: pointer; font-weight: 700; transition: 0.3s;
+}
+
+.tab-btn.active { background: #38bdf8; color: #0f172a; box-shadow: 0 0 15px #38bdf8; }
+
+.store-section { display: none; }
+.store-section.active { display: block; }
+
+.grid-store { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 25px; margin-bottom: 50px;
+}
+
+.item-card { 
+    background: rgba(15, 23, 42, 0.85); padding: 25px; border-radius: 20px; 
+    text-align: center; border: 2px solid rgba(56, 189, 248, 0.3); 
+    backdrop-filter: blur(5px); transition: 0.3s;
+    display: flex; flex-direction: column;
+}
+
+.item-card:hover { border-color: #ffffff; transform: translateY(-5px); }
+
+.item-name { font-size: 1.6em; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+.price { font-size: 1.4em; font-weight: bold; color: #4ade80; margin-bottom: 15px; }
+
+.color-aviator { color: #a3ffac; }
+.color-exostic { color: #3b82f6; }
+.color-force { color: #facc15; }
+.color-xerelion { color: #ef4444; }
+.color-galatics { color: #d8b4fe; }
+.color-key { color: #38bdf8; }
+
+.feat-list { text-align: left; margin-bottom: 20px; font-size: 0.85em; color: #cbd5e1; flex-grow: 1; }
+.feat-list div { margin-bottom: 4px; padding-left: 22px; position: relative; }
+.feat-list div::before { content: "✔"; position: absolute; left: 0; color: #4ade80; font-weight: bold; }
+
+.buy-btn { 
+    display: block; width: 100%; background: #25d366; color: white; 
+    padding: 14px; border-radius: 12px; 
+    font-weight: 700; cursor: pointer; border: none; transition: 0.3s;
+}
+
+.buy-btn:hover { filter: brightness(1.2); }
+
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); padding: 20px; }
+.modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 100%; max-width: 450px; padding: 25px; max-height: 90vh; overflow-y: auto; }
+
+input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #38bdf8; background: #1e293b; color: white; margin-bottom: 15px; outline: none; }
+
+.payment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+.pay-option { background: white; border-radius: 8px; padding: 5px; cursor: pointer; border: 3px solid transparent; height: 45px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.pay-option img { width: 100%; height: auto; object-fit: contain; }
+.pay-option.selected { border-color: #eab308; background: #fffbeb; }
+
+.snk-container { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85em; margin-bottom: 20px; color: #cbd5e1; cursor: pointer; text-align: left; }
+.snk-container input { width: auto; margin-top: 3px; }
+
+.main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
