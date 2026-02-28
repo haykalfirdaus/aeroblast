@@ -1,4 +1,91 @@
-<section id="rules">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroBlast | Minecraft Survival Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo" onclick="window.location.reload()">AEROBLAST</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#status" onclick="toggleMenu()">Status</a>
+            <a href="#special-ranks" onclick="toggleMenu()">Special Ranks</a>
+            <a href="#rules" onclick="toggleMenu()">Rules</a>
+            <a href="#features" onclick="toggleMenu()">Features</a>
+            <a href="#community" onclick="toggleMenu()">Community</a>
+            <span onclick="openModal('reqModal'); toggleMenu()">Request Feature</span>
+            <span onclick="openModal('repModal'); toggleMenu()">Report Bug</span>
+            <a href="#rank" onclick="toggleMenu()">Support</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="status">
+            <div class="card">
+                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg" class="logo">
+                <h2>SERVER STATUS</h2>
+                <div class="info-box">
+                    <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
+                        <span>IP: aeroblast.my.id</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                    <div class="info-item" onclick="copyText('25235', this)">
+                        <span>Port: 25235</span>
+                        <span class="check-icon">✓ Disalin</span>
+                    </div>
+                </div>
+                
+                <button class="btn rank-btn" style="margin-bottom: 20px; background: #4ade80; color: #050b18;" onclick="openModal('voteModal')">
+                    📩 VOTE SERVER (DAPAT HADIAH)
+                </button>
+
+                <div class="stat-grid">
+                    <div class="stat-bar"><b>Status</b><p id="s-status">...</p></div>
+                    <div class="stat-bar"><b>Online</b><p id="s-players">-/-</p></div>
+                    <div class="stat-bar"><b>Version</b><p id="s-version">-</p></div>
+                    <div class="stat-bar"><b>TPS</b><p id="s-tps">20.0</p></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button class="btn req-btn" style="font-size: 0.8em;" onclick="openModal('reqModal')">💡 REQUEST</button>
+                    <button class="btn rep-btn" style="font-size: 0.8em;" onclick="openModal('repModal')">🚩 REPORT</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="special-ranks">
+            <h3 class="section-title">Special Ranks</h3>
+            <div class="card" style="text-align: left;">
+                <p onclick="openModal('snkModal')" style="font-size: 0.85em; color: #38bdf8; margin-bottom: 15px; font-style: italic; cursor: pointer; text-decoration: underline;">
+                    Dapatkan rank khusus (S&K berlaku - Klik di sini)
+                </p>
+                
+                <div style="margin-bottom: 20px; border-bottom: 1px dashed rgba(56, 189, 248, 0.2); padding-bottom: 15px;">
+                    <h4 style="color: #eab308; margin-bottom: 10px;">✨ BUILDER RANK</h4>
+                    <ul class="rule-list" style="margin-bottom: 10px;">
+                        <li>Prefix Eksklusif [BUILDER]</li>
+                        <li>Fitur Fly di area claim</li>
+                    </ul>
+                    <button class="btn req-btn" style="padding: 8px; font-size: 0.8em; width: auto;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Builder%20Rank')">DAFTAR BUILDER</button>
+                </div>
+
+                <div>
+                    <h4 style="color: #eab308; margin-bottom: 10px;">✨ MEDIA RANK</h4>
+                    <ul class="rule-list" style="margin-bottom: 10px;">
+                        <li>Prefix Eksklusif [MEDIA]</li>
+                        <li>Akses /fly (Cinematic)</li>
+                        <li>Izin Share Link</li>
+                    </ul>
+                    <button class="btn req-btn" style="padding: 8px; font-size: 0.8em; width: auto;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Media%20Rank')">DAFTAR MEDIA</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="rules">
             <h3 class="section-title">Server Rules</h3>
             <div class="card rules-card">
                 <div class="rule-category">
@@ -13,7 +100,6 @@
                         <p class="punishment">⚠️ SANKSI: Mute / Ban Kekal</p>
                     </div>
                 </div>
-                
                 <div class="rule-category">
                     <div class="rule-cat-title" onclick="toggleRule(this)"><span>🌳 2. SURVIVAL</span> <span>▼</span></div>
                     <div class="rule-content">
@@ -26,7 +112,6 @@
                         <p class="punishment">⚠️ SANKSI: Jail / Ban</p>
                     </div>
                 </div>
-
                 <div class="rule-category">
                     <div class="rule-cat-title" onclick="toggleRule(this)"><span>⚙️ 3. TEKNIKAL</span> <span>▼</span></div>
                     <div class="rule-content">
@@ -41,3 +126,111 @@
                 </div>
             </div>
         </section>
+
+        <section id="features">
+            <h3 class="section-title">Server Features</h3>
+            <div class="card">
+                <div class="feature-grid">
+                    <div class="feature-item">🛒 Shop & Auction</div>
+                    <div class="feature-item">👾 Smart Spawner</div>
+                    <div class="feature-item">💼 Jobs System</div>
+                    <div class="feature-item">📜 Epic Quests</div>
+                    <div class="feature-item">🛡️ Claim Land</div>
+                    <div class="feature-item">🎁 Free Rank</div>
+                    <div class="feature-item">🧹 Clear Lag</div>
+                    <div class="feature-item">⛏️ Mining Simulator</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community">
+            <h3 class="section-title">Community</h3>
+            <div class="card">
+                <a href="https://discord.gg/ZfyEuq72sg" target="_blank" class="btn discord-btn">JOIN DISCORD</a>
+                <a href="https://chat.whatsapp.com/F1d5WMvuuiiGGhpPZdAI36" target="_blank" class="btn wa-btn">JOIN WHATSAPP</a>
+            </div>
+        </section>
+
+        <section id="rank">
+            <h3 class="section-title">Support Server</h3>
+            <div class="card">
+                <a href="store.html" class="btn rank-btn">👑 DAPATKAN RANK & ITEM</a>
+                <button class="btn saweria-btn" style="margin-top: 10px;" onclick="openModal('saweriaModal')">💸 DONATE US (QRIS)</button>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 style="font-weight: 700;">AEROBLAST</h4>
+                <p>Server Minecraft Survival Indonesia terbaik dengan fitur unik dan komunitas yang solid.</p>
+            </div>
+            <div class="footer-section">
+                <h4>NAVIGASI</h4>
+                <a href="#status">Status Server</a>
+                <a href="#rules">Peraturan</a>
+                <a href="#features">Fitur Utama</a>
+            </div>
+            <div class="footer-section">
+                <h4>LEGAL</h4>
+                <a href="snk.html">Syarat & Ketentuan</a>
+                <a href="https://wa.me/628123731343">Hubungi Admin</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AeroBlast Network. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div id="snkModal" class="modal">
+        <div class="modal-content" style="text-align: left;">
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 15px;">SYARAT & KETENTUAN</h3>
+            <p style="margin-bottom: 10px;"><b>1. Builder Rank:</b> Wajib membangun bangunan yang besar & bagus secara detail.</p>
+            <p style="margin-bottom: 20px;"><b>2. Media Rank:</b> Minimal memiliki 1.000 followers di TikTok atau YouTube.</p>
+            <button class="btn" style="background:#444;" onclick="closeModal('snkModal')">MENGERTI</button>
+        </div>
+    </div>
+
+    <div id="reqModal" class="modal">
+        <div class="modal-content">
+            <h3>💡 REQUEST FITUR</h3>
+            <textarea id="reqText" placeholder="Punya ide fitur baru?" style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #38bdf8; outline: none;"></textarea>
+            <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('reqModal')">BATAL</button>
+        </div>
+    </div>
+
+    <div id="repModal" class="modal">
+        <div class="modal-content" style="border-color: #ef4444;">
+            <h3>🚩 REPORT BUG/PLAYER</h3>
+            <textarea id="repText" placeholder="Jelaskan bug atau player..." style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #ef4444; outline: none;"></textarea>
+            <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
+        </div>
+    </div>
+
+    <div id="saweriaModal" class="modal">
+        <div class="modal-content" style="border-color: #fa6400;">
+            <h3 style="color: #fa6400; margin-bottom: 15px;">QRIS AEROBLAST</h3>
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
+            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
+        </div>
+    </div>
+
+    <div id="voteModal" class="modal">
+        <div class="modal-content" style="border-color: #4ade80;">
+            <h3 style="color: #4ade80; margin-bottom: 15px;">🎁 HADIAH VOTE</h3>
+            <ul class="rule-list" style="text-align: left; margin-bottom: 20px;">
+                <li>💰 15.000 Money</li>
+                <li>🗳️ 1x Vote Key</li>
+                <li>📦 5x Basic Key</li>
+            </ul>
+            <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18;">GAS VOTE SEKARANG</a>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('voteModal')">TUTUP</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
