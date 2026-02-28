@@ -22,15 +22,24 @@ function closeModal(id) {
     if(id === 'rankModal') backToRankList(); 
 }
 
-// RULES ACCORDION
+// RULES ACCORDION (WITH ANIMATION)
 function toggleRule(el) {
-    const content = el.nextElementSibling;
-    const arrow = el.querySelector('span:last-child');
+    const category = el.parentElement; // Ambil kotak rules-nya
+    const content = el.nextElementSibling; // Ambil isinya
+    
+    // Cek apakah sekarang lagi kebuka
     const isOpen = content.style.display === 'block';
-    content.style.display = isOpen ? 'none' : 'block';
-    arrow.innerText = isOpen ? '▼' : '▲';
-}
+    
+    // Tutup semua rules lain dulu (biar rapi, opsional)
+    document.querySelectorAll('.rule-content').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('.rule-category').forEach(cat => cat.classList.remove('active'));
 
+    // Kalau sebelumnya tutup, sekarang buka
+    if (!isOpen) {
+        content.style.display = 'block';
+        category.classList.add('active'); // Ini buat trigger panah muter & glow di CSS
+    }
+}
 // RANK DETAIL SYSTEM
 function showRankDetail(id) {
     const rank = rankData[id];
