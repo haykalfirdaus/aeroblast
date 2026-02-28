@@ -60,7 +60,7 @@
         <section id="special-ranks">
             <h3 class="section-title">Special Ranks</h3>
             <div class="card" style="text-align: left;">
-                <p onclick="openModal('snkModal')" style="font-size: 0.85+em; color: #38bdf8; margin-bottom: 20px; font-style: italic; cursor: pointer; text-decoration: underline; display: flex; align-items: center; gap: 5px;">
+                <p onclick="openModal('snkModal')" style="font-size: 0.85em; color: #38bdf8; margin-bottom: 20px; font-style: italic; cursor: pointer; text-decoration: underline; display: flex; align-items: center; gap: 5px;">
                     <span>ℹ️</span> Info Detail S&K Rank (Klik di sini)
                 </p>
                 
@@ -94,6 +94,7 @@
                 </div>
             </div>
         </section>
+
         <section id="rules">
             <h3 class="section-title">Server Rules</h3>
             <div class="card rules-card">
@@ -194,37 +195,15 @@
 
     <div id="snkModal" class="modal">
         <div class="modal-content" style="text-align: left; border-color: #38bdf8;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
-                <span style="font-size: 1.5em; color: #38bdf8;">📜</span>
-                <h3 style="color: #38bdf8; text-align: center; margin: 0; letter-spacing: 1px;">SYARAT & KETENTUAN RANK</h3>
+            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 20px;">📜 S&K RANK</h3>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 10px;">
+                <h4 style="color: #eab308;">🏗️ Builder:</h4>
+                <p style="font-size: 0.85em;">Playtime 3 jam & Build megah.</p>
             </div>
-            
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(234, 179, 8, 0.2);">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                    <span style="color: #eab308; font-size: 1.2em;">🏗️</span>
-                    <h4 style="color: #eab308; margin: 0;">Syarat BUILDER RANK:</h4>
-                </div>
-                <ul class="rule-list" style="padding-left: 5px; font-size: 0.85em; color: #cbd5e1;">
-                    <li>⭐ Wajib aktif bermain minimal <b>3 jam</b>.</li>
-                    <li>⭐ Hasil build harus <b>bagus, detail, dan besar</b> (megah).</li>
-                    <li>⭐ Bersedia membantu build event/spawn jika diminta Admin.</li>
-                </ul>
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px;">
+                <h4 style="color: #38bdf8;">🎬 Media:</h4>
+                <p style="font-size: 0.85em;">1.000 Followers & Promosi rutin.</p>
             </div>
-
-            <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.5), transparent); margin: 25px 0;"></div>
-
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.2);">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                    <span style="color: #38bdf8; font-size: 1.2em;">🎬</span>
-                    <h4 style="color: #38bdf8; margin: 0;">Syarat MEDIA RANK:</h4>
-                </div>
-                <ul class="rule-list" style="padding-left: 5px; font-size: 0.85em; color: #cbd5e1;">
-                    <li>⭐ Minimal memiliki <b>1.000 followers</b> (TikTok atau YouTube).</li>
-                    <li>⭐ Wajib upload video/live konten <b>di AeroBlast</b> secara berkala.</li>
-                    <li>⭐ Konten harus sopan dan mempromosikan server dengan baik.</li>
-                </ul>
-            </div>
-
             <button class="btn" style="background:#444; margin-top: 15px;" onclick="closeModal('snkModal')">MENGERTI</button>
         </div>
     </div>
@@ -232,7 +211,7 @@
     <div id="reqModal" class="modal">
         <div class="modal-content">
             <h3>💡 REQUEST FITUR</h3>
-            <textarea id="reqText" placeholder="Punya ide fitur baru?" style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #38bdf8; outline: none;"></textarea>
+            <textarea id="reqText" placeholder="Punya ide fitur baru?"></textarea>
             <button class="btn wa-btn" onclick="sendWA('req')">KIRIM KE WHATSAPP</button>
             <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('reqModal')">BATAL</button>
         </div>
@@ -240,8 +219,8 @@
 
     <div id="repModal" class="modal">
         <div class="modal-content" style="border-color: #ef4444;">
-            <h3>🚩 REPORT BUG/PLAYER</h3>
-            <textarea id="repText" placeholder="Jelaskan bug atau player..." style="width: 100%; height: 100px; margin: 15px 0; border-radius: 8px; padding: 10px; background: #1e293b; color: white; border: 1px solid #ef4444; outline: none;"></textarea>
+            <h3>🚩 REPORT BUG</h3>
+            <textarea id="repText" placeholder="Jelaskan bug..."></textarea>
             <button class="btn rep-btn" onclick="sendWA('rep')">KIRIM LAPORAN</button>
             <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('repModal')">BATAL</button>
         </div>
@@ -250,21 +229,19 @@
     <div id="saweriaModal" class="modal">
         <div class="modal-content" style="border-color: #fa6400;">
             <h3 style="color: #fa6400; margin-bottom: 15px;">QRIS AEROBLAST</h3>
-            <img src="https://store.aeroblast.my.id/qris.png" alt="QRIS AeroBlast" style="width: 100%; max-width: 300px; display: block; margin: 15px auto; border-radius: 10px; border: 2px solid #fa6400;">
-            <p style="font-size: 0.8em; color: #ccc;">Scan untuk donasi via All Payment</p>
-            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('saweriaModal')">TUTUP</button>
+            <img src="https://store.aeroblast.my.id/qris.png" alt="QRIS" style="width: 100%; max-width: 250px; display: block; margin: 15px auto; border-radius: 10px;">
+            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
         </div>
     </div>
 
     <div id="voteModal" class="modal">
         <div class="modal-content" style="border-color: #4ade80;">
             <h3 style="color: #4ade80; margin-bottom: 15px;">🎁 HADIAH VOTE</h3>
-            <ul class="rule-list" style="text-align: left; margin-bottom: 20px;">
-                <li>💰 15.000 Money</li>
-                <li>🗳️ 1x Vote Key</li>
+            <ul class="rule-list" style="margin-bottom: 20px;">
+                <li>💰 15.000 Money & 1x Vote Key</li>
                 <li>📦 5x Basic Key</li>
             </ul>
-            <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18;">GAS VOTE SEKARANG</a>
+            <a href="https://minecraft-mp.com/server-s353091" target="_blank" class="btn" style="background: #4ade80; color: #050b18;">VOTE SEKARANG</a>
             <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('voteModal')">TUTUP</button>
         </div>
     </div>
