@@ -127,8 +127,46 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .req-btn { background: #38bdf8; color: #0f172a; }
 .rep-btn { background: #ef4444; }
 .saweria-btn { background: #ff8c00; color: white; }
-/* --- FOOTER & MODAL --- */
-.main-footer { background: rgba(15, 23, 42, 0.98); border-top: 3px solid #38bdf8; padding: 40px 20px; width: 100%; margin-top: 50px; text-align: center; }
-.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
-.modal-content { background: #0f172a; border: 2px solid #38bdf8; padding: 25px; border-radius: 20px; width: 90%; max-width: 400px; }
-textarea { width: 100%; height: 100px; margin-top: 10px; background: #1e293b; color: #fff; border: 1px solid #38bdf8; padding: 10px; border-radius: 10px; }
+/* --- FOOTER SIMPEL & PROPORSIONAL --- */
+.main-footer { 
+    background: rgba(10, 15, 28, 0.98); 
+    border-top: 2px solid #38bdf8; 
+    padding: 30px 20px 15px; 
+    width: 100%; 
+    margin-top: 40px; 
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 20px;
+    text-align: center;
+}
+
+.footer-section { flex: 1; min-width: 150px; }
+.footer-section h4 { color: #38bdf8; font-size: 0.9em; margin-bottom: 10px; }
+.footer-section p { font-size: 0.75em; color: #94a3b8; line-height: 1.4; }
+
+.footer-links { display: flex; flex-direction: column; gap: 5px; }
+
+/* WARNA ABU-ABU UNTUK LINK */
+.footer-section a { 
+    color: #94a3b8 !important; 
+    text-decoration: none; 
+    font-size: 0.8em; 
+    transition: 0.3s;
+}
+
+.footer-section a:hover { color: #38bdf8 !important; }
+
+.footer-bottom { 
+    margin-top: 20px; 
+    padding-top: 15px; 
+    border-top: 1px solid rgba(255,255,255,0.05); 
+    font-size: 0.7em; 
+    color: #64748b; 
+    text-align: center;
+}
