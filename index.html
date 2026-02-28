@@ -9,12 +9,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body { 
-            /* Gambar Background diperbarui */
-            background: url('https://images.unsplash.com/photo-1615592389070-bcc97e05ad01?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background: url('https://media.discordapp.net/attachments/1459108024151969913/1476577171999948821/Minecraft_Wallpaper_4k_Pc_-_1024x576_Wallpaper_HD_-_WallpaperTip.jpg?ex=69a1a127&is=69a04fa7&hm=0e4942dc94a18e0e96f763eeb99d7130459e4773173e27acd2c1da24ede647df&=&format=webp') no-repeat center center fixed;
             background-size: cover;
             color: #e0f2fe; font-family: 'Roboto', sans-serif; 
             display: flex; flex-direction: column; align-items: center; 
-            min-height: 100vh; padding: 100px 0 0; 
+            min-height: 100vh; padding: 100px 0 0; /* Padding bawah dihapus karena pakai footer */
         }
 
         body::before {
@@ -63,7 +62,7 @@
         .card:hover { border-color: #38bdf8; }
         .section-title { color: #38bdf8; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; object-fit: cover; }
+        .logo { width: 100px; height: 100px; border-radius: 15px; margin-bottom: 15px; border: 3px solid #38bdf8; }
         .info-box { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 12px; margin-bottom: 20px;}
         .info-item { 
             display: flex; justify-content: space-between; margin: 8px 0; font-size: 0.9em; 
@@ -107,6 +106,7 @@
         .req-btn { background: #38bdf8; color: #0f172a; }
         .rep-btn { background: #ef4444; }
 
+        /* FOOTER STYLES */
         .main-footer {
             background: rgba(15, 23, 42, 0.98);
             border-top: 3px solid #38bdf8;
@@ -128,6 +128,7 @@
         .footer-section a:hover { color: #38bdf8; transform: translateX(5px); }
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75em; color: #64748b; }
 
+        /* MODAL STYLES */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .modal-content { background: #0f172a; border: 3px solid #38bdf8; border-radius: 20px; width: 90%; max-width: 450px; padding: 25px; text-align: center; max-height: 85vh; overflow-y: auto; }
         .rank-option { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; margin: 10px 0; display: flex; justify-content: space-between; cursor: pointer; border: 1px solid rgba(234, 179, 8, 0.2); transition: 0.3s; }
@@ -156,7 +157,7 @@
     <div class="container">
         <section id="status">
             <div class="card">
-                <img src="https://api.mc-heads.net/head/Minecraft/100" class="logo" alt="Logo">
+                <img src="https://media.discordapp.net/attachments/1459108024151969913/1475820188678099087/Desain_tanpa_judul.jpg?ex=69a18328&is=69a031a8&hm=a105f70c08add19298462214fb10c4cb6bc911e363cdd4fab444aa5e61f1b617&=&format=webp" class="logo">
                 <h2>SERVER STATUS</h2>
                 <div class="info-box">
                     <div class="info-item" onclick="copyText('aeroblast.my.id', this)">
@@ -281,12 +282,12 @@
         </section>
 
         <section id="rank">
-            <h3 class="section-title">Support Server</h3>
-            <div class="card">
-                <a href="store.html" class="btn rank-btn">👑 LIHAT KATALOG RANK & ITEM</a>
-                <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE (QRIS)</button>
-            </div>
-        </section>
+    <h3 class="section-title">Support Server</h3>
+    <div class="card">
+        <a href="store.html" class="btn rank-btn">👑 LIHAT KATALOG RANK & ITEM</a>
+        <button class="btn saweria-btn" onclick="openModal('saweriaModal')">💸 DONATE (QRIS)</button>
+    </div>
+</section>
     </div>
 
     <footer class="main-footer">
@@ -356,11 +357,30 @@
         </div>
     </div>
 
+    <div id="rankModal" class="modal">
+        <div class="modal-content" style="border-color: #eab308;">
+            <div id="rankList">
+                <h3 style="color: #eab308; margin-bottom: 20px;">PILIH RANK ANDA</h3>
+                <div class="rank-option" onclick="showRankDetail('aviator')"><span>✨ AVIATOR</span><b>15k</b></div>
+                <div class="rank-option" onclick="showRankDetail('exostic')"><span>🔥 EXOSTIC</span><b>30k</b></div>
+                <div class="rank-option" onclick="showRankDetail('force')"><span>💎 FORCE</span><b>50k</b></div>
+                <div class="rank-option" onclick="showRankDetail('xerelion')"><span>🛡️ XERELION</span><b>75k</b></div>
+                <div class="rank-option" onclick="showRankDetail('galatics')"><span>👑 GALATICS</span><b>100k</b></div>
+                <button class="btn" style="background:#444;" onclick="closeModal('rankModal')">TUTUP</button>
+            </div>
+            <div id="rankDetail" style="display:none; text-align: left;">
+                <span onclick="backToRankList()" style="cursor:pointer; color:#eab308;">← Kembali</span>
+                <h3 id="detailTitle" style="margin: 15px 0; color: #eab308;"></h3>
+                <div id="detailFeatures" style="font-size: 0.85em; color: #cbd5e1; line-height: 1.6; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;"></div>
+                <a href="#" id="rankWaLink" target="_blank" class="btn" style="background: #25d366;">🛒 BELI SEKARANG</a>
+            </div>
+        </div>
+    </div>
+
     <div id="saweriaModal" class="modal">
         <div class="modal-content" style="border-color: #fa6400;">
             <h3 style="color: #fa6400;">QRIS AEROBLAST</h3>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" class="qris-img" alt="QRIS">
-            <p style="font-size: 0.8em; color: #cbd5e1;">Scan QRIS di atas untuk donasi</p>
+            <img src="https://media.discordapp.net/attachments/1459108024151969913/1465894211843920124/1769553908487.png?ex=69a0ff5f&is=699faddf&hm=377f2339ed8e9c3da4d326979bbab1d093402b6a60133e8d12e654dae6cb9f0f&=&format=webp&quality=lossless&width=248&height=350" class="qris-img">
             <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
         </div>
     </div>
@@ -382,8 +402,16 @@
     </div>
     
     <script>
+        const rankData = {
+            aviator: { title: "AVIATOR", price: "Rp 15.000", features: ["Home limit 5", "Warp create limit 5", "/ec", "/wb", "1 VIP key", "1 Legend key", "1 Aerospace Key", "Aviator kits"] },
+            exostic: { title: "EXOSTIC", price: "Rp 30.000", features: ["Home limit 10", "Warp create limit 10", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "5 VIP key", "3 Legend key", "1 Aerospace Key", "EXOSTIC kits"] },
+            force: { title: "FORCE", price: "Rp 50.000", features: ["Home limit 20", "Warp create limit 20", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "10 VIP key", "5 Legend key", "2 legend key", "2 Aerospace Key", "FORCE kits"] },
+            xerelion: { title: "XERELION", price: "Rp 75.000", features: ["Home limit 50", "Warp create limit 50", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "15 VIP key", "10 Legend key", "2 Aerospace Key", "XERELION kits"] },
+            galatics: { title: "GALATICS", price: "Rp 100.000", features: ["Home unlimited", "Warp create unlimited", "/ec", "/wb", "/feed", "/recipe", "/repair", "/stonecutter", "/pweather", "/ptime", "/anvil", "/msgtoggle", "/fly", "/heal", "/hat", "/nick", "/tptoggle", "/godmode", "18 VIP key", "12 Legend key", "3 Aerospace Key", "GALATICS kits"] }
+        };
+
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; if(id==='rankModal') backToRankList(); }
         
         function toggleRule(el) {
             const content = el.nextElementSibling;
@@ -393,11 +421,23 @@
             arrow.innerText = isOpen ? '▼' : '▲';
         }
 
+        function showRankDetail(id) {
+            const rank = rankData[id];
+            document.getElementById('rankList').style.display = 'none';
+            document.getElementById('rankDetail').style.display = 'block';
+            document.getElementById('detailTitle').innerText = rank.title + " - " + rank.price;
+            document.getElementById('detailFeatures').innerHTML = rank.features.map(f => <div>▸ ${f}</div>).join('');
+            const msg = `Halo Admin! Saya mau beli rank ${rank.title} seharga ${rank.price}. Nick: `;
+            document.getElementById('rankWaLink').href = https://wa.me/628123731343?text=${encodeURIComponent(msg)};
+        }
+
+        function backToRankList() { document.getElementById('rankList').style.display = 'block'; document.getElementById('rankDetail').style.display = 'none'; }
+
         function sendWA(type) {
             const text = document.getElementById(type + 'Text').value;
             if(!text) return alert("Isi dulu ya!");
             const prefix = type === 'req' ? "REQUEST FITUR:" : "REPORT BUG/PLAYER:";
-            window.open(`https://wa.me/628123731343?text=*${prefix}*%0A${encodeURIComponent(text)}`);
+            window.open(https://wa.me/628123731343?text=*${prefix}*%0A${encodeURIComponent(text)});
             closeModal(type + 'Modal');
         }
 
@@ -420,7 +460,7 @@
                 const isOnline = data.online;
                 document.getElementById('s-status').innerText = isOnline ? 'ONLINE' : 'OFFLINE';
                 document.getElementById('s-status').style.color = isOnline ? '#4ade80' : '#f87171';
-                document.getElementById('s-players').innerText = isOnline ? `${data.players.online}/${data.players.max}` : '-/-';
+                document.getElementById('s-players').innerText = isOnline ? ${data.players.online}/${data.players.max} : '-/-';
                 document.getElementById('s-version').innerText = isOnline ? (data.version || '1.20+') : '-';
             });
     </script>
