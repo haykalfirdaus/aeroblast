@@ -166,8 +166,70 @@ textarea {
 }
 textarea:focus { border-color: #38bdf8; background: rgba(0,0,0,0.5); }
 
-/* --- 8. FOOTER --- */
-.main-footer { background: #0f172a; padding: 40px 20px; border-top: 2px solid #38bdf8; text-align: center; width: 100%; }
-.footer-links-list a, .footer-links-list span { color: #94a3b8 !important; text-decoration: none; margin: 0 10px; font-size: 0.85em; }
-.footer-links-list a:hover { color: #38bdf8 !important; }
-.aeroblast-glow { color: #38bdf8; font-weight: bold; text-shadow: 0 0 8px rgba(56, 189, 248, 0.5); }
+.main-footer {
+    background: rgba(15, 23, 42, 0.98);
+    padding: 50px 20px 30px;
+    border-top: 3px solid #38bdf8;
+    width: 100%;
+    margin-top: 100px; /* Jarak dari konten atas */
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-brand h2 {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.footer-brand p {
+    font-size: 0.85em;
+    color: #94a3b8;
+    margin-bottom: 25px;
+}
+
+.footer-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+    margin-bottom: 25px;
+}
+
+.footer-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px; /* Jarak antar link */
+    margin-bottom: 30px;
+}
+
+.footer-links-list a {
+    color: #cbd5e1 !important;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.footer-links-list a:hover {
+    color: #38bdf8 !important;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    transform: translateY(-2px);
+}
+
+.footer-bottom-simple p {
+    font-size: 0.75em;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+/* Responsif buat HP */
+@media (max-width: 600px) {
+    .footer-links-list {
+        flex-direction: column; /* Link jadi berderet ke bawah di HP */
+        gap: 15px;
+    }
+}
