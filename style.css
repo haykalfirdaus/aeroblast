@@ -127,89 +127,55 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .rep-btn { background: #ef4444; }
 .saweria-btn { background: #ff8c00; color: white; }
 
-/* --- FOOTER SIMPLE AEROBLAST (NO DISCOVER/SUPPORT HEADERS) --- */
-.main-footer { 
-    background: rgba(15, 23, 42, 0.98); 
-    padding: 50px 20px 30px; 
-    width: 100%; 
-    margin-top: 80px; 
-    border-top: 3px solid #38bdf8;
+/* Menjamin footer selalu di bawah layar */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1 0 auto; /* Ini akan mendorong footer ke bawah */
+}
+
+.main-footer {
+    flex-shrink: 0;
+    background: #0f172a; /* Warna awal kamu */
+    padding: 30px 0;
+    border-top: 2px solid #38bdf8;
     text-align: center;
 }
 
-.footer-simple-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px; /* Jarak antar kolom link */
-    max-width: 800px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-/* Kolom Link disusun ke bawah */
-.footer-links-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Jarak antar link ke bawah */
-}
-
-/* Garis pembatas besar di tengah */
-.footer-divider-vertical {
-    width: 2px;
-    height: 100px;
-    background: rgba(56, 189, 248, 0.15);
-}
-
-/* Gaya dasar Link & Span (Abu-abu, gak ungu) */
-.footer-links-list a, .footer-links-list span { 
-    color: #94a3b8 !important; 
-    text-decoration: none; 
-    font-size: 0.95em; 
+/* Efek Glow & Garis Pembatas */
+.footer-links-list a, .footer-links-list span {
+    color: #94a3b8 !important;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: 0.3s;
     cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-    width: fit-content;
-    margin: 0 auto;
 }
 
-/* --- EFEK GLOW SAAT DIARAHKAN KURSOR --- */
-.footer-links-list a:hover, .footer-links-list span:hover { 
-    color: #38bdf8 !important; 
-    text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
-    transform: scale(1.05);
+/* Garis pembatas ( | ) */
+.footer-links-list {
+    margin-bottom: 15px;
+    color: #334155;
 }
 
-/* Bagian Paling Bawah */
-.footer-bottom-simple { 
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(56, 189, 248, 0.05);
+/* Efek Glow saat diarahkan kursor */
+.footer-links-list a:hover, .footer-links-list span:hover {
+    color: #38bdf8 !important;
+    text-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
 }
 
-.footer-bottom-simple p { 
-    font-size: 0.85em; 
-    color: #64748b; 
-    text-transform: capitalize;
-}
-
-/* Efek Glow pada kata AEROBLAST */
+/* Teks Registered AeroBlast Glow */
 .aeroblast-glow {
     color: #38bdf8;
-    font-weight: 700;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+    transition: 0.5s;
 }
 
-/* Responsif untuk HP */
-@media (max-width: 600px) {
-    .footer-simple-content { 
-        flex-direction: column; 
-        gap: 20px;
-    }
-    .footer-divider-vertical { 
-        width: 80px; 
-        height: 2px; 
-        margin: 10px auto;
-    }
-    .footer-links-list { gap: 10px; }
+.aeroblast-glow:hover {
+    text-shadow: 0 0 15px #38bdf8;
 }
