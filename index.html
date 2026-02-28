@@ -60,20 +60,20 @@
         <section id="special-ranks">
             <h3 class="section-title">Special Ranks</h3>
             <div class="card" style="text-align: left;">
-                <p onclick="openModal('snkModal')" style="font-size: 0.85em; color: #38bdf8; margin-bottom: 20px; font-style: italic; cursor: pointer; text-decoration: underline; display: flex; align-items: center; gap: 5px;">
-                    <span>ℹ️</span> Dapatkan rank khusus (S&K berlaku - Klik di sini)
+                <p onclick="openModal('snkModal')" style="font-size: 0.85+em; color: #38bdf8; margin-bottom: 20px; font-style: italic; cursor: pointer; text-decoration: underline; display: flex; align-items: center; gap: 5px;">
+                    <span>ℹ️</span> Info Detail S&K Rank (Klik di sini)
                 </p>
                 
-                <div class="rank-item" style="margin-bottom: 25px;">
+                <div class="rank-item">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
                         <span style="font-size: 1.5em;">🏗️</span>
                         <h4 style="color: #eab308; margin: 0; letter-spacing: 1px;">BUILDER RANK</h4>
                     </div>
                     <ul class="rule-list" style="margin-bottom: 15px; padding-left: 5px;">
                         <li>⭐ Prefix Eksklusif <span style="color: #eab308; font-weight: bold;">[BUILDER]</span></li>
-                        <li>⭐ Fitur Fly aktif di area claim sendiri</li>
+                        <li>⭐ Akses <span style="color: #4ade80;">/fly</span> (Hanya di area claim sendiri)</li>
                         <li>⭐ Akses WorldEdit (Terbatas/By Request)</li>
-                        <li>⭐ Role khusus di Discord AeroBlast</li>
+                        <li>📌 <b>SYARAT:</b> Minimal Playtime 3 Jam & Build Bagus/Besar</li>
                     </ul>
                     <button class="btn req-btn" style="padding: 10px 20px; font-size: 0.85em; width: auto; border-radius: 20px;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Builder%20Rank')">DAFTAR BUILDER</button>
                 </div>
@@ -87,15 +87,14 @@
                     </div>
                     <ul class="rule-list" style="margin-bottom: 15px; padding-left: 5px;">
                         <li>⭐ Prefix Eksklusif <span style="color: #38bdf8; font-weight: bold;">[MEDIA]</span></li>
-                        <li>⭐ Akses /fly untuk kebutuhan cinematic</li>
-                        <li>⭐ Izin share link konten (YT/TikTok) di chat</li>
-                        <li>⭐ Pengumuman otomatis saat kamu Live/Upload</li>
+                        <li>⭐ Akses <span style="color: #4ade80;">/fly</span> (Global / Cinematic)</li>
+                        <li>⭐ Izin share link konten di Discord & Chat Game</li>
+                        <li>📌 <b>SYARAT:</b> 1k Follower YT/TikTok & Upload/Live di AeroBlast</li>
                     </ul>
                     <button class="btn req-btn" style="padding: 10px 20px; font-size: 0.85em; width: auto; border-radius: 20px; background: #38bdf8; color: #050b18;" onclick="window.open('https://wa.me/628123731343?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20Media%20Rank')">DAFTAR MEDIA</button>
                 </div>
             </div>
         </section>
-
         <section id="rules">
             <h3 class="section-title">Server Rules</h3>
             <div class="card rules-card">
@@ -195,11 +194,39 @@
     </footer>
 
     <div id="snkModal" class="modal">
-        <div class="modal-content" style="text-align: left;">
-            <h3 style="color: #38bdf8; text-align: center; margin-bottom: 15px;">SYARAT & KETENTUAN</h3>
-            <p style="margin-bottom: 10px;"><b>1. Builder Rank:</b> Wajib membangun bangunan yang besar & bagus secara detail.</p>
-            <p style="margin-bottom: 20px;"><b>2. Media Rank:</b> Minimal memiliki 1.000 followers di TikTok atau YouTube.</p>
-            <button class="btn" style="background:#444;" onclick="closeModal('snkModal')">MENGERTI</button>
+        <div class="modal-content" style="text-align: left; border-color: #38bdf8;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                <span style="font-size: 1.5em; color: #38bdf8;">📜</span>
+                <h3 style="color: #38bdf8; text-align: center; margin: 0; letter-spacing: 1px;">SYARAT & KETENTUAN RANK</h3>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(234, 179, 8, 0.2);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <span style="color: #eab308; font-size: 1.2em;">🏗️</span>
+                    <h4 style="color: #eab308; margin: 0;">Syarat BUILDER RANK:</h4>
+                </div>
+                <ul class="rule-list" style="padding-left: 5px; font-size: 0.85em; color: #cbd5e1;">
+                    <li>⭐ Wajib aktif bermain minimal <b>3 jam</b>.</li>
+                    <li>⭐ Hasil build harus <b>bagus, detail, dan besar</b> (megah).</li>
+                    <li>⭐ Bersedia membantu build event/spawn jika diminta Admin.</li>
+                </ul>
+            </div>
+
+            <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.5), transparent); margin: 25px 0;"></div>
+
+            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid rgba(56, 189, 248, 0.2);">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <span style="color: #38bdf8; font-size: 1.2em;">🎬</span>
+                    <h4 style="color: #38bdf8; margin: 0;">Syarat MEDIA RANK:</h4>
+                </div>
+                <ul class="rule-list" style="padding-left: 5px; font-size: 0.85em; color: #cbd5e1;">
+                    <li>⭐ Minimal memiliki <b>1.000 followers</b> (TikTok atau YouTube).</li>
+                    <li>⭐ Wajib upload video/live konten <b>di AeroBlast</b> secara berkala.</li>
+                    <li>⭐ Konten harus sopan dan mempromosikan server dengan baik.</li>
+                </ul>
+            </div>
+
+            <button class="btn" style="background:#444; margin-top: 15px;" onclick="closeModal('snkModal')">MENGERTI</button>
         </div>
     </div>
 
