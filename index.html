@@ -250,8 +250,11 @@
     <div id="saweriaModal" class="modal">
         <div class="modal-content" style="border-color: #fa6400;">
             <h3 style="color: #fa6400; margin-bottom: 15px;">QRIS AEROBLAST</h3>
-            <img src="https://store.aeroblast.my.id/qris.jpg" style="width: 100%; border-radius: 10px; margin-bottom: 15px;">
-            <button class="btn" style="background:#444;" onclick="closeModal('saweriaModal')">TUTUP</button>
+            <img src="https://store.aeroblast.my.id/qris.jpg" 
+                 onerror="this.src='https://raw.githubusercontent.com/username-kamu/repo-kamu/main/qris.jpg'" 
+                 style="width: 100%; max-width: 300px; display: block; margin: 0 auto 15px; border-radius: 10px;">
+            <p style="font-size: 0.8em; color: #ccc;">Scan untuk donasi via All Payment</p>
+            <button class="btn" style="background:#444; margin-top: 10px;" onclick="closeModal('saweriaModal')">TUTUP</button>
         </div>
     </div>
 
