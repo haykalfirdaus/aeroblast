@@ -127,92 +127,63 @@ section { margin-bottom: 50px; scroll-margin-top: 100px; }
 .rep-btn { background: #ef4444; }
 .saweria-btn { background: #ff8c00; color: white; }
 
-/* --- FOOTER MODERN AEROBLAST (TANPA SUBSCRIBE) --- */
+/* --- FOOTER SIMPLE AEROBLAST --- */
 .main-footer { 
     background: rgba(15, 23, 42, 0.98); 
-    padding: 60px 20px 30px; 
+    padding: 40px 20px; 
     width: 100%; 
-    margin-top: 80px; 
-    border-top: 3px solid #38bdf8;
+    margin-top: 50px; 
+    border-top: 2px solid #38bdf8;
+    text-align: center;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    max-width: 1100px;
+.footer-content-simple {
+    display: flex;
+    justify-content: center;
+    gap: 60px; /* Jarak antar kolom Discover & Support */
+    max-width: 800px;
     margin: 0 auto;
-    gap: 40px;
-    text-align: left;
+    flex-wrap: wrap;
 }
 
-.footer-section h4 { 
-    color: #38bdf8; 
-    margin-bottom: 25px; 
-    text-transform: uppercase; 
-    font-size: 1.1em;
-    letter-spacing: 1px;
+.footer-simple-section h4 {
+    color: #38bdf8;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
 }
 
-.footer-section p { 
-    font-size: 0.9em; 
-    color: #e0f2fe; 
-    line-height: 1.8; 
-    opacity: 0.8;
+.footer-links-row {
+    color: rgba(56, 189, 248, 0.3); /* Warna garis pembatas | */
+    font-size: 0.85em;
 }
 
-.footer-section.links { display: flex; flex-direction: column; gap: 12px; }
-
-/* Link Warna Abu & Efek Keren Pas Kursor Nempel */
-.footer-section a, .footer-section span { 
-    color: #94a3b8 !important; 
-    text-decoration: none; 
-    font-size: 0.9em; 
-    cursor: pointer;
+.footer-links-row a, .footer-links-row span {
+    color: #94a3b8 !important;
+    text-decoration: none;
+    margin: 0 5px;
     transition: all 0.3s ease;
-    width: fit-content;
+    cursor: pointer;
+    display: inline-block;
 }
 
-.footer-section a:hover, .footer-section span:hover { 
-    color: #38bdf8 !important; 
-    padding-left: 10px; /* Efek geser kanan */
+/* Efek Hover Keren */
+.footer-links-row a:hover, .footer-links-row span:hover {
+    color: #38bdf8 !important;
+    transform: translateY(-3px);
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-.footer-bottom { 
-    margin-top: 50px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(56, 189, 248, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+.footer-bottom-simple {
+    margin-top: 30px;
+    font-size: 0.75em;
+    color: #64748b;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
 }
 
-.footer-bottom p { font-size: 0.8em; color: #64748b; }
-
-.footer-legal-links { display: flex; gap: 20px; }
-.footer-legal-links a { color: #64748b !important; font-size: 0.8em; }
-.footer-legal-links a:hover { color: white !important; }
-
-/* Responsif untuk HP */
-@media (max-width: 768px) {
-    .footer-content { 
-        grid-template-columns: 1fr 1fr; 
-        text-align: center;
-        gap: 30px;
-    }
-    .footer-section.about { grid-column: span 2; }
-    .footer-section.links { align-items: center; }
-    .footer-bottom { 
-        flex-direction: column; 
-        gap: 15px; 
-        text-align: center;
-    }
+/* Responsive buat HP */
+@media (max-width: 600px) {
+    .footer-content-simple { gap: 30px; flex-direction: column; }
+    .footer-links-row { line-height: 2; }
 }
-
-/* --- MODAL --- */
-.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
-.modal-content { background: #0f172a; border: 2px solid #38bdf8; padding: 25px; border-radius: 20px; width: 90%; max-width: 400px; }
-textarea { width: 100%; height: 100px; margin-top: 10px; background: #1e293b; color: #fff; border: 1px solid #38bdf8; padding: 10px; border-radius: 10px; }
